@@ -1,0 +1,22 @@
+{
+  "email": {
+    "error": {
+      "invalid": "Введите корректный email"
+    },
+    "label": "Email",
+    "placeholder": "Введите email"
+  },
+  "error": {
+    "default": "Неизвестная ошибка",
+    "invalidCredentials": "Неверный email или пароль"
+  },
+  "password": {
+    "error": {
+      "invalid": "Введите пароль",
+      "minLength": "Минимум {length} символов"
+    },
+    "label": "Пароль",
+    "placeholder": "Введите пароль"
+  },
+  "submit": "Войти"
+}

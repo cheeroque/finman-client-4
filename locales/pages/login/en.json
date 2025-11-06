@@ -1,0 +1,22 @@
+{
+  "email": {
+    "error": {
+      "invalid": "Invalid email"
+    },
+    "label": "Email",
+    "placeholder": "Enter email"
+  },
+  "error": {
+    "default": "Unknown error",
+    "invalidCredentials": "Invalid credentials"
+  },
+  "password": {
+    "error": {
+      "invalid": "Password required",
+      "minLength": "Password should be at least {length} characters"
+    },
+    "label": "Password",
+    "placeholder": "Enter password"
+  },
+  "submit": "Submit"
+}
