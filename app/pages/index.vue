@@ -11,7 +11,7 @@ async function logout() {
 </script>
 
 <template>
-  <UMain>
+  <UMain as="main">
     <UButton @click="logout">
       Sign Out
     </UButton>

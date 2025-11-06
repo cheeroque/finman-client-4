@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
+    '@pinia/colada-nuxt',
     '@pinia/nuxt',
     '@vueuse/nuxt',
     'nuxt-i18n-micro',
@@ -19,6 +20,12 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-07-15',
+
+  nitro: {
+    experimental: {
+      asyncContext: true,
+    },
+  },
 
   eslint: {
     config: {

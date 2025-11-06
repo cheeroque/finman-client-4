@@ -1,6 +1,2 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
-
-:root {
-  --ui-header-height: 0px;
-}
