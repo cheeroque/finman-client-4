@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@vueuse/nuxt',
+    'nuxt-i18n-micro',
   ],
   devtools: {
     enabled: true,
@@ -14,5 +15,14 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
+  },
+  i18n: {
+    locales: [
+      { code: 'ru', iso: 'ru-RU', displayName: 'Русский' },
+      { code: 'en', iso: 'en-US', displayName: 'English' },
+    ],
+    defaultLocale: 'ru',
+    translationDir: 'locales',
+    meta: true,
   },
 })
