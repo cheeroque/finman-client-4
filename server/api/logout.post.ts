@@ -1,11 +1,9 @@
 import { serialize } from 'cookie-es'
 
-import { createApiFetch } from '~~/server/utils/fetch'
-
 export default defineEventHandler(async (event) => {
   const { tokenCookieName } = useAppConfig()
 
-  const apiFetch = createApiFetch(event)
+  const apiFetch = useApiFetch()
 
   await apiFetch('/logout', {
     method: 'POST',

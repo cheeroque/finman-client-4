@@ -1,9 +1,11 @@
-import { getCookie, type H3Event } from 'h3'
+import { getCookie } from 'h3'
 import type { FetchOptions } from 'ofetch'
 
-export function createApiFetch(event: H3Event) {
+export function useApiFetch() {
   const { tokenCookieName } = useAppConfig()
   const { apiBase } = useRuntimeConfig()
+
+  const event = useEvent()
 
   const token = getCookie(event, tokenCookieName)
   const headers: FetchOptions['headers'] = {}
