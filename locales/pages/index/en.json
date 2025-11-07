@@ -1,1 +1,19 @@
-{}
+{
+  "columns": {
+    "category": "Category",
+    "date": "Date",
+    "note": "Note",
+    "sum": "Sum"
+  },
+  "filter": {
+    "placeholder": "Enter text to search"
+  },
+  "marked": {
+    "label": "Marked only"
+  },
+  "view": {
+    "expense": "Expenses only",
+    "income": "Incomes only",
+    "null": "All transactions"
+  }
+}
