@@ -1,4 +1,4 @@
-export interface SnapshotDto {
+export interface Snapshot {
   id: number
   balance: number
   note?: string | null

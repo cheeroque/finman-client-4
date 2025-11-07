@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useRouteQuery } from '@vueuse/router'
-
-import type { TransactionDto } from '~~/shared/types/transaction'
+import type { Transaction } from '~~/shared/types/transaction'
 import type { PaginatedResponse } from '~~/shared/types/util'
 
 const filter = useRouteQuery<string | undefined>('filter', undefined, {
@@ -23,7 +21,7 @@ const marked = useRouteQuery('marked', 'false', {
   transform: (value: string) => String(value) === 'true',
 })
 
-const { state, isLoading } = useQuery<PaginatedResponse<TransactionDto>>({
+const { state, isLoading } = useQuery<PaginatedResponse<Transaction>>({
   key: () => [
     'transactions',
     filter.value ?? '',

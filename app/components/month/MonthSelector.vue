@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { TransactionDto } from '~~/shared/types/transaction'
+import type { Transaction } from '~~/shared/types/transaction'
 import { getEmptyArray } from '~~/shared/utils'
 
 const modelValue = defineModel<{ month: number, year: number }>()
 
 const { $localePath } = useI18n()
 
-const { state } = useQuery<TransactionDto>({
+const { state } = useQuery<Transaction>({
   key: ['transaction-first'],
   query: () => useRequestFetch()('/api/transactions/first'),
 })

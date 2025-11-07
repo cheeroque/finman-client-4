@@ -1,8 +1,8 @@
-export interface LoginDto {
+export interface LoginCredentials {
   email: string
   password: string
 }
 
-export interface LoginResponseDto {
+export interface LoginResponse {
   access_token: string
 }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { CategoryDto } from '~~/shared/types/category'
+import type { Category } from '~~/shared/types/category'
 
 defineProps<{
-  category: CategoryDto
+  category: Category
 }>()
 
 const { $localePath, $ts } = useI18n()

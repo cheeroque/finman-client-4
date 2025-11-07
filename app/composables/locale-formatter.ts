@@ -10,6 +10,12 @@ export function useLocaleFormatter() {
     return parseAbsolute(datestring, getLocalTimeZone())
   }
 
+  function parsePeriod(period: string) {
+    const [year, month] = period.split('-')
+
+    return new Date(Number(year), Number(month) - 1, 1)
+  }
+
   function formatDate(datestring: string, options?: Intl.DateTimeFormatOptions) {
     const date = parseDate(datestring)
 
@@ -31,5 +37,6 @@ export function useLocaleFormatter() {
     formatDate,
     formatNumber,
     parseDate,
+    parsePeriod,
   }
 }

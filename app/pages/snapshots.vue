@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { SnapshotDto } from '~~/shared/types/snapshot'
+import type { Snapshot } from '~~/shared/types/snapshot'
 
 const page = useRouteQuery('page', '1', {
   mode: 'push',
   transform: Number,
 })
 
-const { state, isLoading } = useQuery<PaginatedResponse<SnapshotDto>>({
+const { state, isLoading } = useQuery<PaginatedResponse<Snapshot>>({
   key: () => ['snapshots', page.value],
 
   query: () => useRequestFetch()('/api/snapshots', {

@@ -1,7 +1,7 @@
-import type { TransactionDto } from '~~/shared/types/transaction'
+import type { Transaction } from '~~/shared/types/transaction'
 import type { PaginatedResponse, PaginationParams } from '~~/shared/types/util'
 
-interface TransactionsQuery extends PaginationParams<TransactionDto> {
+interface TransactionsQuery extends PaginationParams<Transaction> {
   filter?: string
   marked?: boolean
   show?: 'expense' | 'income'
@@ -11,5 +11,5 @@ export default defineEventHandler((event) => {
   const apiFetch = useApiFetch()
   const query = getQuery<TransactionsQuery>(event)
 
-  return apiFetch<PaginatedResponse<TransactionDto>>('/transactions', { query })
+  return apiFetch<PaginatedResponse<Transaction>>('/transactions', { query })
 })

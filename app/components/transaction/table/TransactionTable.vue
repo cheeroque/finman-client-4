@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { TransactionDto } from '~~/shared/types/transaction'
+import type { Transaction } from '~~/shared/types/transaction'
 
 const { transactions = [] } = defineProps<{
   loading?: boolean
-  transactions?: TransactionDto[]
+  transactions?: Transaction[]
 }>()
 
 const { $ts } = useI18n()

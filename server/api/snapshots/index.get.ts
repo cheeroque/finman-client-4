@@ -1,9 +1,9 @@
-import type { SnapshotDto } from '~~/shared/types/snapshot'
+import type { Snapshot } from '~~/shared/types/snapshot'
 import type { PaginatedResponse, PaginationParams } from '~~/shared/types/util'
 
 export default defineEventHandler((event) => {
   const apiFetch = useApiFetch()
-  const query = getQuery<PaginationParams<SnapshotDto>>(event)
+  const query = getQuery<PaginationParams<Snapshot>>(event)
 
-  return apiFetch<PaginatedResponse<SnapshotDto>>('/snapshots', { query })
+  return apiFetch<PaginatedResponse<Snapshot>>('/snapshots', { query })
 })

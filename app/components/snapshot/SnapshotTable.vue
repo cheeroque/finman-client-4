@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { SnapshotDto } from '~~/shared/types/snapshot'
+import type { Snapshot } from '~~/shared/types/snapshot'
 
 const { snapshots } = defineProps<{
   loading?: boolean
-  snapshots?: SnapshotDto[]
+  snapshots?: Snapshot[]
 }>()
 
 const { $ts } = useI18n()

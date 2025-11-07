@@ -1,14 +1,14 @@
 import { serialize } from 'cookie-es'
 
-import type { LoginDto, LoginResponseDto } from '~~/shared/types/auth'
+import type { LoginCredentials, LoginResponse } from '~~/shared/types/auth'
 
 export default defineEventHandler(async (event) => {
   const { tokenCookieName } = useAppConfig()
   const { apiBase } = useRuntimeConfig()
 
-  const body = await readBody<LoginDto>(event)
+  const body = await readBody<LoginCredentials>(event)
 
-  const { access_token } = await $fetch<LoginResponseDto>('/login', {
+  const { access_token } = await $fetch<LoginResponse>('/login', {
     baseURL: apiBase,
     method: 'POST',
     body,

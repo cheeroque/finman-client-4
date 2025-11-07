@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { CategoryDto } from '~~/shared/types/category'
+import type { Category } from '~~/shared/types/category'
 
-const { state } = useQuery<CategoryDto[]>({
+const { state } = useQuery<Category[]>({
   key: ['categories'],
 
   query: () => useRequestFetch()('/api/categories'),

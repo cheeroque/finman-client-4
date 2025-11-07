@@ -1,7 +1,7 @@
-import type { CategoryDto } from '~~/shared/types/category'
+import type { Category } from '~~/shared/types/category'
 
 export default defineEventHandler(() => {
   const apiFetch = useApiFetch()
 
-  return apiFetch<CategoryDto[]>('/categories')
+  return apiFetch<Category[]>('/categories')
 })
