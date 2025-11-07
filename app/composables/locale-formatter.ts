@@ -1,4 +1,4 @@
-import { DateFormatter, getLocalTimeZone, parseAbsolute } from '@internationalized/date'
+import { DateFormatter, getLocalTimeZone, parseAbsolute, type CalendarDate } from '@internationalized/date'
 import { NumberFormatter } from '@internationalized/number'
 
 export function useLocaleFormatter() {
@@ -33,9 +33,14 @@ export function useLocaleFormatter() {
     return [formatter.format(value), '₽'].join('\xA0')
   }
 
+  function formatPeriod({ month, year }: Pick<CalendarDate, 'month' | 'year'>) {
+    return `${year}-${String(month).padStart(2, '0')}`
+  }
+
   return {
     formatDate,
     formatNumber,
+    formatPeriod,
     parseDate,
     parsePeriod,
   }

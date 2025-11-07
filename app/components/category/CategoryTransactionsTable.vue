@@ -47,33 +47,6 @@ const columns = computed(() => [
     },
   },
 ])
-
-const detailColumns = computed(() => [
-  {
-    accessorKey: 'created_at',
-    meta: {
-      class: {
-        td: 'w-[30%]',
-      },
-    },
-  },
-  {
-    accessorKey: 'sum',
-    meta: {
-      class: {
-        td: 'w-[20%]',
-      },
-    },
-  },
-  {
-    accessorKey: 'note',
-    meta: {
-      class: {
-        td: 'w-[50%]',
-      },
-    },
-  },
-])
 </script>
 
 <template>
@@ -95,22 +68,7 @@ const detailColumns = computed(() => [
     </template>
 
     <template #expanded="{ row }">
-      <UTable
-        :columns="detailColumns"
-        :data="row.original.transactions"
-        :ui="{
-          base: 'table-fixed bg-gray-50',
-          thead: 'hidden',
-        }"
-      >
-        <template #created_at-cell="{ row: detailRow }">
-          {{ formatDate(detailRow.original.created_at) }}
-        </template>
-
-        <template #sum-cell="{ row: detailRow }">
-          {{ formatNumber(detailRow.original.sum) }}
-        </template>
-      </UTable>
+      <TransactionExpansionTable :transactions="row.original.transactions" />
     </template>
   </UTable>
 </template>

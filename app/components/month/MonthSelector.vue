@@ -11,7 +11,7 @@ const { state } = useQuery<Transaction>({
   query: () => useRequestFetch()('/api/transactions/first'),
 })
 
-const { parseDate } = useLocaleFormatter()
+const { formatPeriod, parseDate } = useLocaleFormatter()
 
 const now = new Date()
 
@@ -77,10 +77,6 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
 
   return month === modelValue.value.month && year === modelValue.value.year
 }
-
-function getMonthLink({ month, year}: { month: number, year: number }) {
-  return `/months/${year}-${String(month).padStart(2, '0')}`
-}
 </script>
 
 <template>
@@ -127,7 +123,7 @@ function getMonthLink({ month, year}: { month: number, year: number }) {
             <UButton
               :active="isMonthActive(month)"
               :disabled="month.disabled"
-              :to="$localePath(getMonthLink(month))"
+              :to="$localePath(`/months/${formatPeriod(month)}`)"
               variant="soft"
               class="w-full justify-center"
             >

@@ -1,0 +1,11 @@
+{
+  "columns": {
+    "category": "Category",
+    "sum": "Sum"
+  },
+  "total": {
+    "expenses": "Expenses Total",
+    "incomes": "Incomes Total",
+    "month": "Monthly Balance"
+  }
+}
