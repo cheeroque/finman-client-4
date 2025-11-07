@@ -1,10 +1,12 @@
 <script setup lang="ts">
-const { state } = useQuery({
+const { state } = useQuery<number>({
   key: ['balance'],
   query: () => useRequestFetch()('/api/transactions/total'),
 })
 
-const title = computed(() => `${state.value.data}\xA0₽`)
+const { formatNumber } = useLocaleFormatter()
+
+const title = computed(() => formatNumber(state.value.data ?? 0))
 </script>
 
 <template>
