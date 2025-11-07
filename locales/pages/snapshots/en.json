@@ -1,0 +1,7 @@
+{
+  "columns": {
+    "balance": "Balance",
+    "date": "Date",
+    "note": "Note"
+  }
+}
