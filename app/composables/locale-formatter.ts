@@ -4,8 +4,14 @@ import { NumberFormatter } from '@internationalized/number'
 export function useLocaleFormatter() {
   const { getLocale } = useI18n()
 
+  function parseDate(dateOrString: Date | string) {
+    const datestring = dateOrString instanceof Date ? dateOrString.toISOString() : dateOrString
+
+    return parseAbsolute(datestring, getLocalTimeZone())
+  }
+
   function formatDate(datestring: string, options?: Intl.DateTimeFormatOptions) {
-    const date = parseAbsolute(datestring, getLocalTimeZone())
+    const date = parseDate(datestring)
 
     const formatter = new DateFormatter(getLocale(), options)
 
@@ -24,5 +30,6 @@ export function useLocaleFormatter() {
   return {
     formatDate,
     formatNumber,
+    parseDate,
   }
 }
