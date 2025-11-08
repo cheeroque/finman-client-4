@@ -15,7 +15,7 @@ const { state, isLoading } = useQuery<PaginatedResponse<Snapshot>>({
     },
   }),
 
-  placeholderData: previousData => previousData,
+  placeholderData: (previousData) => previousData,
 })
 </script>
 

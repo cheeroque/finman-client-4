@@ -10,7 +10,7 @@ const { $ts } = useI18n()
 
 const { formatDate, formatNumber } = useLocaleFormatter()
 
-const data = computed(() => transactions?.map(transaction => ({
+const data = computed(() => transactions?.map((transaction) => ({
   ...transaction,
   created_at: formatDate(transaction.created_at, {
     dateStyle: 'short',

@@ -11,7 +11,7 @@ const { state } = useQuery<MonthCategories>({
 
   query: () => useRequestFetch()(`/api/months/${route.params.period}`),
 
-  placeholderData: previousData => previousData,
+  placeholderData: (previousData) => previousData,
 })
 
 const { formatDate, formatPeriod, parseDate, parsePeriod } = useLocaleFormatter()

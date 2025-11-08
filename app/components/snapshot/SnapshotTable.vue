@@ -10,7 +10,7 @@ const { $ts } = useI18n()
 
 const { formatDate, formatNumber } = useLocaleFormatter()
 
-const data = computed(() => snapshots?.map(snapshot => ({
+const data = computed(() => snapshots?.map((snapshot) => ({
   ...snapshot,
   created_at: formatDate(snapshot.created_at, {
     dateStyle: 'short',

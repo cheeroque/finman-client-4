@@ -6,7 +6,7 @@ const { state } = useQuery<Category[]>({
 
   query: () => useRequestFetch()('/api/categories'),
 
-  placeholderData: previousData => previousData,
+  placeholderData: (previousData) => previousData,
 })
 </script>
 

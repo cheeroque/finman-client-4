@@ -5,6 +5,7 @@ export default withNuxt([
   {
     rules: {
       'vue/no-v-html': 'off',
+      '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/brace-style': ['error', '1tbs'],
       '@stylistic/comma-dangle': [
         'error',

@@ -13,7 +13,7 @@ const page = useRouteQuery('page', '1', {
 
 const view = useRouteQuery<'expense' | 'income' | undefined>('view', undefined, {
   mode: 'push',
-  transform: value => value && ['expense', 'income'].includes(value) ? value : undefined,
+  transform: (value) => value && ['expense', 'income'].includes(value) ? value : undefined,
 })
 
 const marked = useRouteQuery('marked', 'false', {
@@ -39,7 +39,7 @@ const { state, isLoading } = useQuery<PaginatedResponse<Transaction>>({
     },
   }),
 
-  placeholderData: previousData => previousData,
+  placeholderData: (previousData) => previousData,
 })
 </script>
 

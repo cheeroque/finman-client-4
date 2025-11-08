@@ -15,11 +15,11 @@ const handleUpdateFilter = useDebounceFn((value: string) => {
 const markedModel = defineModel<boolean>('marked')
 
 const viewModel = defineModel<'expense' | 'income' | null | undefined>('view', {
-  get: value => value ?? null,
-  set: value => value ?? undefined,
+  get: (value) => value ?? null,
+  set: (value) => value ?? undefined,
 })
 
-const viewOptions = computed(() => [null, 'expense', 'income'].map(value => ({
+const viewOptions = computed(() => [null, 'expense', 'income'].map((value) => ({
   label: $ts(`view.${value}`),
   value,
 })))

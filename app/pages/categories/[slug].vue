@@ -24,7 +24,7 @@ const { state } = useQuery<CategoryWithTransactions>({
     },
   }),
 
-  placeholderData: previousData => previousData,
+  placeholderData: (previousData) => previousData,
 })
 </script>
 
