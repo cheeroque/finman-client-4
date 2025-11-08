@@ -6,9 +6,9 @@ const { transactions = [] } = defineProps<{
   transactions?: Transaction[]
 }>()
 
-const { $ts } = useI18n()
+const { $localePath, $ts } = useI18n()
 
-const { formatDate, formatNumber } = useLocaleFormatter()
+const { formatDate, formatPeriod, formatNumber, parseDate } = useLocaleFormatter()
 
 const data = computed(() => transactions?.map((transaction) => ({
   ...transaction,
@@ -16,6 +16,7 @@ const data = computed(() => transactions?.map((transaction) => ({
     dateStyle: 'short',
     timeStyle: 'short',
   }),
+  period: formatPeriod(parseDate(transaction.created_at)),
   sum: formatNumber(transaction.sum),
 })))
 
@@ -51,8 +52,22 @@ const columns = computed(() => [
     :data
     :loading
   >
+    <template #created_at-cell="{ row }">
+      <NuxtLink
+        :to="$localePath(`/months/${row.original.period}`)"
+        class="hover:underline"
+      >
+        {{ row.original.created_at }}
+      </NuxtLink>
+    </template>
+
     <template #category_id-cell="{ row }">
-      {{ row.original.category.name }}
+      <NuxtLink
+        :to="$localePath(`/categories/${row.original.category.slug}`)"
+        class="hover:underline"
+      >
+        {{ row.original.category.name }}
+      </NuxtLink>
     </template>
   </UTable>
 </template>
