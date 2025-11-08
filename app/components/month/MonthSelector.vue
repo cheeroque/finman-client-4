@@ -11,12 +11,15 @@ const { state } = useQuery<Transaction>({
   query: () => useRequestFetch()('/api/transactions/first'),
 })
 
-const { formatPeriod, parseDate } = useLocaleFormatter()
+const { formatPeriod, parseDateTime } = useLocaleFormatter()
 
 const now = new Date()
 
-const end = computed(() => parseDate(now))
-const start = computed(() => state.value.data?.created_at ? parseDate(state.value.data.created_at) : end.value)
+const end = computed(() => parseDateTime(now))
+const start = computed(() => state.value.data?.created_at
+  ? parseDateTime(state.value.data.created_at)
+  : end.value
+)
 
 const activeYear = ref(modelValue.value?.year ?? end.value.year)
 

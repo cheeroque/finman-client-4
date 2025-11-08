@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import type { Category } from '~~/shared/types/category'
+import { useCategoriesQuery } from '~/composables/queries/categories'
 
-const { state } = useQuery<Category[]>({
-  key: ['categories'],
-
-  query: () => useRequestFetch()('/api/categories'),
-
-  placeholderData: (previousData) => previousData,
-})
+const { state } = useCategoriesQuery()
 </script>
 
 <template>

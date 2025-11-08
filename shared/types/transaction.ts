@@ -6,6 +6,7 @@ export interface TransactionBase {
   note: string
   category_id: number
   user_id: number
+  is_marked: boolean
   created_at: string
   updated_at: string
 }

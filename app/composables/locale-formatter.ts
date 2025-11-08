@@ -1,10 +1,10 @@
-import { DateFormatter, getLocalTimeZone, parseAbsolute, type CalendarDate } from '@internationalized/date'
+import { type CalendarDate, DateFormatter, getLocalTimeZone, parseAbsolute } from '@internationalized/date'
 import { NumberFormatter } from '@internationalized/number'
 
 export function useLocaleFormatter() {
   const { getLocale } = useI18n()
 
-  function parseDate(dateOrString: Date | string) {
+  function parseDateTime(dateOrString: Date | string) {
     const datestring = dateOrString instanceof Date ? dateOrString.toISOString() : dateOrString
 
     return parseAbsolute(datestring, getLocalTimeZone())
@@ -17,7 +17,7 @@ export function useLocaleFormatter() {
   }
 
   function formatDate(datestring: string, options?: Intl.DateTimeFormatOptions) {
-    const date = parseDate(datestring)
+    const date = parseDateTime(datestring)
 
     const formatter = new DateFormatter(getLocale(), options)
 
@@ -41,7 +41,7 @@ export function useLocaleFormatter() {
     formatDate,
     formatNumber,
     formatPeriod,
-    parseDate,
+    parseDateTime,
     parsePeriod,
   }
 }

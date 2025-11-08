@@ -1,1 +1,47 @@
-{}
+{
+  "transactionModal": {
+    "create": {
+      "submit": "Submit",
+      "title": "Create Transaction"
+    },
+    "edit": {
+      "delete": "Delete",
+      "submit": "Submit",
+      "title": "Update Transaction"
+    },
+    "form": {
+      "category": {
+        "error": {
+          "invalid": "Category required"
+        },
+        "label": "Category",
+        "placeholder": "Select category"
+      },
+      "created_at": {
+        "error": {
+          "invalid": "Invalid datetime"
+        },
+        "label": "Datetime",
+        "placeholder": "Select datetime"
+      },
+      "marked": {
+        "label": "Is marked"
+      },
+      "note": {
+        "error": {
+          "invalid": "Note is required"
+        },
+        "label": "Note",
+        "placeholder": "Enter note"
+      },
+      "sum": {
+        "error": {
+          "invalid": "Invalid sum",
+          "min": "Sum cannot be less than zero"
+        },
+        "label": "Sum",
+        "placeholder": "0"
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ const { state } = useQuery<MonthCategories>({
   placeholderData: (previousData) => previousData,
 })
 
-const { formatDate, formatPeriod, parseDate, parsePeriod } = useLocaleFormatter()
+const { formatDate, formatPeriod, parseDateTime, parsePeriod } = useLocaleFormatter()
 
 const parsedPeriod = computed(() => parsePeriod(route.params.period as string))
 
@@ -23,14 +23,14 @@ const displayPeriod = computed(() => formatDate(parsedPeriod.value.toISOString()
   year: 'numeric',
 }))
 
-const previousDate = computed(() => parseDate(parsedPeriod.value).subtract({ months: 1 }))
+const previousDate = computed(() => parseDateTime(parsedPeriod.value).subtract({ months: 1 }))
 const previousPeriod = computed(() => formatPeriod(previousDate.value))
 const previousPeriodCaption = computed(() => formatDate(previousDate.value.toAbsoluteString(), {
   month: 'long',
   year: 'numeric',
 }))
 
-const nextDate = computed(() => parseDate(parsedPeriod.value).add({ months: 1 }))
+const nextDate = computed(() => parseDateTime(parsedPeriod.value).add({ months: 1 }))
 const nextPeriod = computed(() => formatPeriod(nextDate.value))
 const nextPeriodCaption = computed(() => formatDate(nextDate.value.toAbsoluteString(), {
   month: 'long',

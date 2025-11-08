@@ -8,16 +8,16 @@ const { transactions = [] } = defineProps<{
 
 const { $localePath, $ts } = useI18n()
 
-const { formatDate, formatPeriod, formatNumber, parseDate } = useLocaleFormatter()
+const { formatDate, formatPeriod, formatNumber, parseDateTime } = useLocaleFormatter()
 
 const data = computed(() => transactions?.map((transaction) => ({
   ...transaction,
-  created_at: formatDate(transaction.created_at, {
+  created_at_formatted: formatDate(transaction.created_at, {
     dateStyle: 'short',
     timeStyle: 'short',
   }),
-  period: formatPeriod(parseDate(transaction.created_at)),
-  sum: formatNumber(transaction.sum),
+  period: formatPeriod(parseDateTime(transaction.created_at)),
+  sum_formatted: formatNumber(transaction.sum),
 })))
 
 const columns = computed(() => [
@@ -44,6 +44,8 @@ const columns = computed(() => [
     header: $ts('columns.note'),
   },
 ])
+
+const { open: openTransactionModal } = useTransactionModal()
 </script>
 
 <template>
@@ -57,8 +59,18 @@ const columns = computed(() => [
         :to="$localePath(`/months/${row.original.period}`)"
         class="hover:underline"
       >
-        {{ row.original.created_at }}
+        {{ row.original.created_at_formatted }}
       </NuxtLink>
+    </template>
+
+    <template #sum-cell="{ row }">
+      <UButton
+        color="primary"
+        variant="link"
+        @click="openTransactionModal({ transaction: row.original })"
+      >
+        {{ row.original.sum_formatted }}
+      </UButton>
     </template>
 
     <template #category_id-cell="{ row }">
@@ -68,6 +80,16 @@ const columns = computed(() => [
       >
         {{ row.original.category.name }}
       </NuxtLink>
+    </template>
+
+    <template #note-cell="{ row }">
+      <UButton
+        color="neutral"
+        variant="link"
+        @click="openTransactionModal({ transaction: row.original })"
+      >
+        {{ row.original.note }}
+      </UButton>
     </template>
   </UTable>
 </template>
