@@ -32,7 +32,7 @@ whenever(() => transaction, () => {
 
 function initForm() {
   const emptyForm: Partial<Schema> = {
-    sum: undefined,
+    sum: 0,
     note: undefined,
     category_id: undefined,
     created_at: new Date().toISOString(),
