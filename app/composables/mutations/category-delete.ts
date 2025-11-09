@@ -8,6 +8,8 @@ export const useCategoryDelete = defineMutation(() => {
 
     onSettled: () => {
       queryCache.invalidateQueries({ key: ['categories'] })
+      queryCache.invalidateQueries({ key: ['transactions'] })
+      queryCache.invalidateQueries({ key: ['balance'] })
     },
   })
 })

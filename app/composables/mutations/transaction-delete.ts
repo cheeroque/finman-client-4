@@ -8,6 +8,7 @@ export const useTransactionDelete = defineMutation(() => {
 
     onSettled: () => {
       queryCache.invalidateQueries({ key: ['transactions'] })
+      queryCache.invalidateQueries({ key: ['balance'] })
     },
   })
 })

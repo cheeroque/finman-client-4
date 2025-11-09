@@ -20,6 +20,7 @@ export const useTransactionUpsert = defineMutation(() => {
 
     onSettled: () => {
       queryCache.invalidateQueries({ key: ['transactions'] })
+      queryCache.invalidateQueries({ key: ['balance'] })
     },
   })
 })
