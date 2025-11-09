@@ -68,5 +68,7 @@ const { state, isLoading } = useQuery<PaginatedResponse<Transaction>>({
         </template>
       </UCard>
     </UContainer>
+
+    <TransactionFab />
   </UMain>
 </template>
