@@ -2,6 +2,10 @@
 import type { Transaction } from '~~/shared/types/transaction'
 import type { PaginatedResponse } from '~~/shared/types/util'
 
+definePageMeta({
+  layout: false,
+})
+
 const filter = useRouteQuery<string | undefined>('filter', undefined, {
   mode: 'push',
 })
@@ -41,34 +45,46 @@ const { state, isLoading } = useQuery<PaginatedResponse<Transaction>>({
 
   placeholderData: (previousData) => previousData,
 })
+
+const { open: openTransactionModal } = useTransactionModal()
 </script>
 
 <template>
-  <UMain as="main">
-    <UContainer class="py-5">
-      <UCard>
-        <template #header>
-          <TransactionTableFilter
-            v-model:filter="filter"
-            v-model:marked="marked"
-            v-model:view="view"
+  <NuxtLayout name="default">
+    <template #header>
+      <UButton
+        color="secondary"
+        variant="soft"
+        @click="openTransactionModal()"
+      >
+        {{ $ts('createTransaction') }}
+      </UButton>
+    </template>
+
+    <UMain as="main">
+      <UContainer class="py-5">
+        <UCard>
+          <template #header>
+            <TransactionTableFilter
+              v-model:filter="filter"
+              v-model:marked="marked"
+              v-model:view="view"
+            />
+          </template>
+
+          <TransactionTable
+            :loading="isLoading"
+            :transactions="state.data?.data"
           />
-        </template>
 
-        <TransactionTable
-          :loading="isLoading"
-          :transactions="state.data?.data"
-        />
-
-        <template #footer>
-          <SharedPagination
-            :items-per-page="state.data?.per_page"
-            :total="state.data?.total"
-          />
-        </template>
-      </UCard>
-    </UContainer>
-
-    <TransactionFab />
-  </UMain>
+          <template #footer>
+            <SharedPagination
+              :items-per-page="state.data?.per_page"
+              :total="state.data?.total"
+            />
+          </template>
+        </UCard>
+      </UContainer>
+    </UMain>
+  </NuxtLayout>
 </template>

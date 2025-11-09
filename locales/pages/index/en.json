@@ -5,6 +5,7 @@
     "note": "Note",
     "sum": "Sum"
   },
+  "createTransaction": "Create Transaction",
   "filter": {
     "placeholder": "Enter text to search"
   },

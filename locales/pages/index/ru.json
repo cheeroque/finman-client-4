@@ -5,6 +5,7 @@
     "note": "Комментарий",
     "sum": "Сумма"
   },
+  "createTransaction": "Создать запись",
   "filter": {
     "placeholder": "Введите текст для поиска"
   },
