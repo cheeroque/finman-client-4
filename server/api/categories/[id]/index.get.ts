@@ -3,8 +3,8 @@ import type { PaginationParams } from '~~/shared/types/util'
 
 export default defineEventHandler((event) => {
   const apiFetch = useApiFetch()
-  const { slug } = getRouterParams(event)
+  const { id } = getRouterParams(event)
   const query = getQuery<PaginationParams>(event)
 
-  return apiFetch<CategoryWithTransactions>(`/transactions/category/${slug}`, { query })
+  return apiFetch<CategoryWithTransactions>(`/transactions/category/${id}`, { query })
 })
