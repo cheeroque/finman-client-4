@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { Snapshot } from '~~/shared/types/snapshot'
 
+definePageMeta({
+  layout: false,
+})
+
 const page = useRouteQuery('page', '1', {
   mode: 'push',
   transform: Number,
@@ -17,24 +21,38 @@ const { state, isLoading } = useQuery<PaginatedResponse<Snapshot>>({
 
   placeholderData: (previousData) => previousData,
 })
+
+const { open: openSnapshotModal } = useSnapshotModal()
 </script>
 
 <template>
-  <UMain as="main">
-    <UContainer class="py-5">
-      <UCard>
-        <SnapshotTable
-          :loading="isLoading"
-          :snapshots="state.data?.data"
-        />
+  <NuxtLayout name="default">
+    <template #header>
+      <UButton
+        color="secondary"
+        variant="soft"
+        @click="openSnapshotModal()"
+      >
+        {{ $ts('createSnapshot') }}
+      </UButton>
+    </template>
 
-        <template #footer>
-          <SharedPagination
-            :items-per-page="state.data?.per_page"
-            :total="state.data?.total"
+    <UMain as="main">
+      <UContainer class="py-5">
+        <UCard>
+          <SnapshotTable
+            :loading="isLoading"
+            :snapshots="state.data?.data"
           />
-        </template>
-      </UCard>
-    </UContainer>
-  </UMain>
+
+          <template #footer>
+            <SharedPagination
+              :items-per-page="state.data?.per_page"
+              :total="state.data?.total"
+            />
+          </template>
+        </UCard>
+      </UContainer>
+    </UMain>
+  </NuxtLayout>
 </template>

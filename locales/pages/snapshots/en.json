@@ -3,5 +3,6 @@
     "balance": "Balance",
     "date": "Date",
     "note": "Note"
-  }
+  },
+  "createSnapshot": "Create Snapshot"
 }
