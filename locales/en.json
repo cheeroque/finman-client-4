@@ -1,4 +1,43 @@
 {
+  "categoryModal": {
+    "create": {
+      "submit": "Submit",
+      "title": "Create Category"
+    },
+    "edit": {
+      "delete": "Delete",
+      "submit": "Submit",
+      "title": "Update Category"
+    },
+    "form": {
+      "color": {
+        "error": {
+          "invalid": "Enter valid hex color",
+          "required": "Choose color"
+        },
+        "label": "Color",
+        "placeholder": "#"
+      },
+      "is_income": {
+        "label": "Is income"
+      },
+      "name": {
+        "error": {
+          "invalid": "Name is required"
+        },
+        "label": "Name",
+        "placeholder": "Enter name"
+      },
+      "slug": {
+        "error": {
+          "invalid": "Only use latin letters, numbers, hypens and underscores",
+          "required": "Slug is required"
+        },
+        "label": "Slug",
+        "placeholder": "Enter slug"
+      }
+    }
+  },
   "transactionModal": {
     "create": {
       "submit": "Submit",

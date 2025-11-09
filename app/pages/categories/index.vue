@@ -2,6 +2,8 @@
 import { useCategoriesQuery } from '~/composables/queries/categories'
 
 const { state } = useCategoriesQuery()
+
+const { open: openCategoryModal } = useCategoryModal()
 </script>
 
 <template>
@@ -11,10 +13,14 @@ const { state } = useCategoriesQuery()
         v-for="category in state.data"
         :key="category.id"
         :category
+        @click-edit="openCategoryModal({ category })"
       />
 
       <div class="col-span-full">
-        <UButton size="xl">
+        <UButton
+          size="xl"
+          @click="openCategoryModal()"
+        >
           {{ $ts('addCategory') }}
         </UButton>
       </div>

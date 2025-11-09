@@ -1,4 +1,43 @@
 {
+  "categoryModal": {
+    "create": {
+      "submit": "Сохранить",
+      "title": "Создать категорию"
+    },
+    "edit": {
+      "delete": "Удалить",
+      "submit": "Обновить",
+      "title": "Изменить категорию"
+    },
+    "form": {
+      "color": {
+        "error": {
+          "invalid": "Введите корректное значение цвета",
+          "required": "Выберите цвет"
+        },
+        "label": "Цвет",
+        "placeholder": "#"
+      },
+      "is_income": {
+        "label": "Доход"
+      },
+      "name": {
+        "error": {
+          "invalid": "Поле необходимо заполнить"
+        },
+        "label": "Имя",
+        "placeholder": "Введите имя"
+      },
+      "slug": {
+        "error": {
+          "invalid": "Только латиница, цифры, дефис и нижнее подчёркивание",
+          "required": "Поле необходимо заполнить"
+        },
+        "label": "Слаг",
+        "placeholder": "Введите слаг"
+      }
+    }
+  },
   "transactionModal": {
     "create": {
       "submit": "Сохранить",
