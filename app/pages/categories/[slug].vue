@@ -12,7 +12,7 @@ const page = useRouteQuery('page', '1', {
 
 const { state } = useQuery<CategoryWithTransactions>({
   key: () => [
-    'category',
+    'categories',
     route.params.slug as string,
     page.value,
   ],

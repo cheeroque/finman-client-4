@@ -38,6 +38,14 @@
       }
     }
   },
+  "mainMenu": {
+    "categories": "Категории",
+    "export": "Экспорт данных",
+    "home": "Главная",
+    "logout": "Выйти",
+    "months": "Календарь",
+    "snapshots": "Снапшоты"
+  },
   "snapshotModal": {
     "form": {
       "balance": {

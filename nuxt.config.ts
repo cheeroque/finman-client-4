@@ -17,6 +17,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     apiBase: '',
+    staticBase: '',
   },
 
   compatibilityDate: '2025-07-15',

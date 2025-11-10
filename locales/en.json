@@ -38,6 +38,14 @@
       }
     }
   },
+  "mainMenu": {
+    "categories": "Categories",
+    "export": "Export to file",
+    "home": "Home",
+    "logout": "Log Out",
+    "months": "Months",
+    "snapshots": "Snapshots"
+  },
   "snapshotModal": {
     "form": {
       "balance": {
