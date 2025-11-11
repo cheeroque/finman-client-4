@@ -8,6 +8,8 @@
       <LayoutPrimarySidebar />
 
       <slot />
+
+      <LayoutSecondarySidebar />
     </UMain>
   </div>
 </template>

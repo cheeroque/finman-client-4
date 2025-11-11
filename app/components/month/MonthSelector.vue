@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { twMerge, type ClassNameValue } from 'tailwind-merge'
+
 import type { Transaction } from '~~/shared/types/transaction'
 import { getEmptyArray } from '~~/shared/utils'
 
-const modelValue = defineModel<{ month: number, year: number }>()
+defineProps<{
+  activeMonthClass?: ClassNameValue
+  monthClass?: ClassNameValue
+  yearClass?: ClassNameValue
+}>()
+
+const modelValue = defineModel<{ month: number, year: number } | undefined>()
 
 const { $localePath } = useI18n()
 
@@ -116,7 +124,11 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         <div
           v-for="year in visibleYears"
           :key="year.year"
-          class="w-full flex-none grid grid-cols-4 gap-5"
+          :class="
+            twMerge(
+              'w-full flex-none grid grid-cols-4 gap-5',
+              yearClass,
+            )"
         >
           <div
             v-for="month in year.months"
@@ -127,8 +139,14 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
               :active="isMonthActive(month)"
               :disabled="month.disabled"
               :to="$localePath(`/months/${formatPeriod(month)}`)"
-              variant="soft"
-              class="w-full justify-center"
+              :variant="isMonthActive(month) ? 'solid' : 'soft'"
+              :class="
+                twMerge(
+                  'w-full justify-center',
+                  monthClass,
+                  isMonthActive(month) && activeMonthClass,
+                )
+              "
             >
               {{ month.month }}
             </UButton>

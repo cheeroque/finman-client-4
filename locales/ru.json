@@ -46,6 +46,9 @@
     "months": "Календарь",
     "snapshots": "Снапшоты"
   },
+  "sidebar": {
+    "months": "Календарь"
+  },
   "snapshotModal": {
     "form": {
       "balance": {

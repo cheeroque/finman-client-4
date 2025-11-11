@@ -46,6 +46,9 @@
     "months": "Months",
     "snapshots": "Snapshots"
   },
+  "sidebar": {
+    "months": "Months"
+  },
   "snapshotModal": {
     "form": {
       "balance": {
