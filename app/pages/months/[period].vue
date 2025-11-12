@@ -1,18 +1,9 @@
 <script setup lang="ts">
-import type { MonthCategories } from '~~/shared/types/month'
+import { useMonthCategoriesQuery } from '~/composables/queries/month-categories'
 
 const route = useRoute()
 
-const { state } = useQuery<MonthCategories>({
-  key: () => [
-    'month',
-    route.params.period as string,
-  ],
-
-  query: () => useRequestFetch()(`/api/months/${route.params.period}`),
-
-  placeholderData: (previousData) => previousData,
-})
+const { state } = useMonthCategoriesQuery()
 
 const { formatDate, formatPeriod, parseDateTime, parsePeriod } = useLocaleFormatter()
 

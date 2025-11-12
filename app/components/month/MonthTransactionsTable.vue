@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import type { Row } from '@tanstack/table-core'
 
-import type { Category } from '~~/shared/types/category'
-import type { MonthCategories } from '~~/shared/types/month'
-import type { Transaction } from '~~/shared/types/transaction'
-
-interface TableRow extends Pick<Category, 'name' | 'is_income'> {
-  is_month_total?: boolean
-  is_total?: boolean
-  subtotal: number
-  transactions: Transaction[]
-}
+import type { MonthCategoryWithTransactions, MonthTransactionsData } from '~~/shared/types/month'
 
 const { data } = defineProps<{
-  data?: MonthCategories
+  data?: MonthTransactionsData
 }>()
 
 const { $ts } = useI18n()
@@ -25,39 +16,15 @@ const tableData = computed(() => {
     return
   }
 
-  const expenseRows: TableRow[] = []
-  let expensesTotal = 0
+  const { expenseCategories, expensesTotal, incomeCategories, incomesTotal } = data
 
-  const incomeRows: TableRow[] = []
-
-  for (const key in data) {
-    if (data[key]?.[0]) {
-      const { category } = data[key][0]
-
-      const subtotal = data[key].reduce((sum, transaction) => sum + transaction.sum, 0)
-
-      const row = {
-        ...category,
-        subtotal,
-        transactions: data[key],
-      }
-
-      if (!category.is_income) {
-        expenseRows.push(row)
-        expensesTotal += subtotal
-      } else {
-        incomeRows.push(row)
-      }
-    }
-  }
-
-  if (!expenseRows.length && !incomeRows.length) {
+  if (!expenseCategories.length && !incomeCategories.length) {
     return []
   }
 
-  const total = (incomeRows[0]?.subtotal ?? 0) - expensesTotal
+  const total = incomesTotal - expensesTotal
 
-  const rows = expenseRows.concat(incomeRows).concat({
+  const rows = expenseCategories.concat(incomeCategories).concat({
     is_income: false,
     is_total: true,
     name: $ts('total.expenses'),
@@ -95,7 +62,7 @@ const columns = computed(() => [
   },
 ])
 
-function getRowClass(row: Row<TableRow>) {
+function getRowClass(row: Row<MonthCategoryWithTransactions>) {
   if (row.original.is_income) {
     return 'text-green-700 bg-green-50'
   }

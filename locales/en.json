@@ -47,6 +47,7 @@
     "snapshots": "Snapshots"
   },
   "sidebar": {
+    "currentMonth": "Expenses this month",
     "months": "Months"
   },
   "snapshotModal": {
