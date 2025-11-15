@@ -53,7 +53,7 @@ async function deleteTransaction() {
     </template>
 
     <template #footer>
-      <div class="w-full flex gap-4">
+      <div class="flex w-full gap-4">
         <template v-if="isEdit">
           <UButton
             :disabled="isLoading || isDeleting"

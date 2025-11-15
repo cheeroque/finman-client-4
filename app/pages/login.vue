@@ -6,7 +6,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UMain class="flex flex-col justify-center items-center">
+  <UMain class="flex flex-col items-center justify-center">
     <LoginForm />
   </UMain>
 </template>

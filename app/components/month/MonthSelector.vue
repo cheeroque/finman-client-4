@@ -102,7 +102,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         @click="shiftYear(-1)"
       />
 
-      <span class="flex-auto text-lg font-medium text-center">
+      <span class="flex-auto text-center text-lg font-medium">
         {{ activeYear }}
       </span>
 
@@ -126,14 +126,14 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
           :key="year.year"
           :class="
             twMerge(
-              'w-full flex-none grid grid-cols-4 gap-5',
+              'grid w-full flex-none grid-cols-4 gap-5',
               yearClass,
             )"
         >
           <div
             v-for="month in year.months"
             :key="`${year.year}-${month}`"
-            class="aspect-3/2 flex"
+            class="flex aspect-3/2"
           >
             <UButton
               :active="isMonthActive(month)"

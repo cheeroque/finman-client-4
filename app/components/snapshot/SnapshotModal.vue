@@ -29,7 +29,7 @@ async function handleSubmitForm(data: Partial<Snapshot>) {
     </template>
 
     <template #footer>
-      <div class="w-full flex gap-4">
+      <div class="flex w-full gap-4">
         <UButton
           :disabled="isLoading"
           :form="formId"

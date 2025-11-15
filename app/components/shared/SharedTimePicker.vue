@@ -90,14 +90,14 @@ onMounted(scrollToPeriods)
 <template>
   <div
     ref="timePickerRef"
-    class="flex flex-col gap-2 text-sm p-2"
+    class="flex flex-col gap-2 p-2 text-sm"
   >
     <span class="flex-none text-center font-medium">
       {{ displayValue }}
     </span>
 
-    <div class="min-h-0 grid grid-cols-2 flex-auto gap-2">
-      <div class="min-h-0 flex flex-col overflow-y-auto">
+    <div class="grid min-h-0 flex-auto grid-cols-2 gap-2">
+      <div class="flex min-h-0 flex-col overflow-y-auto">
         <UButton
           v-for="hour in hours"
           :key="`h-${hour.value}`"
@@ -111,7 +111,7 @@ onMounted(scrollToPeriods)
         </UButton>
       </div>
 
-      <div class="min-h-0 flex flex-col overflow-y-auto">
+      <div class="flex min-h-0 flex-col overflow-y-auto">
         <UButton
           v-for="minute in minutes"
           :key="`m-${minute.value}`"

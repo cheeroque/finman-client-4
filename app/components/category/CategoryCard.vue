@@ -16,14 +16,18 @@ const { $localePath, $ts } = useI18n()
   <UCard :ui="{ body: 'flex gap-4 p-0 sm:p-0' }">
     <NuxtLink
       :to="$localePath(`/categories/${category.slug}`)"
-      class="flex flex-auto flex-col gap-4 p-4 sm:p-6 hover:text-primary"
+      class="
+        flex flex-auto flex-col gap-4 p-4
+        hover:text-primary
+        sm:p-6
+      "
     >
       <span
         :style="{ backgroundColor: category.color }"
-        class="w-1/3 h-2 rounded-full"
+        class="h-2 w-1/3 rounded-full"
       />
 
-      <div class="flex flex-col flex-auto gap-2">
+      <div class="flex flex-auto flex-col gap-2">
         <span class="text-lg font-semibold transition-colors">
           {{ category.name }}
         </span>
@@ -50,14 +54,16 @@ const { $localePath, $ts } = useI18n()
 
     <button
       class="
-        flex flex-none self-end p-4 text-gray-300 transition-colors cursor-pointer
-        sm:p-6 hover:text-primary-300
+        flex flex-none cursor-pointer self-end p-4 text-gray-300
+        transition-colors
+        hover:text-primary-300
+        sm:p-6
       "
       @click="$emit('clickEdit')"
     >
       <UIcon
         name="solar:pen-outline"
-        class=" size-5"
+        class="size-5"
       />
     </button>
   </UCard>

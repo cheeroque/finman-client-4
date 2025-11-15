@@ -36,7 +36,7 @@ const width = computed(() => subtotalMax ? (subtotal * 100) / subtotalMax : 100)
     </div>
 
     <span
-      class="min-w-1.5 h-1.5 rounded-full"
+      class="h-1.5 min-w-1.5 rounded-full"
       :style="{
         backgroundColor: color,
         width: `${width}%`,

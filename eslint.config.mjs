@@ -1,5 +1,6 @@
 // import vueEslintParser from 'vue-eslint-parser'
 import withNuxt from './.nuxt/eslint.config.mjs'
+import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
 export default withNuxt([
   {
@@ -23,4 +24,18 @@ export default withNuxt([
       '@typescript-eslint/no-unused-vars': ['warn'],
     },
   },
-])
+]).append({
+  plugins: {
+    'better-tailwindcss': eslintPluginBetterTailwindcss,
+  },
+
+  rules: {
+    ...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
+  },
+
+  settings: {
+    'better-tailwindcss': {
+      entryPoint: 'app/assets/css/main.css',
+    },
+  },
+})

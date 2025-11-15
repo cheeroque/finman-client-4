@@ -68,7 +68,13 @@ async function logout() {
 </script>
 
 <template>
-  <aside class="px-4 sm:px-6 lg:px-8 py-5">
+  <aside
+    class="
+      px-4 py-5
+      sm:px-6
+      lg:px-8
+    "
+  >
     <UNavigationMenu
       :items="menuItems"
       orientation="vertical"
