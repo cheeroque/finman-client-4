@@ -2,12 +2,13 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/icon',
     '@nuxt/ui',
     '@pinia/colada-nuxt',
     '@pinia/nuxt',
     '@vueuse/nuxt',
     'nuxt-i18n-micro',
-    '@nuxt/fonts',
   ],
 
   devtools: {
