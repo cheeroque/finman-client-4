@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     'nuxt-i18n-micro',
+    '@nuxt/fonts',
   ],
 
   devtools: {
@@ -31,6 +32,13 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: true,
+    },
+  },
+
+  fonts: {
+    defaults: {
+      weights: [400, 500, 700],
+      styles: ['normal'],
     },
   },
 
