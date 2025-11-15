@@ -15,7 +15,6 @@ const {
 
 const modelValue = defineModel<string>()
 
-const { getLocale } = useI18n()
 const { formatDate, parseDateTime } = useLocaleFormatter()
 
 // Trigger caption
@@ -88,10 +87,7 @@ function handleUpdateTime(time: typeof timeValue.value) {
 
     <template #content>
       <div class="relative overflow-hidden">
-        <UCalendar
-          v-model="(dateTimeValue as ZonedDateTime | undefined)"
-          :locale="getLocale()"
-        >
+        <UCalendar v-model="(dateTimeValue as ZonedDateTime | undefined)">
           <template #day="{ day }">
             <button
               class="w-full self-stretch"

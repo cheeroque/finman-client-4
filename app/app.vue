@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { en, ru } from '@nuxt/ui/locale'
+
+const availableLocales = { en, ru }
+const { getLocale } = useI18n()
+
+const appLocale = computed(() => availableLocales[getLocale() as keyof typeof availableLocales])
+</script>
+
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator
@@ -7,7 +16,7 @@
 
     <NuxtRouteAnnouncer />
 
-    <UApp>
+    <UApp :locale="appLocale">
       <NuxtPage />
     </UApp>
   </NuxtLayout>
