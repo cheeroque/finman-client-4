@@ -61,8 +61,8 @@ const { open: openTransactionModal } = useTransactionModal()
       </UButton>
     </template>
 
-    <UMain as="main">
-      <UContainer class="py-5">
+    <main>
+      <div class="py-5">
         <UCard>
           <template #header>
             <TransactionTableFilter
@@ -84,7 +84,7 @@ const { open: openTransactionModal } = useTransactionModal()
             />
           </template>
         </UCard>
-      </UContainer>
-    </UMain>
+      </div>
+    </main>
   </NuxtLayout>
 </template>
