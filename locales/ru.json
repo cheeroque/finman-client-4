@@ -1,4 +1,10 @@
 {
+  "bottomNav": {
+    "expenses": "Расходы",
+    "incomes": "Доходы",
+    "home": "Главная",
+    "search": "Поиск"
+  },
   "categoryModal": {
     "create": {
       "submit": "Сохранить",

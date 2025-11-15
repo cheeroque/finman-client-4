@@ -41,6 +41,8 @@
           "
         />
       </div>
+
+      <LayoutBottomNav class="lg:hidden" />
     </div>
   </div>
 </template>

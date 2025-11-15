@@ -22,6 +22,7 @@
   --c-text-muted: var(--color-neutral-700);
 
   --c-bg-app: var(--color-violet-200);
+  --c-bg-app-active: var(--color-violet-300);
   --c-bg-content: var(--color-white);
 
   --c-outline-light: var(--color-neutral-200);
@@ -32,6 +33,7 @@
   --c-text-muted: var(--color-violet-300);
 
   --c-bg-app: var(--color-violet-950);
+  --c-bg-app-active: var(--color-violet-800);
   --c-bg-content: var(--color-violet-990);
 
   --c-outline-light: var(--color-violet-950);

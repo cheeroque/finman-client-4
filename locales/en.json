@@ -1,4 +1,10 @@
 {
+  "bottomNav": {
+    "expenses": "Expenses",
+    "incomes": "Incomes",
+    "home": "Home",
+    "search": "Search"
+  },
   "categoryModal": {
     "create": {
       "submit": "Submit",

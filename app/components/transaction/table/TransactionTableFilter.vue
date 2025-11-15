@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useDebounceFn } from '#imports'
 
+import type { ViewMode } from '~~/shared/types'
+
 const { $ts } = useI18n()
 
 const filterModel = defineModel<string>('filter')
@@ -14,7 +16,7 @@ const handleUpdateFilter = useDebounceFn((value: string) => {
 
 const markedModel = defineModel<boolean>('marked')
 
-const viewModel = defineModel<'expense' | 'income' | null | undefined>('view', {
+const viewModel = defineModel<ViewMode | null | undefined>('view', {
   get: (value) => value ?? null,
   set: (value) => value ?? undefined,
 })

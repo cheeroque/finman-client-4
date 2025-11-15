@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ViewMode } from '~~/shared/types'
 import type { Transaction } from '~~/shared/types/transaction'
 import type { PaginatedResponse } from '~~/shared/types/util'
 
@@ -15,7 +16,7 @@ const page = useRouteQuery('page', '1', {
   transform: Number,
 })
 
-const view = useRouteQuery<'expense' | 'income' | undefined>('view', undefined, {
+const view = useRouteQuery<ViewMode | undefined>('view', undefined, {
   mode: 'push',
   transform: (value) => value && ['expense', 'income'].includes(value) ? value : undefined,
 })
