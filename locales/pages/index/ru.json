@@ -5,16 +5,5 @@
     "note": "Комментарий",
     "sum": "Сумма"
   },
-  "createTransaction": "Создать запись",
-  "filter": {
-    "placeholder": "Введите текст для поиска"
-  },
-  "marked": {
-    "label": "Только отмеченные"
-  },
-  "view": {
-    "expense": "Только расходы",
-    "income": "Только доходы",
-    "null": "Все записи"
-  }
+  "createTransaction": "Создать запись"
 }

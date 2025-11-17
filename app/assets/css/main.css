@@ -19,10 +19,12 @@
 
 :root {
   --c-primary: var(--color-violet-600);
+  --c-on-primary: var(--color-white);
 
   --c-text: var(--color-neutral-900);
   --c-text-highlight: var(--color-violet-900);
   --c-text-muted: var(--color-neutral-700);
+  --c-text-dimmed: var(--color-neutral-300);
 
   --c-bg-app: var(--color-violet-200);
   --c-bg-app-active: var(--color-violet-300);
@@ -35,10 +37,12 @@
 
 .dark {
   --c-primary: var(--color-violet-500);
+  --c-on-primary: var(--color-violet-950);
 
   --c-text: var(--color-violet-50);
   --c-text-highlight: var(--color-violet-200);
   --c-text-muted: var(--color-violet-300);
+  --c-text-dimmed: var(--color-violet-700);
 
   --c-bg-app: var(--color-violet-950);
   --c-bg-app-active: var(--color-violet-800);

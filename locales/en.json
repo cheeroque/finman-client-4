@@ -44,6 +44,20 @@
       }
     }
   },
+  "filter": {
+    "marked": {
+      "label": "Marked only"
+    },
+    "text": {
+      "placeholder": "Enter text to search"
+    },
+    "view": {
+      "all": "All transactions",
+      "expense": "Expenses only",
+      "income": "Incomes only",
+      "placeholder": "Select view"
+    }
+  },
   "mainMenu": {
     "categories": "Categories",
     "export": "Export to file",

@@ -1,6 +1,6 @@
 import type { MonthTransactionsData } from '~~/shared/types/month'
 
-export const useMonthCategoriesQuery = (period?: MaybeRef<string>) => {
+export function useMonthCategoriesQuery(period?: MaybeRef<string>) {
   const route = useRoute()
 
   const queryPeriod = toValue(period) ?? route.params.period as string

@@ -1,9 +1,26 @@
 <script setup lang="ts">
 const modelValue = defineModel<boolean>()
+
+const filterRef = useTemplateRef('filterRef')
+
+whenever(filterRef, (value) => {
+  nextTick(() => value.inputRef?.inputRef?.focus())
+})
 </script>
 
 <template>
   <UiDrawer v-model="modelValue">
-    <TransactionTableFilter />
+    <div class="p-3">
+      <div
+        class="flex flex-col gap-3 border-b border-(--c-outline-primary) pb-3"
+      >
+        <TransactionFilterText
+          ref="filterRef"
+          class="col-span-2"
+        />
+
+        <TransactionFilterMarked class="h-12 min-w-0" />
+      </div>
+    </div>
   </UiDrawer>
 </template>

@@ -1,51 +1,11 @@
 <script setup lang="ts">
-import type { ViewMode } from '~~/shared/types'
-import type { Transaction } from '~~/shared/types/transaction'
-import type { PaginatedResponse } from '~~/shared/types/util'
+import { useTransactionsQuery } from '~/composables/queries/transactions'
 
 definePageMeta({
   layout: false,
 })
 
-const filter = useRouteQuery<string | undefined>('filter', undefined, {
-  mode: 'push',
-})
-
-const page = useRouteQuery('page', '1', {
-  mode: 'push',
-  transform: Number,
-})
-
-const view = useRouteQuery<ViewMode | undefined>('view', undefined, {
-  mode: 'push',
-  transform: (value) => value && ['expense', 'income'].includes(value) ? value : undefined,
-})
-
-const marked = useRouteQuery('marked', 'false', {
-  mode: 'push',
-  transform: (value: string) => String(value) === 'true',
-})
-
-const { state, isLoading } = useQuery<PaginatedResponse<Transaction>>({
-  key: () => [
-    'transactions',
-    filter.value ?? '',
-    page.value,
-    view.value ?? 'all',
-    marked.value,
-  ],
-
-  query: () => useRequestFetch()('/api/transactions', {
-    query: {
-      filter: filter.value || undefined,
-      marked: marked.value || undefined,
-      page: page.value,
-      show: view.value,
-    },
-  }),
-
-  placeholderData: (previousData) => previousData,
-})
+const { state, isLoading } = useTransactionsQuery()
 
 const { open: openTransactionModal } = useTransactionModal()
 </script>
@@ -66,11 +26,13 @@ const { open: openTransactionModal } = useTransactionModal()
       <div class="py-5">
         <UCard>
           <template #header>
-            <TransactionTableFilter
-              v-model:filter="filter"
-              v-model:marked="marked"
-              v-model:view="view"
-            />
+            <div class="flex items-center gap-5 py-1">
+              <TransactionFilterText icon="mingcute:search-line" />
+
+              <TransactionFilterView class="w-50" />
+
+              <TransactionFilterMarked />
+            </div>
           </template>
 
           <TransactionTable
