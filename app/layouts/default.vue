@@ -7,11 +7,18 @@
   >
     <div
       class="
-        min-h-0 flex-none basis-80 overflow-y-auto
+        flex min-h-0 flex-none basis-60 flex-col overflow-y-auto
         max-lg:hidden
+        xl:basis-80
       "
     >
-      <LayoutPrimarySidebar />
+      <aside class="flex flex-auto flex-col gap-3 py-5">
+        <LayoutLogo class="mb-8" />
+
+        <LayoutNav class="flex-auto gap-2" />
+
+        <LayoutNavLogout />
+      </aside>
     </div>
 
     <div
@@ -37,7 +44,7 @@
         <LayoutSecondarySidebar
           class="
             basis-96
-            max-lg:hidden
+            max-xl:hidden
           "
         />
       </div>

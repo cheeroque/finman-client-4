@@ -11,15 +11,15 @@ const expensesRoute = computed(() => $localeRoute(getViewRoute('expense')))
 const incomesRoute = computed(() => $localeRoute(getViewRoute('income')))
 
 const isDrawerOpen = ref(false)
-const isSearchActive = ref(false)
+const isSearchOpen = ref(false)
 
 function toggleSearch() {
   isDrawerOpen.value = false
-  isSearchActive.value = !isSearchActive.value
+  isSearchOpen.value = !isSearchOpen.value
 }
 
 function toggleDrawer() {
-  isSearchActive.value = false
+  isSearchOpen.value = false
   isDrawerOpen.value = !isDrawerOpen.value
 }
 </script>
@@ -62,7 +62,7 @@ function toggleDrawer() {
       </LayoutBottomNavItem>
 
       <LayoutBottomNavItem
-        :active="isSearchActive"
+        :active="isSearchOpen"
         icon="mingcute:search-line"
         @click="toggleSearch()"
       >
@@ -70,6 +70,14 @@ function toggleDrawer() {
       </LayoutBottomNavItem>
     </div>
 
-    <LayoutDrawer v-model="isDrawerOpen" />
+    <LayoutDrawer
+      v-model="isDrawerOpen"
+      class="lg:hidden"
+    />
+
+    <LayoutBottomNavSearch
+      v-model="isSearchOpen"
+      class="lg:hidden"
+    />
   </div>
 </template>

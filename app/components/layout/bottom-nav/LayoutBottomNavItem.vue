@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { NuxtLink } from '#components'
 import type { NuxtLinkProps } from '#app'
 
 const { to } = defineProps<{
@@ -7,13 +6,10 @@ const { to } = defineProps<{
   icon: string
   to?: NuxtLinkProps['to']
 }>()
-
-const isNuxtLink = computed(() => !!to)
 </script>
 
 <template>
-  <component
-    :is="isNuxtLink ? NuxtLink : 'button'"
+  <UiButtonLink
     :to
     class="
       flex w-15 cursor-pointer flex-col items-center gap-0.5 text-center text-xs
@@ -32,5 +28,5 @@ const isNuxtLink = computed(() => !!to)
     </span>
 
     <slot />
-  </component>
+  </UiButtonLink>
 </template>

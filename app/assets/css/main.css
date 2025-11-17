@@ -18,23 +18,33 @@
 }
 
 :root {
+  --c-primary: var(--color-violet-600);
+
   --c-text: var(--color-neutral-900);
+  --c-text-highlight: var(--color-violet-900);
   --c-text-muted: var(--color-neutral-700);
 
   --c-bg-app: var(--color-violet-200);
   --c-bg-app-active: var(--color-violet-300);
+  --c-bg-app-hover: var(--color-violet-100);
   --c-bg-content: var(--color-white);
 
   --c-outline-light: var(--color-neutral-200);
+  --c-outline-primary: var(--color-violet-300);
 }
 
 .dark {
+  --c-primary: var(--color-violet-500);
+
   --c-text: var(--color-violet-50);
+  --c-text-highlight: var(--color-violet-200);
   --c-text-muted: var(--color-violet-300);
 
   --c-bg-app: var(--color-violet-950);
   --c-bg-app-active: var(--color-violet-800);
+  --c-bg-app-hover: var(--color-violet-900);
   --c-bg-content: var(--color-violet-990);
 
   --c-outline-light: var(--color-violet-950);
+  --c-outline-primary: var(--color-violet-800);
 }

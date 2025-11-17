@@ -1,4 +1,6 @@
 <script setup lang="ts">
+/* TODO split into separate controls with direct binding to route query */
+
 import { useDebounceFn } from '#imports'
 
 import type { ViewMode } from '~~/shared/types'
