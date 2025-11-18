@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/colada-nuxt',
     '@pinia/nuxt',
+    '@regle/nuxt',
     '@vueuse/nuxt',
     'nuxt-i18n-micro',
     'nuxt-svgo-loader',
@@ -53,5 +54,9 @@ export default defineNuxtConfig({
     translationDir: 'locales',
     meta: true,
     strategy: 'prefix_except_default',
+  },
+
+  regle: {
+    setupFile: '~/regle-config.ts',
   },
 })

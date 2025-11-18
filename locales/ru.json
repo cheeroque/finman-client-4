@@ -142,5 +142,10 @@
         "placeholder": "0"
       }
     }
+  },
+  "validation": {
+    "email": "Введите корректный email",
+    "minLength": "Минимум {length} символов",
+    "required": "Поле необходимо заполнить"
   }
 }

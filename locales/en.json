@@ -142,5 +142,10 @@
         "placeholder": "0"
       }
     }
+  },
+  "validation": {
+    "email": "Enter valid email",
+    "minLength": "Should be at least {length} characters long",
+    "required": "Field is required"
   }
 }
