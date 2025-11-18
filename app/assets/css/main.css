@@ -19,11 +19,32 @@
 
 :root {
   --c-primary: var(--color-violet-600);
+  --c-primary-hover: var(--color-violet-700);
   --c-on-primary: var(--color-white);
+
+  --c-primary-light: var(--color-violet-100);
+  --c-primary-light-hover: var(--color-violet-200);
+  --c-on-primary-light: var(--color-violet-900);
+
+  --c-error: var(--color-rose-600);
+  --c-error-hover: var(--color-rose-700);
+  --c-on-error: var(--color-white);
+
+  --c-error-light: var(--color-rose-100);
+  --c-error-light-hover: var(--color-rose-200);
+  --c-on-error-light: var(--color-rose-800);
+
+  --c-success: var(--color-lime-600);
+  --c-success-hover: var(--color-lime-700);
+  --c-on-success: var(--color-white);
+
+  --c-success-light: var(--color-lime-100);
+  --c-success-light-hover: var(--color-lime-200);
+  --c-on-success-light: var(--color-lime-800);
 
   --c-text: var(--color-neutral-900);
   --c-text-highlight: var(--color-violet-900);
-  --c-text-muted: var(--color-neutral-700);
+  --c-text-muted: var(--color-neutral-600);
   --c-text-dimmed: var(--color-neutral-300);
 
   --c-bg-app: var(--color-violet-200);
@@ -37,11 +58,32 @@
 
 .dark {
   --c-primary: var(--color-violet-500);
+  --c-primary-hover: var(--color-violet-400);
   --c-on-primary: var(--color-violet-950);
+
+  --c-primary-light: var(--color-violet-800);
+  --c-primary-light-hover: var(--color-violet-700);
+  --c-on-primary-light: var(--color-violet-200);
+
+  --c-error: var(--color-rose-500);
+  --c-error-hover: var(--color-rose-400);
+  --c-on-error: var(--color-rose-950);
+
+  --c-error-light: var(--color-rose-800);
+  --c-error-light-hover: var(--color-rose-700);
+  --c-on-error-light: var(--color-rose-200);
+
+  --c-success: var(--color-lime-500);
+  --c-success-hover: var(--color-lime-400);
+  --c-on-success: var(--color-lime-950);
+
+  --c-success-light: var(--color-lime-800);
+  --c-success-light-hover: var(--color-lime-700);
+  --c-on-success-light: var(--color-lime-200);
 
   --c-text: var(--color-violet-50);
   --c-text-highlight: var(--color-violet-200);
-  --c-text-muted: var(--color-violet-300);
+  --c-text-muted: var(--color-violet-400);
   --c-text-dimmed: var(--color-violet-700);
 
   --c-bg-app: var(--color-violet-950);

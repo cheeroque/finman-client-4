@@ -1,10 +1,15 @@
 <script setup lang="ts" generic="T extends string | number | null">
 import type { InputHTMLAttributes } from 'vue'
 
-const { type = 'text' } = defineProps<{
+const {
+  id,
+  type = 'text',
+} = defineProps<{
   autocomplete?: InputHTMLAttributes['autocomplete']
   disabled?: boolean
   icon?: string
+  id?: string
+  hasError?: boolean
   placeholder?: string
   required?: boolean
   type?: InputHTMLAttributes['type']
@@ -24,10 +29,12 @@ defineExpose({ inputRef })
 
 <template>
   <div
+    :data-invalid="hasError || undefined"
     class="
       flex rounded-lg bg-(--c-bg-content) px-1.5 outline
       outline-(--c-outline-light) transition-colors
       focus-within:outline-(--c-outline-primary)
+      data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
     "
   >
     <span
@@ -38,6 +45,7 @@ defineExpose({ inputRef })
     </span>
 
     <input
+      :id
       ref="inputRef"
       v-model="modelValue"
       :autocomplete
@@ -55,7 +63,11 @@ defineExpose({ inputRef })
 
     <button
       v-if="modelValue"
-      class="flex cursor-pointer items-center pr-2.5 text-(--c-text-dimmed)"
+      class="
+        flex cursor-pointer items-center pr-2.5 text-(--c-text-dimmed)
+        focus:text-(--c-primary) focus:outline-0
+      "
+      type="button"
       @click="modelValue = undefined"
     >
       <Icon name="mingcute:close-circle-fill" />
