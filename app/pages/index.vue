@@ -8,6 +8,8 @@ definePageMeta({
 const { page, state, isLoading } = useTransactionsQuery()
 
 const { open: openTransactionModal } = useTransactionModal()
+
+const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
 </script>
 
 <template>
@@ -51,6 +53,7 @@ const { open: openTransactionModal } = useTransactionModal()
         />
 
         <UiPagination
+          v-if="paginationVisible"
           v-model="page"
           :items-per-page="state.data?.per_page"
           :total="state.data?.total"

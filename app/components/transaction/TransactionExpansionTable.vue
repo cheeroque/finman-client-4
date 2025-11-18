@@ -36,20 +36,18 @@ const columns = computed(() => [
 </script>
 
 <template>
-  <UTable
+  <UiTable
     :columns
     :data="transactions"
-    :ui="{
-      base: 'table-fixed bg-gray-50',
-      thead: 'hidden',
-    }"
+    table-class="table-fixed rounded-lg bg-gray-50"
+    thead-class="hidden"
   >
-    <template #created_at-cell="{ row: detailRow }">
-      {{ formatDate(detailRow.original.created_at) }}
+    <template #cell(created_at)="{ item }">
+      {{ formatDate(item.created_at) }}
     </template>
 
-    <template #sum-cell="{ row: detailRow }">
-      {{ formatNumber(detailRow.original.sum) }}
+    <template #cell(sum)="{ item }">
+      {{ formatNumber(item.sum) }}
     </template>
-  </UTable>
+  </UiTable>
 </template>

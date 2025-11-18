@@ -50,25 +50,25 @@ const columns = computed(() => [
 </script>
 
 <template>
-  <UTable
-    :data="tableData"
+  <UiTable
     :columns
-    :ui="{
-      base: 'table-fixed',
-      tbody: '[&>tr[data-expanded=true]+tr>td]:p-0',
-    }"
+    :data="tableData"
+    table-class="table-fixed"
   >
-    <template #subtotal-cell="{ row }">
-      <UButton
-        variant="soft"
-        @click="row.toggleExpanded()"
+    <template #cell(subtotal)="{ item, toggleRowExpanded }">
+      <UiButtonLink
+        class="
+          font-semibold
+          hover:underline
+        "
+        @click="toggleRowExpanded()"
       >
-        {{ formatNumber(row.original.subtotal) }}
-      </UButton>
+        {{ formatNumber(item.subtotal) }}
+      </UiButtonLink>
     </template>
 
-    <template #expanded="{ row }">
+    <template #row-expanded="{ row }">
       <TransactionExpansionTable :transactions="row.original.transactions" />
     </template>
-  </UTable>
+  </UiTable>
 </template>

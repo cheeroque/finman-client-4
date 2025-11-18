@@ -12,6 +12,7 @@
   --color-violet-800: #7706c3;
   --color-violet-900: #62079c;
   --color-violet-950: #430076;
+  --color-violet-980: #2c0d45;
   --color-violet-990: #21003b;
 
   --font-sans: Inter, sans-serif;
@@ -68,6 +69,9 @@
   --c-pagination-hover-bg: var(--color-violet-100);
   --c-pagination-hover-border: var(--color-violet-100);
 
+  --c-table-head-bg: var(--color-neutral-100);
+  --c-table-alternate-bg: var(--color-neutral-50);
+
   --c-outline-light: var(--color-neutral-200);
   --c-outline-primary: var(--color-violet-300);
 }
@@ -120,6 +124,9 @@
 
   --c-pagination-hover-bg: var(--color-violet-900);
   --c-pagination-hover-border: var(--color-violet-900);
+
+  --c-table-head-bg: var(--color-violet-950);
+  --c-table-alternate-bg: var(--color-violet-980);
 
   --c-outline-light: var(--color-violet-950);
   --c-outline-primary: var(--color-violet-800);

@@ -42,7 +42,7 @@ const columns = computed(() => [
 </script>
 
 <template>
-  <UTable
+  <UiTable
     :columns
     :data
     :loading

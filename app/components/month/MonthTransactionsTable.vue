@@ -80,35 +80,38 @@ function getRowClass(row: Row<MonthCategoryWithTransactions>) {
 </script>
 
 <template>
-  <UTable
-    :data="tableData"
+  <UiTable
     :columns
-    :meta="{
-      class: {
-        tr: getRowClass,
-      },
-    }"
-    :ui="{
-      base: 'table-fixed',
-      tbody: '[&>tr[data-expanded=true]+tr>td]:p-0',
-    }"
+    :data="tableData"
+    table-class="table-fixed"
+    :tr-class="getRowClass"
   >
-    <template #category-cell="{ row }">
-      {{ row.original.name }}
+    <template #cell(category)="{ item }">
+      {{ item.name }}
     </template>
 
-    <template #subtotal-cell="{ row }">
-      <UButton
-        v-if="row.original.transactions.length"
-        variant="soft"
-        @click="row.toggleExpanded()"
+    <template #cell(subtotal)="{ item, toggleRowExpanded }">
+      <UiButtonLink
+        v-if="item.transactions.length"
+        class="
+          font-semibold
+          hover:underline
+        "
+        @click="toggleRowExpanded()"
       >
-        {{ formatNumber(row.original.subtotal) }}
-      </UButton>
+        {{ formatNumber(item.subtotal) }}
+      </UiButtonLink>
+
+      <span
+        v-else
+        class="font-semibold"
+      >
+        {{ formatNumber(item.subtotal) }}
+      </span>
     </template>
 
-    <template #expanded="{ row }">
+    <template #row-expanded="{ row }">
       <TransactionExpansionTable :transactions="row.original.transactions" />
     </template>
-  </UTable>
+  </UiTable>
 </template>

@@ -49,47 +49,68 @@ const { open: openTransactionModal } = useTransactionModal()
 </script>
 
 <template>
-  <UTable
+  <UiTable
     :columns
     :data
     :loading
   >
-    <template #created_at-cell="{ row }">
+    <template #cell(created_at)="{ item }">
       <NuxtLink
-        :to="$localePath(`/months/${row.original.period}`)"
-        class="hover:underline"
+        :to="$localePath(`/months/${item.period}`)"
+        class="
+          transition-colors
+          hover:text-(--c-primary) hover:underline
+        "
       >
-        {{ row.original.created_at_formatted }}
+        {{ item.created_at_formatted }}
       </NuxtLink>
     </template>
 
-    <template #sum-cell="{ row }">
-      <UButton
-        color="primary"
-        variant="link"
-        @click="openTransactionModal({ transaction: row.original })"
+    <template #cell(sum)="{ item }">
+      <UiButtonLink
+        class="
+          text-xl leading-6 font-semibold transition-colors
+          hover:text-(--c-primary)
+        "
+        @click="openTransactionModal({ transaction: item })"
       >
-        {{ row.original.sum_formatted }}
-      </UButton>
+        {{ item.sum_formatted }}
+      </UiButtonLink>
     </template>
 
-    <template #category_id-cell="{ row }">
+    <template #cell(category_id)="{ item }">
       <NuxtLink
-        :to="$localePath(`/categories/${row.original.category.slug}`)"
-        class="hover:underline"
+        :to="$localePath(`/categories/${item.category.slug}`)"
+        class="
+          transition-colors
+          hover:text-(--c-primary) hover:underline
+        "
       >
-        {{ row.original.category.name }}
+        {{ item.category.name }}
       </NuxtLink>
     </template>
 
-    <template #note-cell="{ row }">
-      <UButton
-        color="neutral"
-        variant="link"
-        @click="openTransactionModal({ transaction: row.original })"
+    <template #cell(note)="{ item }">
+      <UiButtonLink
+        class="
+          group/button flex w-full items-center gap-4 text-start
+          transition-colors
+          hover:text-(--c-primary)
+        "
+        @click="openTransactionModal({ transaction: item })"
       >
-        {{ row.original.note }}
-      </UButton>
+        <span class="flex-auto">
+          {{ item.note }}
+        </span>
+
+        <Icon
+          name="mingcute:edit-2-line"
+          class="
+            text-2xl opacity-0 transition-opacity
+            group-hover/button:opacity-50
+          "
+        />
+      </UiButtonLink>
     </template>
-  </UTable>
+  </UiTable>
 </template>

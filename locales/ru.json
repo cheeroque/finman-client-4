@@ -98,6 +98,9 @@
     "submit": "Сохранить",
     "title": "Создать снапшот"
   },
+  "table": {
+    "empty": "Нет записей."
+  },
   "transactionModal": {
     "create": {
       "submit": "Сохранить",

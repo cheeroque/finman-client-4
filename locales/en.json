@@ -98,6 +98,9 @@
     "submit": "Submit",
     "title": "Create Snapshot"
   },
+  "table": {
+    "empty": "Nothing to show."
+  },
   "transactionModal": {
     "create": {
       "submit": "Submit",

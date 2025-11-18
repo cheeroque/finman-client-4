@@ -24,6 +24,7 @@
     "@regle/core": "^1.10.1",
     "@regle/nuxt": "^1.10.1",
     "@regle/rules": "^1.10.1",
+    "@tanstack/vue-table": "^8.21.3",
     "@vueuse/nuxt": "^14.0.0",
     "@vueuse/router": "^14.0.0",
     "eslint": "^9.39.1",
