@@ -74,6 +74,7 @@ function getErrorMessage(error: unknown) {
       <UiInput
         :id="controlId"
         v-model="form.email"
+        :disabled="isLoading"
         :has-error
         :placeholder="$ts('email.placeholder')"
         type="email"
@@ -88,6 +89,7 @@ function getErrorMessage(error: unknown) {
       <UiInput
         :id="controlId"
         v-model="form.password"
+        :disabled="isLoading"
         :has-error
         :placeholder="$ts('password.placeholder')"
         type="password"
@@ -95,6 +97,7 @@ function getErrorMessage(error: unknown) {
     </UiFormField>
 
     <UiButton
+      :loading="isLoading"
       type="submit"
       variant="success"
       class="w-full"

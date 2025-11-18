@@ -52,6 +52,9 @@
   --c-bg-app-hover: var(--color-violet-100);
   --c-bg-content: var(--color-white);
 
+  --c-bg-input: var(--color-white);
+  --c-bg-input-disabled: var(--color-neutral-100);
+
   --c-outline-light: var(--color-neutral-200);
   --c-outline-primary: var(--color-violet-300);
 }
@@ -90,6 +93,9 @@
   --c-bg-app-active: var(--color-violet-800);
   --c-bg-app-hover: var(--color-violet-900);
   --c-bg-content: var(--color-violet-990);
+
+  --c-bg-input: var(--color-violet-990);
+  --c-bg-input-disabled: var(--color-violet-950);
 
   --c-outline-light: var(--color-violet-950);
   --c-outline-primary: var(--color-violet-800);

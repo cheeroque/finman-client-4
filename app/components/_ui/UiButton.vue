@@ -2,6 +2,8 @@
 import type { NuxtLinkProps } from '#app'
 
 const {
+  disabled,
+  loading,
   type = 'button',
   variant = 'primary',
 } = defineProps<Pick<
@@ -12,6 +14,7 @@ const {
 > & {
   disabled?: boolean
   icon?: string
+  loading?: boolean
   variant?: 'danger' | 'danger-light' | 'primary' | 'primary-light' | 'success' | 'success-light'
   type?: string
 }>()
@@ -24,32 +27,55 @@ const VARIANT_CLASSES = {
   success: 'bg-(--c-success) text-(--c-on-success) not-disabled:hover:bg-(--c-success-hover)',
   'success-light': 'bg-(--c-success-light) text-(--c-on-success-light) not-disabled:hover:bg-(--c-success-light-hover)',
 } as const
+
+const disabledOrLoading = computed(() => disabled || loading)
 </script>
 
 <template>
   <UiButtonLink
     :active-class
-    :disabled
+    :data-disabled="disabledOrLoading || undefined"
+    :disabled="disabledOrLoading"
     :exact-active-class
     :to
     :type
     :class="[
-      'flex items-center justify-center gap-2 rounded-lg px-4 py-3 font-medium',
-      'transition-colors',
-      'disabled:cursor-default',
+      'group/button relative rounded-lg px-4 py-3 font-medium',
+      'transition-[background-color,border-color,color,opacity]',
+      'data-disabled:cursor-default data-disabled:opacity-50',
       VARIANT_CLASSES[variant],
     ]"
   >
     <span
-      v-if="icon"
-      class="size-6 flex-none"
+      class="
+        flex items-center justify-center gap-2
+        group-data-disabled/button:opacity-0
+      "
+    >
+      <span
+        v-if="icon"
+        class="size-6 flex-none"
+      >
+        <Icon
+          :name="icon"
+          class="text-2xl"
+        />
+      </span>
+
+      <slot />
+    </span>
+
+    <span
+      class="
+        absolute top-1/2 left-1/2 flex size-6 -translate-1/2 animate-spin
+        opacity-0
+        group-data-disabled/button:opacity-100
+      "
     >
       <Icon
-        :name="icon"
+        name="mingcute:loading-3-fill"
         class="text-2xl"
       />
     </span>
-
-    <slot />
   </UiButtonLink>
 </template>
