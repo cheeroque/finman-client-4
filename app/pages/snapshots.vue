@@ -46,7 +46,7 @@ const { open: openSnapshotModal } = useSnapshotModal()
           />
 
           <template #footer>
-            <SharedPagination
+            <UiPagination
               :items-per-page="state.data?.per_page"
               :total="state.data?.total"
             />

@@ -5,7 +5,7 @@ definePageMeta({
   layout: false,
 })
 
-const { state, isLoading } = useTransactionsQuery()
+const { page, state, isLoading } = useTransactionsQuery()
 
 const { open: openTransactionModal } = useTransactionModal()
 </script>
@@ -13,40 +13,48 @@ const { open: openTransactionModal } = useTransactionModal()
 <template>
   <NuxtLayout name="default">
     <template #header>
-      <UButton
-        color="secondary"
-        variant="soft"
+      <UiButton
+        variant="primary-light"
         @click="openTransactionModal()"
       >
         {{ $ts('createTransaction') }}
-      </UButton>
+      </UiButton>
     </template>
 
     <main>
-      <div class="py-5">
-        <UCard>
-          <template #header>
-            <div class="flex items-center gap-5 py-1">
-              <TransactionFilterText icon="mingcute:search-line" />
-
-              <TransactionFilterView class="w-50" />
-
-              <TransactionFilterMarked />
-            </div>
-          </template>
-
-          <TransactionTable
-            :loading="isLoading"
-            :transactions="state.data?.data"
+      <div
+        class="
+          flex flex-col gap-8
+          lg:pt-8
+        "
+      >
+        <div
+          class="
+            flex gap-6
+            max-2xl:flex-wrap
+            max-lg:hidden
+          "
+        >
+          <TransactionFilterText
+            icon="mingcute:search-line"
+            class="max-2xl:basis-full"
           />
 
-          <template #footer>
-            <SharedPagination
-              :items-per-page="state.data?.per_page"
-              :total="state.data?.total"
-            />
-          </template>
-        </UCard>
+          <TransactionFilterView class="w-50" />
+
+          <TransactionFilterMarked />
+        </div>
+
+        <TransactionTable
+          :loading="isLoading"
+          :transactions="state.data?.data"
+        />
+
+        <UiPagination
+          v-model="page"
+          :items-per-page="state.data?.per_page"
+          :total="state.data?.total"
+        />
       </div>
     </main>
   </NuxtLayout>

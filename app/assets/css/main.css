@@ -15,6 +15,8 @@
   --color-violet-990: #21003b;
 
   --font-sans: Inter, sans-serif;
+
+  --transition-button: background-color, border-color, color, opacity;
 }
 
 :root {
@@ -54,6 +56,17 @@
 
   --c-bg-input: var(--color-white);
   --c-bg-input-disabled: var(--color-neutral-100);
+
+  --c-pagination-bg: var(--color-neutral-50);
+  --c-pagination-border: var(--color-neutral-100);
+  --c-pagination-text: var(--color-neutral-700);
+
+  --c-pagination-active-bg: var(--color-violet-500);
+  --c-pagination-active-border: var(--color-violet-500);
+  --c-pagination-active-text: var(--color-white);
+
+  --c-pagination-hover-bg: var(--color-violet-100);
+  --c-pagination-hover-border: var(--color-violet-100);
 
   --c-outline-light: var(--color-neutral-200);
   --c-outline-primary: var(--color-violet-300);
@@ -96,6 +109,17 @@
 
   --c-bg-input: var(--color-violet-990);
   --c-bg-input-disabled: var(--color-violet-950);
+
+  --c-pagination-bg: var(--color-violet-950);
+  --c-pagination-border: var(--color-violet-900);
+  --c-pagination-text: var(--color-violet-300);
+
+  --c-pagination-active-bg: var(--color-violet-600);
+  --c-pagination-active-border: var(--color-violet-600);
+  --c-pagination-active-text: var(--color-white);
+
+  --c-pagination-hover-bg: var(--color-violet-900);
+  --c-pagination-hover-border: var(--color-violet-900);
 
   --c-outline-light: var(--color-violet-950);
   --c-outline-primary: var(--color-violet-800);

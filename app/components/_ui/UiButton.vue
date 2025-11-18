@@ -41,7 +41,7 @@ const disabledOrLoading = computed(() => disabled || loading)
     :type
     :class="[
       'group/button relative rounded-lg px-4 py-3 font-medium',
-      'transition-[background-color,border-color,color,opacity]',
+      'transition-(--transition-button)',
       'data-disabled:cursor-default data-disabled:opacity-50',
       VARIANT_CLASSES[variant],
     ]"

@@ -39,7 +39,7 @@ const { state } = useQuery<CategoryWithTransactions>({
         <CategoryTransactionsTable :data="state.data?.data" />
 
         <template #footer>
-          <SharedPagination
+          <UiPagination
             :items-per-page="PER_PAGE"
             :total="state.data?.total"
           />
