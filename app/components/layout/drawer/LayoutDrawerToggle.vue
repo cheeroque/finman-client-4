@@ -10,7 +10,7 @@ const icon = computed(() => active ? 'mingcute:close-line' : 'mingcute:menu-line
   <button
     :class="[
       'flex size-7 cursor-pointer rounded-full p-0.5 text-2xl transition-colors',
-      active && 'bg-(--c-bg-app-active)',
+      active && 'bg-(--c-app-active-bg)',
     ]"
   >
     <Icon :name="icon" />

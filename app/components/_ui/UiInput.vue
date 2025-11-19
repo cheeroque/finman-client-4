@@ -32,10 +32,10 @@ defineExpose({ inputRef })
     :data-disabled="disabled || undefined"
     :data-invalid="hasError || undefined"
     class="
-      flex rounded-lg bg-(--c-bg-input) px-1.5 outline
+      flex rounded-lg bg-(--c-input-bg) px-1.5 outline
       outline-(--c-outline-light) transition-colors
       focus-within:outline-(--c-outline-primary)
-      data-disabled:bg-(--c-bg-input-disabled)
+      data-disabled:bg-(--c-input-disabled-bg)
       data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
     "
   >

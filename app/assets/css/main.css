@@ -47,16 +47,19 @@
 
   --c-text: var(--color-neutral-900);
   --c-text-highlight: var(--color-violet-900);
-  --c-text-muted: var(--color-neutral-600);
+  --c-text-muted: var(--color-neutral-500);
   --c-text-dimmed: var(--color-neutral-300);
 
-  --c-bg-app: var(--color-violet-200);
-  --c-bg-app-active: var(--color-violet-300);
-  --c-bg-app-hover: var(--color-violet-100);
-  --c-bg-content: var(--color-white);
+  --c-app-bg: var(--color-violet-200);
+  --c-app-active-bg: var(--color-violet-300);
+  --c-app-hover-bg: var(--color-violet-100);
 
-  --c-bg-input: var(--color-white);
-  --c-bg-input-disabled: var(--color-neutral-100);
+  --c-content-bg: var(--color-white);
+
+  --c-surface-bg: var(--color-violet-50);
+
+  --c-input-bg: var(--color-white);
+  --c-input-disabled-bg: var(--color-neutral-100);
 
   --c-pagination-bg: var(--color-neutral-50);
   --c-pagination-border: var(--color-neutral-100);
@@ -74,6 +77,7 @@
 
   --c-outline-light: var(--color-neutral-200);
   --c-outline-primary: var(--color-violet-300);
+  --c-outline-primary-light: var(--color-violet-100);
 }
 
 .dark {
@@ -106,13 +110,16 @@
   --c-text-muted: var(--color-violet-400);
   --c-text-dimmed: var(--color-violet-700);
 
-  --c-bg-app: var(--color-violet-950);
-  --c-bg-app-active: var(--color-violet-800);
-  --c-bg-app-hover: var(--color-violet-900);
-  --c-bg-content: var(--color-violet-990);
+  --c-app-bg: var(--color-violet-950);
+  --c-app-active-bg: var(--color-violet-800);
+  --c-app-hover-bg: var(--color-violet-900);
 
-  --c-bg-input: var(--color-violet-990);
-  --c-bg-input-disabled: var(--color-violet-950);
+  --c-content-bg: var(--color-violet-990);
+
+  --c-surface-bg: var(--color-violet-950);
+
+  --c-input-bg: var(--color-violet-990);
+  --c-input-disabled-bg: var(--color-violet-950);
 
   --c-pagination-bg: var(--color-violet-950);
   --c-pagination-border: var(--color-violet-900);
@@ -130,4 +137,5 @@
 
   --c-outline-light: var(--color-violet-950);
   --c-outline-primary: var(--color-violet-800);
+  --c-outline-primary-light: var(--color-violet-900);
 }

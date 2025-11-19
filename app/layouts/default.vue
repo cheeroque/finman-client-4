@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      bg-(--c-bg-app) text-(--c-text)
+      bg-(--c-app-bg) text-(--c-text)
       lg:flex lg:h-dvh lg:gap-8 lg:p-3 lg:pl-8
     "
   >
@@ -23,7 +23,7 @@
 
     <div
       class="
-        flex min-h-0 flex-auto flex-col bg-(--c-bg-content) pt-3 pb-18
+        flex min-h-0 flex-auto flex-col bg-(--c-content-bg) pt-3 pb-18
         lg:rounded-3xl lg:py-8 lg:shadow-sm
       "
     >
@@ -34,7 +34,7 @@
       <div
         class="
           flex min-h-0 flex-auto gap-8 overflow-y-auto
-          lg:px-8
+          lg:p-8
         "
       >
         <div class="min-w-0 flex-auto">
@@ -43,7 +43,7 @@
 
         <LayoutSecondarySidebar
           class="
-            basis-96
+            flex-none basis-96
             max-xl:hidden
           "
         />

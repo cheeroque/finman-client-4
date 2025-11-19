@@ -25,7 +25,7 @@ const modelValue = defineModel<boolean>()
       >
         <DialogContent
           class="
-            fixed inset-x-0 bottom-18 z-40 rounded-t-xl bg-(--c-bg-app)
+            fixed inset-x-0 bottom-18 z-40 rounded-t-xl bg-(--c-app-bg)
             transition-transform
           "
         >

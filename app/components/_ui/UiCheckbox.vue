@@ -31,7 +31,7 @@ const inputId = computed(() => id ?? useId())
       :value
       class="
         flex size-5 flex-none appearance-none items-center justify-center
-        rounded-sm border border-(--c-outline-light) bg-(--c-bg-content)
+        rounded-sm border border-(--c-outline-light) bg-(--c-content-bg)
         outline-none
         data-[state=checked]:border-(--c-primary)
         data-[state=checked]:bg-(--c-primary)
@@ -44,7 +44,7 @@ const inputId = computed(() => id ?? useId())
       >
         <Icon
           name="mingcute:check-fill"
-          class="text-xs text-(--c-bg-content)"
+          class="text-xs text-(--c-content-bg)"
         />
       </CheckboxIndicator>
     </CheckboxRoot>

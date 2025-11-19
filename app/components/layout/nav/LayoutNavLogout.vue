@@ -10,9 +10,9 @@ async function logout() {
   <UiButtonLink
     class="
       flex w-full items-center justify-start gap-6 rounded-xl
-      bg-(--c-bg-app-hover) px-6 py-5 text-start text-lg font-medium
+      bg-(--c-app-hover-bg) px-6 py-5 text-start text-lg font-medium
       text-(--c-text-highlight) transition-colors
-      hover:bg-(--c-bg-app-active)
+      hover:bg-(--c-app-active-bg)
     "
     @click="logout()"
   >

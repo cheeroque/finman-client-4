@@ -37,7 +37,7 @@ const modelValue = defineModel<T>()
     <SelectTrigger
       :disabled
       class="
-        group/trigger flex cursor-pointer gap-4 rounded-lg bg-(--c-bg-content)
+        group/trigger flex cursor-pointer gap-4 rounded-lg bg-(--c-content-bg)
         px-4 py-3 text-base outline outline-(--c-outline-light)
         transition-colors
         focus:outline-(--c-outline-primary)
@@ -65,7 +65,7 @@ const modelValue = defineModel<T>()
         class="
           z-100 max-h-(--reka-select-content-available-height)
           w-(--reka-select-trigger-width) min-w-40 overflow-hidden rounded-xl
-          border border-(--c-outline-light) bg-(--c-bg-content) py-1
+          border border-(--c-outline-light) bg-(--c-content-bg) py-1
           will-change-[opacity,transform]
         "
       >
@@ -77,7 +77,7 @@ const modelValue = defineModel<T>()
               :value="option.value"
               class="
                 cursor-pointer truncate px-4 py-2 text-(--c-text)
-                data-highlighted:bg-(--c-bg-app-hover)
+                data-highlighted:bg-(--c-app-hover-bg)
                 data-highlighted:outline-0
                 data-[state=checked]:bg-(--c-primary)
                 data-[state=checked]:text-(--c-on-primary)

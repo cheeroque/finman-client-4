@@ -19,11 +19,11 @@ function handleClick() {
 
 <template>
   <UiButtonLink
-    exact-active-class="bg-(--c-bg-app-active) text-(--c-text-highlight)"
+    exact-active-class="bg-(--c-app-active-bg) text-(--c-text-highlight)"
     :to
     class="
       flex w-full gap-2 rounded-xl p-4 text-start transition-colors
-      hover:bg-(--c-bg-app-hover)
+      hover:bg-(--c-app-hover-bg)
     "
     @click="handleClick()"
   >

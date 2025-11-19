@@ -27,7 +27,7 @@ function toggleDrawer() {
 <template>
   <div
     class="
-      fixed inset-x-0 bottom-0 z-100 flex items-start gap-8 bg-(--c-bg-app) p-3
+      fixed inset-x-0 bottom-0 z-100 flex items-start gap-8 bg-(--c-app-bg) p-3
       pb-3.5
     "
   >

@@ -18,7 +18,7 @@ const { to } = defineProps<{
     <span
       :class="[
         'flex w-14 rounded-full py-0.5 transition-colors',
-        active && 'bg-(--c-bg-app-active)',
+        active && 'bg-(--c-app-active-bg)',
       ]"
     >
       <Icon
