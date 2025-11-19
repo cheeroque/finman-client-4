@@ -5,7 +5,6 @@ import type { Transaction } from '~~/shared/types/transaction'
 import { getEmptyArray } from '~~/shared/utils'
 
 defineProps<{
-  activeMonthClass?: ClassNameValue
   monthClass?: ClassNameValue
   yearClass?: ClassNameValue
 }>()
@@ -93,27 +92,31 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
 <template>
   <div class="flex flex-col gap-5">
     <div class="flex items-center gap-3">
-      <UButton
+      <UiButtonLink
         :disabled="isStart"
-        icon="solar:arrow-left-linear"
-        size="sm"
-        variant="outline"
-        class="flex-none"
+        class="flex flex-none text-(--c-app-active-bg)"
         @click="shiftYear(-1)"
-      />
+      >
+        <Icon
+          name="mingcute:arrow-left-line"
+          class="text-2xl"
+        />
+      </UiButtonLink>
 
-      <span class="flex-auto text-center text-lg font-medium">
+      <span class="flex-auto text-center font-semibold">
         {{ activeYear }}
       </span>
 
-      <UButton
+      <UiButtonLink
         :disabled="isEnd"
-        icon="solar:arrow-right-linear"
-        size="sm"
-        variant="outline"
-        class="flex-none"
+        class="flex flex-none text-(--c-app-active-bg)"
         @click="shiftYear(+1)"
-      />
+      >
+        <Icon
+          name="mingcute:arrow-right-line"
+          class="text-2xl"
+        />
+      </UiButtonLink>
     </div>
 
     <div class="overflow-hidden">
@@ -133,23 +136,28 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
           <div
             v-for="month in year.months"
             :key="`${year.year}-${month}`"
-            class="flex aspect-3/2"
+            class="flex"
           >
-            <UButton
-              :active="isMonthActive(month)"
+            <UiButtonLink
+              :data-active="isMonthActive(month) || undefined"
               :disabled="month.disabled"
               :to="$localePath(`/months/${formatPeriod(month)}`)"
-              :variant="isMonthActive(month) ? 'solid' : 'soft'"
               :class="
                 twMerge(
-                  'w-full justify-center',
+                  'flex aspect-3/2 w-full items-center justify-center',
+                  'rounded-lg text-center',
+                  'text-(--c-on-primary-light)',
+                  'bg-(--c-primary-light)',
+                  'not-data-disabled:hover:bg-(--c-primary-light-hover)',
+                  'data-active:bg-(--c-primary) data-active:font-semibold',
+                  'data-active:text-(--c-on-primary)',
+                  'not-data-disabled:data-active:hover:bg-(--c-primary-hover)',
                   monthClass,
-                  isMonthActive(month) && activeMonthClass,
                 )
               "
             >
               {{ month.month }}
-            </UButton>
+            </UiButtonLink>
           </div>
         </div>
       </div>

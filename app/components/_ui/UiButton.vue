@@ -27,22 +27,17 @@ const VARIANT_CLASSES = {
   success: 'bg-(--c-success) text-(--c-on-success) not-disabled:hover:bg-(--c-success-hover)',
   'success-light': 'bg-(--c-success-light) text-(--c-on-success-light) not-disabled:hover:bg-(--c-success-light-hover)',
 } as const
-
-const disabledOrLoading = computed(() => disabled || loading)
 </script>
 
 <template>
   <UiButtonLink
     :active-class
-    :data-disabled="disabledOrLoading || undefined"
-    :disabled="disabledOrLoading"
+    :disabled="disabled || loading"
     :exact-active-class
     :to
     :type
     :class="[
       'group/button relative rounded-lg px-4 py-3 font-medium',
-      'transition-(--transition-button)',
-      'data-disabled:cursor-default data-disabled:opacity-50',
       VARIANT_CLASSES[variant],
     ]"
   >

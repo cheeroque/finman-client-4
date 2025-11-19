@@ -25,6 +25,7 @@ const selectedPeriod = computed(() => {
   <WidgetBase :title="$ts('sidebar.months')">
     <MonthSelector
       :model-value="selectedPeriod"
+      month-class="aspect-auto p-3"
       year-class="grid-cols-3 gap-3"
     />
   </WidgetBase>
