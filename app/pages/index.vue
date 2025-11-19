@@ -24,12 +24,7 @@ const paginationVisible = computed(() => Number(state.value.data?.total) > Numbe
     </template>
 
     <main>
-      <div
-        class="
-          flex flex-col gap-8
-          lg:pt-8
-        "
-      >
+      <div class="flex flex-col gap-8">
         <div
           class="
             flex gap-6

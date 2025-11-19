@@ -34,6 +34,9 @@ export default defineEventHandler(async (event) => {
       incomeCategories.push(row)
       incomesTotal += subtotal
     }
+
+    expenseCategories.sort((a, b) => b.subtotal - a.subtotal)
+    incomeCategories.sort((a, b) => b.subtotal - a.subtotal)
   }
 
   return {

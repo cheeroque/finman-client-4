@@ -67,7 +67,10 @@
     "snapshots": "Snapshots"
   },
   "sidebar": {
-    "currentMonth": "Expenses this month",
+    "currentMonth": {
+      "otherExpenses": "Other expenses",
+      "title": "Expenses this month"
+    },
     "months": "Months"
   },
   "snapshotModal": {

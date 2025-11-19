@@ -67,7 +67,10 @@
     "snapshots": "Снапшоты"
   },
   "sidebar": {
-    "currentMonth": "Расходы в этом месяце",
+    "currentMonth": {
+      "otherExpenses": "Остальные расходы",
+      "title": "Расходы в этом месяце"
+    },
     "months": "Календарь"
   },
   "snapshotModal": {

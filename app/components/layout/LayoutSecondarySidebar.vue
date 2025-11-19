@@ -1,12 +1,13 @@
 <template>
   <aside
     class="
-      flex flex-col gap-8 px-4 py-5
-      sm:px-6
-      lg:px-8
+      flex flex-col gap-8 overflow-y-auto rounded-[1.25rem] border
+      border-(--c-outline-primary-light) bg-(--c-surface-bg) px-8 py-7
     "
   >
     <WidgetMonthlyExpenses />
+
+    <hr class="border-(--c-outline-primary-light)">
 
     <WidgetMonthSelector />
   </aside>
