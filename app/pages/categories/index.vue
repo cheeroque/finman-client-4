@@ -13,24 +13,27 @@ const { open: openCategoryModal } = useCategoryModal()
 <template>
   <NuxtLayout name="default">
     <template #header>
-      <UButton
-        color="secondary"
-        variant="soft"
+      <LayoutCreateButton
+        :caption="$ts('createCategory')"
         @click="openCategoryModal()"
-      >
-        {{ $ts('createCategory') }}
-      </UButton>
+      />
     </template>
 
-    <UMain as="main">
-      <UContainer class="grid grid-cols-3 gap-5 py-5">
-        <CategoryCard
-          v-for="category in state.data"
-          :key="category.id"
-          :category
-          @click-edit="openCategoryModal({ category })"
-        />
-      </UContainer>
-    </UMain>
+    <main
+      class="
+        grid gap-3
+        max-lg:px-3 max-lg:pt-3
+        sm:grid-cols-2
+        lg:gap-8
+        2xl:grid-cols-3
+      "
+    >
+      <CategoryCard
+        v-for="category in state.data"
+        :key="category.id"
+        :category
+        @click-edit="openCategoryModal({ category })"
+      />
+    </main>
   </NuxtLayout>
 </template>

@@ -19,6 +19,7 @@ defineEmits<{
     </UiButton>
 
     <UiButton
+      :title="caption"
       variant="success"
       class="
         fixed! right-4 bottom-22 z-30 size-16 rounded-full! shadow

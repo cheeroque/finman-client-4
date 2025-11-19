@@ -13,39 +13,44 @@ const { $localePath, $ts } = useI18n()
 </script>
 
 <template>
-  <UCard :ui="{ body: 'flex gap-4 p-0 sm:p-0' }">
+  <div
+    class="
+      flex gap-4 rounded-2xl border border-(--c-outline-light) transition-colors
+      hover:border-(--c-outline-primary-light) hover:bg-(--c-surface-bg)
+      hover:text-(--c-primary)
+    "
+  >
     <NuxtLink
       :to="$localePath(`/categories/${category.slug}`)"
       class="
-        flex flex-auto flex-col gap-4 p-4
-        hover:text-primary
-        sm:p-6
+        flex flex-auto flex-col gap-5 p-5
+        lg:p-6
       "
     >
       <span
         :style="{ backgroundColor: category.color }"
-        class="h-2 w-1/3 rounded-full"
+        class="h-2.5 w-2/3 rounded-full"
       />
 
-      <div class="flex flex-auto flex-col gap-2">
-        <span class="text-lg font-semibold transition-colors">
+      <div class="flex flex-auto flex-col gap-1">
+        <span class="text-lg font-semibold">
           {{ category.name }}
         </span>
 
-        <span class="text-sm text-gray-500">
+        <span class="text-sm text-(--c-text-muted)">
           {{ category.slug }}
         </span>
 
         <span
           v-if="category.is_income"
-          class="text-sm text-green-700"
+          class="text-sm text-(--c-success)"
         >
           {{ $ts('incomes') }}
         </span>
 
         <span
           v-else
-          class="text-sm text-red-700"
+          class="text-sm text-(--c-error)"
         >
           {{ $ts('expenses') }}
         </span>
@@ -54,17 +59,17 @@ const { $localePath, $ts } = useI18n()
 
     <button
       class="
-        flex flex-none cursor-pointer self-end p-4 text-gray-300
+        flex flex-none cursor-pointer self-end p-5 text-gray-300
         transition-colors
-        hover:text-primary-300
+        hover:text-(--c-primary)
         sm:p-6
       "
       @click="$emit('clickEdit')"
     >
-      <UIcon
-        name="solar:pen-outline"
-        class="size-5"
+      <Icon
+        name="mingcute:edit-2-line"
+        class="text-2xl"
       />
     </button>
-  </UCard>
+  </div>
 </template>
