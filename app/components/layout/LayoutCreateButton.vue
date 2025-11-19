@@ -15,7 +15,7 @@ defineEmits<{
       class="max-lg:hidden"
       @click="$emit('click', $event)"
     >
-      {{ $ts('createTransaction') }}
+      {{ caption }}
     </UiButton>
 
     <UiButton
