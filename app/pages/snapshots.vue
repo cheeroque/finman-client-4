@@ -23,36 +23,30 @@ const { state, isLoading } = useQuery<PaginatedResponse<Snapshot>>({
 })
 
 const { open: openSnapshotModal } = useSnapshotModal()
+
+const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
 </script>
 
 <template>
   <NuxtLayout name="default">
     <template #header>
-      <UButton
-        color="secondary"
-        variant="soft"
+      <LayoutCreateButton
+        :caption="$ts('createSnapshot')"
         @click="openSnapshotModal()"
-      >
-        {{ $ts('createSnapshot') }}
-      </UButton>
+      />
     </template>
 
-    <UMain as="main">
-      <UContainer class="py-5">
-        <UCard>
-          <SnapshotTable
-            :loading="isLoading"
-            :snapshots="state.data?.data"
-          />
+    <main class="flex flex-col gap-8">
+      <SnapshotTable
+        :loading="isLoading"
+        :snapshots="state.data?.data"
+      />
 
-          <template #footer>
-            <UiPagination
-              :items-per-page="state.data?.per_page"
-              :total="state.data?.total"
-            />
-          </template>
-        </UCard>
-      </UContainer>
-    </UMain>
+      <UiPagination
+        v-if="paginationVisible"
+        :items-per-page="state.data?.per_page"
+        :total="state.data?.total"
+      />
+    </main>
   </NuxtLayout>
 </template>

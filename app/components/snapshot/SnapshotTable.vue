@@ -23,6 +23,11 @@ const columns = computed(() => [
   {
     accessorKey: 'created_at',
     header: $ts('columns.date'),
+    meta: {
+      class: {
+        td: 'max-2xl:text-sm max-2xl:font-semibold',
+      },
+    },
   },
   {
     accessorKey: 'balance',
@@ -30,7 +35,7 @@ const columns = computed(() => [
     meta: {
       class: {
         th: 'text-end',
-        td: 'text-end',
+        td: 'self-end row-span-2 text-end whitespace-nowrap max-2xl:pl-2',
       },
     },
   },
@@ -46,5 +51,14 @@ const columns = computed(() => [
     :columns
     :data
     :loading
-  />
+    td-class="max-2xl:p-0"
+    thead-class="max-2xl:hidden"
+    tr-class="grid-cols-[auto_min-content] max-2xl:even:bg-(--c-table-alternate-bg) max-2xl:grid max-2xl:p-3"
+  >
+    <template #cell(balance)="{ text }">
+      <span class="text-xl leading-6 font-medium transition-colors">
+        {{ text }}
+      </span>
+    </template>
+  </UiTable>
 </template>
