@@ -5,6 +5,7 @@ import type { Transaction } from '~~/shared/types/transaction'
 import { getEmptyArray } from '~~/shared/utils'
 
 defineProps<{
+  headerClass?: ClassNameValue
   monthClass?: ClassNameValue
   yearClass?: ClassNameValue
 }>()
@@ -91,7 +92,12 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
 
 <template>
   <div class="flex flex-col gap-5">
-    <div class="flex items-center gap-3">
+    <div
+      :class="twMerge(
+        'flex items-center gap-3 font-semibold',
+        headerClass,
+      )"
+    >
       <UiButtonLink
         :disabled="isStart"
         class="flex flex-none text-(--c-app-active-bg)"
@@ -103,7 +109,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         />
       </UiButtonLink>
 
-      <span class="flex-auto text-center font-semibold">
+      <span class="flex-auto text-center">
         {{ activeYear }}
       </span>
 
