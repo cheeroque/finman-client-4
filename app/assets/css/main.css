@@ -37,8 +37,8 @@
   --c-error-light-hover: var(--color-rose-200);
   --c-on-error-light: var(--color-rose-800);
 
-  --c-success: var(--color-lime-600);
-  --c-success-hover: var(--color-lime-700);
+  --c-success: var(--color-lime-500);
+  --c-success-hover: var(--color-lime-600);
   --c-on-success: var(--color-white);
 
   --c-success-light: var(--color-lime-100);

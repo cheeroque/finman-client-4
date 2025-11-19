@@ -23,7 +23,7 @@
 
     <div
       class="
-        flex min-h-0 flex-auto flex-col bg-(--c-content-bg) pt-3 pb-18
+        flex min-h-0 flex-auto flex-col bg-(--c-content-bg) pt-3 pb-26
         lg:rounded-3xl lg:py-8 lg:shadow-sm
       "
     >

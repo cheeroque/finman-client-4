@@ -28,12 +28,7 @@ const title = computed(() => formatNumber(state.value.data ?? 0))
       </h1>
     </div>
 
-    <div
-      class="
-        flex-none
-        max-lg:hidden
-      "
-    >
+    <div class="flex-none">
       <slot />
     </div>
   </header>

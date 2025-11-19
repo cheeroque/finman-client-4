@@ -24,6 +24,11 @@ const columns = computed(() => [
   {
     accessorKey: 'created_at',
     header: $ts('columns.date'),
+    meta: {
+      class: {
+        td: 'max-2xl:text-sm max-2xl:font-semibold',
+      },
+    },
   },
   {
     accessorKey: 'sum',
@@ -31,17 +36,27 @@ const columns = computed(() => [
     meta: {
       class: {
         th: 'text-end',
-        td: 'text-end',
+        td: 'self-end row-span-2 text-end whitespace-nowrap max-2xl:pl-2',
       },
     },
   },
   {
     accessorKey: 'category_id',
     header: $ts('columns.category'),
+    meta: {
+      class: {
+        td: 'max-2xl:text-sm max-2xl:opacity-50',
+      },
+    },
   },
   {
     accessorKey: 'note',
     header: $ts('columns.note'),
+    meta: {
+      class: {
+        td: 'max-2xl:col-start-1 max-2xl:col-span-full max-2xl:row-start-1 max-2xl:mb-1',
+      },
+    },
   },
 ])
 
@@ -53,6 +68,9 @@ const { open: openTransactionModal } = useTransactionModal()
     :columns
     :data
     :loading
+    td-class="max-2xl:p-0"
+    thead-class="max-2xl:hidden"
+    tr-class="grid-cols-[auto_min-content] even:bg-(--c-table-alternate-bg) max-2xl:grid max-2xl:p-3"
   >
     <template #cell(created_at)="{ item }">
       <NuxtLink
@@ -69,8 +87,9 @@ const { open: openTransactionModal } = useTransactionModal()
     <template #cell(sum)="{ item }">
       <UiButtonLink
         class="
-          text-xl leading-6 font-semibold transition-colors
+          text-xl leading-6 font-medium transition-colors
           hover:text-(--c-primary)
+          max-2xl:text-2xl max-2xl:text-(--c-primary)
         "
         @click="openTransactionModal({ transaction: item })"
       >

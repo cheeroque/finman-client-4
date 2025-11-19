@@ -53,7 +53,12 @@ const PAGE_ITEM_CLASS = `data-selected:border-(--c-pagination-active-border)
         />
       </PaginationFirst>
 
-      <PaginationPrev :class="ITEM_CLASS">
+      <PaginationPrev
+        :class="[
+          ITEM_CLASS,
+          'max-lg:hidden',
+        ]"
+      >
         <Icon
           name="mingcute:arrow-left-line"
           class="text-2xl"
@@ -65,13 +70,21 @@ const PAGE_ITEM_CLASS = `data-selected:border-(--c-pagination-active-border)
           v-if="page.type === 'page'"
           :key="`page-${page.value}`"
           :value="page.value"
-          :class="[ITEM_CLASS, PAGE_ITEM_CLASS]"
+          :class="[
+            ITEM_CLASS,
+            PAGE_ITEM_CLASS,
+          ]"
         >
           {{ page.value }}
         </PaginationListItem>
       </template>
 
-      <PaginationNext :class="ITEM_CLASS">
+      <PaginationNext
+        :class="[
+          ITEM_CLASS,
+          'max-lg:hidden',
+        ]"
+      >
         <Icon
           name="mingcute:arrow-right-line"
           class="text-2xl"
