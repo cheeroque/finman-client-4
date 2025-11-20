@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import type { BreadcrumbItem } from '~/components/_ui'
 import { useMonthCategoriesQuery } from '~/composables/queries/month-categories'
 
 const route = useRoute()
 
-const { state } = useMonthCategoriesQuery()
+const { state, isLoading } = useMonthCategoriesQuery()
 
-const { formatDate, formatPeriod, parseDateTime, parsePeriod } = useLocaleFormatter()
+const { formatDate, parsePeriod } = useLocaleFormatter()
 
 const parsedPeriod = computed(() => parsePeriod(route.params.period as string))
 
@@ -14,51 +15,45 @@ const displayPeriod = computed(() => formatDate(parsedPeriod.value.toISOString()
   year: 'numeric',
 }))
 
-const previousDate = computed(() => parseDateTime(parsedPeriod.value).subtract({ months: 1 }))
-const previousPeriod = computed(() => formatPeriod(previousDate.value))
-const previousPeriodCaption = computed(() => formatDate(previousDate.value.toAbsoluteString(), {
-  month: 'long',
-  year: 'numeric',
-}))
+const { $localePath, $ts } = useI18n()
 
-const nextDate = computed(() => parseDateTime(parsedPeriod.value).add({ months: 1 }))
-const nextPeriod = computed(() => formatPeriod(nextDate.value))
-const nextPeriodCaption = computed(() => formatDate(nextDate.value.toAbsoluteString(), {
-  month: 'long',
-  year: 'numeric',
-}))
+const breadcrumbs = computed<BreadcrumbItem[]>(() => [
+  {
+    icon: 'mingcute:home-7-line',
+    to: $localePath('/'),
+  },
+  {
+    text: $ts('mainMenu.months'),
+    to: $localePath('/months'),
+  },
+  {
+    active: true,
+    text: displayPeriod.value,
+  },
+])
 </script>
 
 <template>
-  <UMain as="main">
-    <UContainer class="py-5">
-      <UCard>
-        <template #header>
-          {{ displayPeriod }}
-        </template>
+  <main class="flex flex-col gap-8">
+    <div>
+      <div
+        class="
+          border-(--c-outline-light)
+          max-lg:border-b max-lg:p-3
+          lg:mb-8
+        "
+      >
+        <UiBreadcrumb :items="breadcrumbs" />
+      </div>
 
-        <MonthTransactionsTable :data="state.data" />
+      <MonthTransactionsTable
+        :data="state.data"
+        :loading="isLoading"
+      />
+    </div>
 
-        <template #footer>
-          <div class="flex justify-between gap-5">
-            <UButton
-              :to="$localePath(`/months/${previousPeriod}`)"
-              icon="solar:arrow-left-linear"
-              variant="soft"
-            >
-              {{ previousPeriodCaption }}
-            </UButton>
-
-            <UButton
-              :to="$localePath(`/months/${nextPeriod}`)"
-              trailing-icon="solar:arrow-right-linear"
-              variant="soft"
-            >
-              {{ nextPeriodCaption }}
-            </UButton>
-          </div>
-        </template>
-      </UCard>
-    </UContainer>
-  </UMain>
+    <div class="max-lg:px-3">
+      <MonthTransactionsNav :current-date="parsedPeriod" />
+    </div>
+  </main>
 </template>

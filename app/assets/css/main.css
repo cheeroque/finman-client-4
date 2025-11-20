@@ -45,6 +45,14 @@
   --c-success-light-hover: var(--color-lime-200);
   --c-on-success-light: var(--color-lime-800);
 
+  --c-info: var(--color-sky-500);
+  --c-info-hover: var(--color-sky-600);
+  --c-on-info: var(--color-white);
+
+  --c-info-light: var(--color-sky-100);
+  --c-info-light-hover: var(--color-sky-200);
+  --c-on-info-light: var(--color-sky-800);
+
   --c-text: var(--color-neutral-900);
   --c-text-highlight: var(--color-violet-900);
   --c-text-muted: var(--color-neutral-500);
@@ -104,6 +112,14 @@
   --c-success-light: var(--color-lime-800);
   --c-success-light-hover: var(--color-lime-700);
   --c-on-success-light: var(--color-lime-200);
+
+  --c-info: var(--color-sky-500);
+  --c-info-hover: var(--color-sky-400);
+  --c-on-info: var(--color-sky-950);
+
+  --c-info-light: var(--color-sky-800);
+  --c-info-light-hover: var(--color-sky-700);
+  --c-on-info-light: var(--color-sky-200);
 
   --c-text: var(--color-violet-50);
   --c-text-highlight: var(--color-violet-200);

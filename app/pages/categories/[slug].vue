@@ -24,7 +24,6 @@ const breadcrumbs = computed(() => {
     items.push({
       active: true,
       text: state.value.data.category.name,
-      to: $localePath(`/categories/${state.value.data.category.slug}`),
     })
   }
 

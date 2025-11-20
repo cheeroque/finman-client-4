@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { twMerge, type ClassNameValue } from 'tailwind-merge'
 
-import type { Transaction } from '~~/shared/types/transaction'
 import { getEmptyArray } from '~~/shared/utils'
 
 defineProps<{
@@ -14,20 +13,9 @@ const modelValue = defineModel<{ month: number, year: number } | undefined>()
 
 const { $localePath } = useI18n()
 
-const { state } = useQuery<Transaction>({
-  key: ['transaction-first'],
-  query: () => useRequestFetch()('/api/transactions/first'),
-})
+const { formatPeriod } = useLocaleFormatter()
 
-const { formatPeriod, parseDateTime } = useLocaleFormatter()
-
-const now = new Date()
-
-const end = computed(() => parseDateTime(now))
-const start = computed(() => state.value.data?.created_at
-  ? parseDateTime(state.value.data.created_at)
-  : end.value
-)
+const { end, start } = useMonthSelector()
 
 const activeYear = ref(modelValue.value?.year ?? end.value.year)
 

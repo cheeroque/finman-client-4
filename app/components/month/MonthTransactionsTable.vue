@@ -47,6 +47,7 @@ const columns = computed(() => [
     header: $ts('columns.category'),
     meta: {
       class: {
+        td: 'max-2xl:w-40',
         th: 'w-[30%]',
       },
     },
@@ -63,16 +64,20 @@ const columns = computed(() => [
 ])
 
 function getRowClass(row: Row<MonthCategoryWithTransactions>) {
+  if (row.getIsExpanded()) {
+    return 'text-(--c-primary)'
+  }
+
   if (row.original.is_income) {
-    return 'text-green-700 bg-green-50'
+    return 'row-income max-2xl:bg-(--c-success-light)'
   }
 
   if (row.original.is_total) {
-    return 'text-red-700 bg-red-50'
+    return 'row-total-expense max-2xl:bg-(--c-error-light)'
   }
 
   if (row.original.is_month_total) {
-    return 'font-semibold text-blue-700 bg-blue-50'
+    return 'row-total-month font-semibold max-2xl:bg-(--c-info-light)'
   }
 
   return ''
@@ -84,6 +89,13 @@ function getRowClass(row: Row<MonthCategoryWithTransactions>) {
     :columns
     :data="tableData"
     table-class="table-fixed"
+    td-class="
+      group-[.row-income]/row:text-(--c-on-success-light) group-[.row-income]/row:bg-(--c-success-light)
+      group-[.row-total-expense]/row:text-(--c-on-error-light) group-[.row-total-expense]/row:bg-(--c-error-light)
+      group-[.row-total-month]/row:text-(--c-on-info-light) group-[.row-total-month]/row:bg-(--c-info-light)
+      max-2xl:p-3
+    "
+    thead-class="max-2xl:hidden"
     :tr-class="getRowClass"
   >
     <template #cell(category)="{ item }">
