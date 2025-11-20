@@ -1,50 +1,61 @@
 <script setup lang="ts">
-import type { CategoryWithTransactions } from '~~/shared/types/category'
+import type { BreadcrumbItem } from '~/components/_ui'
+import { useCategoryTransactionsQuery } from '~/composables/queries/category-transactions'
 
-const PER_PAGE = 18
+const { perPage, state, isLoading } = useCategoryTransactionsQuery()
 
-const route = useRoute()
+const paginationVisible = computed(() => Number(state.value.data?.total) > perPage.value)
 
-const page = useRouteQuery('page', '1', {
-  mode: 'push',
-  transform: Number,
-})
+const { $localePath, $ts } = useI18n()
 
-const { state } = useQuery<CategoryWithTransactions>({
-  key: () => [
-    'categories',
-    route.params.slug as string,
-    page.value,
-  ],
-
-  query: () => useRequestFetch()(`/api/categories/${route.params.slug}`, {
-    query: {
-      page: page.value,
-      perPage: PER_PAGE,
+const breadcrumbs = computed(() => {
+  const items: BreadcrumbItem[] = [
+    {
+      icon: 'mingcute:home-7-line',
+      to: $localePath('/'),
     },
-  }),
+    {
+      text: $ts('mainMenu.categories'),
+      to: $localePath('/categories'),
+    },
+  ]
 
-  placeholderData: (previousData) => previousData,
+  if (state.value.data?.category) {
+    items.push({
+      active: true,
+      text: state.value.data.category.name,
+      to: $localePath(`/categories/${state.value.data.category.slug}`),
+    })
+  }
+
+  return items
 })
 </script>
 
 <template>
-  <UMain as="main">
-    <UContainer class="py-5">
-      <UCard>
-        <template #header>
-          {{ state.data?.category.name }}
-        </template>
+  <main class="flex flex-col gap-8">
+    <div>
+      <div
+        class="
+          border-(--c-outline-light)
+          max-lg:border-b max-lg:p-3
+          lg:mb-8
+        "
+      >
+        <UiBreadcrumb :items="breadcrumbs" />
+      </div>
 
-        <CategoryTransactionsTable :data="state.data?.data" />
+      <CategoryTransactionsTable
+        :data="state.data?.data"
+        :loading="isLoading"
+      />
+    </div>
 
-        <template #footer>
-          <UiPagination
-            :items-per-page="PER_PAGE"
-            :total="state.data?.total"
-          />
-        </template>
-      </UCard>
-    </UContainer>
-  </UMain>
+    <UiPagination
+      v-if="paginationVisible"
+      :items-per-page="perPage"
+      :total="state.data?.total"
+      class="max-lg:mx-auto"
+    />
+  </main>
 </template>

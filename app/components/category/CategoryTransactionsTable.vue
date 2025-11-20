@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import type { Row } from '@tanstack/table-core'
+
 import type { CategoryWithTransactions } from '~~/shared/types/category'
 import type { Entries } from '~~/shared/types/util'
 
 const { data } = defineProps<{
+  loading?: boolean
   data?: CategoryWithTransactions['data']
 }>()
 
@@ -33,6 +36,7 @@ const columns = computed(() => [
     header: $ts('columns.period'),
     meta: {
       class: {
+        td: 'max-2xl:w-40',
         th: 'w-[30%]',
       },
     },
@@ -47,13 +51,25 @@ const columns = computed(() => [
     },
   },
 ])
+
+function getRowClass(row: Row<NonNullable<(typeof tableData.value)>[number]>) {
+  if (row.getIsExpanded()) {
+    return 'text-(--c-primary)'
+  }
+
+  return ''
+}
 </script>
 
 <template>
   <UiTable
     :columns
     :data="tableData"
+    :loading
     table-class="table-fixed"
+    td-class="max-2xl:p-3"
+    thead-class="max-2xl:hidden"
+    :tr-class="getRowClass"
   >
     <template #cell(subtotal)="{ item, toggleRowExpanded }">
       <UiButtonLink
