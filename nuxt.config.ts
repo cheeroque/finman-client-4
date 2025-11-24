@@ -1,10 +1,11 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
-    '@nuxt/ui',
     '@pinia/colada-nuxt',
     '@pinia/nuxt',
     '@regle/nuxt',
@@ -30,6 +31,10 @@ export default defineNuxtConfig({
     experimental: {
       asyncContext: true,
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 
   eslint: {

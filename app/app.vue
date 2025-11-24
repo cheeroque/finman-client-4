@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { en, ru } from '@nuxt/ui/locale'
+import { ConfigProvider } from 'reka-ui'
 
 useHead({
   bodyAttrs: {
@@ -7,10 +7,7 @@ useHead({
   },
 })
 
-const availableLocales = { en, ru }
 const { getLocale } = useI18n()
-
-const appLocale = computed(() => availableLocales[getLocale() as keyof typeof availableLocales])
 </script>
 
 <template>
@@ -22,10 +19,10 @@ const appLocale = computed(() => availableLocales[getLocale() as keyof typeof av
 
     <NuxtRouteAnnouncer />
 
-    <UApp :locale="appLocale">
+    <ConfigProvider :locale="getLocale()">
       <NuxtPage />
 
       <UiDialogProvider />
-    </UApp>
+    </ConfigProvider>
   </NuxtLayout>
 </template>
