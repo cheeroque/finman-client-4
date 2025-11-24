@@ -18,6 +18,8 @@ const appLocale = computed(() => availableLocales[getLocale() as keyof typeof av
 
     <UApp :locale="appLocale">
       <NuxtPage />
+
+      <UiDialogProvider />
     </UApp>
   </NuxtLayout>
 </template>
