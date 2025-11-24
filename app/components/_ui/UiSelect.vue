@@ -18,8 +18,12 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const { options = [] } = defineProps<{
+const {
+  options = [],
+  placeholder = '\xA0',
+} = defineProps<{
   disabled?: boolean
+  hasError?: boolean
   options?: SelectOption[]
   placeholder?: string
   required?: boolean
@@ -35,19 +39,22 @@ const modelValue = defineModel<T>()
     :required
   >
     <SelectTrigger
+      :data-invalid="hasError || undefined"
       :disabled
       class="
         group/trigger flex cursor-pointer gap-4 rounded-lg bg-(--c-content-bg)
         px-4 py-3 text-base outline outline-(--c-outline-light)
         transition-colors
         focus:outline-(--c-outline-primary)
+        data-disabled:bg-(--c-input-disabled-bg)
+        data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
       "
       v-bind="$attrs"
     >
       <SelectValue
         :placeholder
         class="
-          min-w-0 flex-auto truncate text-start
+          min-w-0 flex-auto truncate text-start text-(--c-text)
           group-data-placeholder/trigger:opacity-50
         "
       />
@@ -63,7 +70,7 @@ const modelValue = defineModel<T>()
         position="popper"
         :side-offset="4"
         class="
-          z-100 max-h-(--reka-select-content-available-height)
+          z-500 max-h-(--reka-select-content-available-height)
           w-(--reka-select-trigger-width) min-w-40 overflow-hidden rounded-xl
           border border-(--c-outline-light) bg-(--c-content-bg) py-1
           will-change-[opacity,transform]
