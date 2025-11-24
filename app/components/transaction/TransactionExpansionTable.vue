@@ -49,7 +49,15 @@ const columns = computed(() => [
     </template>
 
     <template #cell(sum)="{ item }">
-      {{ formatNumber(item.sum) }}
+      <TransactionDialogTrigger :transaction="item">
+        {{ formatNumber(item.sum) }}
+      </TransactionDialogTrigger>
+    </template>
+
+    <template #cell(note)="{ item }">
+      <TransactionDialogTrigger :transaction="item">
+        {{ item.note }}
+      </TransactionDialogTrigger>
     </template>
   </UiTable>
 </template>

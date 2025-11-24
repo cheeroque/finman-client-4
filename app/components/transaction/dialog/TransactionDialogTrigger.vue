@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { LazyTransactionDialog } from '#components'
-import type { Transaction } from '~~/shared/types/transaction'
+import type { TransactionBase } from '~~/shared/types/transaction'
 
 defineOptions({
   inheritAttrs: false,
 })
 
 defineProps<{
-  transaction?: Transaction
+  transaction?: TransactionBase
 }>()
 
 const { register } = useDialog()

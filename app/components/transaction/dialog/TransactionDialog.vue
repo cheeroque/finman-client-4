@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useTransactionDelete } from '~/composables/mutations/transaction-delete'
 import { useTransactionUpsert } from '~/composables/mutations/transaction-upsert'
-import type { Transaction, TransactionBase } from '~~/shared/types/transaction'
+import type { TransactionBase } from '~~/shared/types/transaction'
 
 const { transaction } = defineProps<{
-  transaction?: Transaction
+  transaction?: TransactionBase
 }>()
 
 const emit = defineEmits<{

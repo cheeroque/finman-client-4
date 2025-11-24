@@ -2,11 +2,11 @@
 import { minValue, required } from '@regle/rules'
 
 import { useCategoriesQuery } from '~/composables/queries/categories'
-import type { Transaction, TransactionBase } from '~~/shared/types/transaction'
+import type { TransactionBase } from '~~/shared/types/transaction'
 
 const { transaction } = defineProps<{
   loading?: boolean
-  transaction?: Transaction
+  transaction?: TransactionBase
 }>()
 
 const emit = defineEmits<{
@@ -32,7 +32,7 @@ whenever(() => transaction, () => {
 })
 
 whenever(categoryOptions, ([first]) => {
-  form.value.category_id = first?.value
+  form.value.category_id ??= first?.value
 })
 
 const { r$ } = useRegle(form, {
