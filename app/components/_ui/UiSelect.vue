@@ -54,7 +54,7 @@ const modelValue = defineModel<T>()
       <SelectValue
         :placeholder
         class="
-          min-w-0 flex-auto truncate text-start text-(--c-text)
+          min-w-0 flex-auto truncate text-start
           group-data-placeholder/trigger:opacity-50
         "
       />

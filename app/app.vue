@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { en, ru } from '@nuxt/ui/locale'
 
+useHead({
+  bodyAttrs: {
+    class: 'bg-(--c-app-bg) text-(--c-text)',
+  },
+})
+
 const availableLocales = { en, ru }
 const { getLocale } = useI18n()
 

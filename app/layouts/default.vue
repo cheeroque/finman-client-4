@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="
-      bg-(--c-app-bg) text-(--c-text)
-      lg:flex lg:h-dvh lg:gap-8 lg:p-3 lg:pl-8
-    "
-  >
+  <div class="lg:flex lg:h-dvh lg:gap-8 lg:p-3 lg:pl-8">
     <div
       class="
         flex min-h-0 flex-none basis-60 flex-col overflow-y-auto
