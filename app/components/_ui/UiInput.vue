@@ -39,12 +39,14 @@ defineExpose({ inputRef })
       data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
     "
   >
-    <span
-      v-if="icon"
-      class="flex items-center pl-2.5 text-2xl text-(--c-text-dimmed)"
-    >
-      <Icon :name="icon" />
-    </span>
+    <slot name="icon">
+      <span
+        v-if="icon"
+        class="flex items-center pl-2.5 text-2xl text-(--c-text-dimmed)"
+      >
+        <Icon :name="icon" />
+      </span>
+    </slot>
 
     <input
       :id
@@ -74,5 +76,7 @@ defineExpose({ inputRef })
     >
       <Icon name="mingcute:close-circle-fill" />
     </button>
+
+    <slot name="trailing-icon" />
   </div>
 </template>
