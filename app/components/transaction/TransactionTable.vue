@@ -60,7 +60,7 @@ const columns = computed(() => [
   },
 ])
 
-const { open: openTransactionModal } = useTransactionModal()
+const { open: openTransactionDialog } = useTransactionDialog()
 </script>
 
 <template>
@@ -91,7 +91,7 @@ const { open: openTransactionModal } = useTransactionModal()
           hover:text-(--c-primary)
           max-2xl:text-2xl max-2xl:text-(--c-primary)
         "
-        @click="openTransactionModal({ transaction: item })"
+        @click="openTransactionDialog({ transaction: item })"
       >
         {{ item.sum_formatted }}
       </UiButtonLink>
@@ -116,7 +116,7 @@ const { open: openTransactionModal } = useTransactionModal()
           transition-colors
           hover:text-(--c-primary)
         "
-        @click="openTransactionModal({ transaction: item })"
+        @click="openTransactionDialog({ transaction: item })"
       >
         <span class="flex-auto">
           {{ item.note }}

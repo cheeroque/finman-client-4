@@ -7,7 +7,7 @@ definePageMeta({
 
 const { page, state, isLoading } = useTransactionsQuery()
 
-const { open: openTransactionModal } = useTransactionModal()
+const { open: openTransactionDialog } = useTransactionDialog()
 
 const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
 </script>
@@ -17,7 +17,7 @@ const paginationVisible = computed(() => Number(state.value.data?.total) > Numbe
     <template #header>
       <LayoutCreateButton
         :caption="$ts('createTransaction')"
-        @click="openTransactionModal()"
+        @click="openTransactionDialog()"
       />
     </template>
 

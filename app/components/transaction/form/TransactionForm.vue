@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import * as z from 'zod'
+import { minValue, required } from '@regle/rules'
 
+import { useCategoriesQuery } from '~/composables/queries/categories'
 import type { Transaction, TransactionBase } from '~~/shared/types/transaction'
 
 const { transaction } = defineProps<{
@@ -8,33 +9,53 @@ const { transaction } = defineProps<{
   transaction?: Transaction
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   submit: [Partial<TransactionBase>]
 }>()
 
 const { $ts } = useI18n()
 
-const schema = z.object({
-  sum: z.number($ts('transactionModal.form.sum.error.invalid')).min(0, $ts('transactionModal.form.sum.error.min')),
-  note: z.string($ts('transactionModal.form.note.error.invalid')).min(1, $ts('transactionModal.form.note.error.invalid')),
-  category_id: z.number($ts('transactionModal.form.category.error.invalid')),
-  created_at: z.iso.datetime($ts('transactionModal.form.created_at.error.invalid')),
-  is_marked: z.boolean(),
-})
+const {
+  state: categories,
+  isLoading: categoriesLoading,
+} = useCategoriesQuery()
 
-type Schema = z.output<typeof schema>
+const categoryOptions = computed(() => categories.value.data?.map(({ id, name }) => ({
+  label: name,
+  value: id,
+})))
 
-const state = ref<Partial<Schema>>(initForm())
+const form = ref(initForm())
 
 whenever(() => transaction, () => {
-  state.value = initForm()
+  form.value = initForm()
+})
+
+whenever(categoryOptions, ([first]) => {
+  form.value.category_id = first?.value
+})
+
+const { r$ } = useRegle(form, {
+  sum: {
+    required,
+    minValue: minValue(0),
+  },
+  note: {
+    required,
+  },
+  category_id: {
+    required,
+  },
+  created_at: {
+    required,
+  },
 })
 
 function initForm() {
-  const emptyForm: Partial<Schema> = {
+  const emptyForm = {
     sum: 0,
     note: undefined,
-    category_id: undefined,
+    category_id: categoryOptions.value?.[0]?.value,
     created_at: new Date().toISOString(),
     is_marked: false,
   }
@@ -47,61 +68,87 @@ function initForm() {
 
   return Object.assign(emptyForm, { id, sum, note, category_id, created_at, is_marked })
 }
+
+async function handleSubmit() {
+  const { data, valid } = await r$.$validate()
+
+  if (!valid) {
+    return
+  }
+
+  emit('submit', data)
+}
 </script>
 
 <template>
-  <UForm
-    v-bind="{ schema, state }"
+  <form
     :disabled="loading"
-    class="flex flex-col gap-4"
-    @submit="$emit('submit', $event.data)"
+    class="
+      flex flex-col gap-4
+      lg:gap-6
+    "
+    @submit.prevent="handleSubmit()"
   >
-    <UFormField
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.category_id"
       :label="$ts('transactionModal.form.category.label')"
-      name="category"
     >
-      <TransactionFormCategorySelect
-        v-model="state.category_id"
-        class="w-full"
+      <UiSelect
+        :id="controlId"
+        v-model="form.category_id"
+        :disabled="loading || categoriesLoading"
+        :has-error
+        :options="categoryOptions"
       />
-    </UFormField>
+    </UiFormField>
 
-    <UFormField
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.sum"
       :label="$ts('transactionModal.form.sum.label')"
-      name="sum"
     >
       <TransactionFormSumInput
-        v-model="state.sum"
-        class="w-full"
-      />
-    </UFormField>
-
-    <UFormField
-      :label="$ts('transactionModal.form.note.label')"
-      name="note"
-    >
-      <UInput
-        v-model="state.note"
-        :placeholder="$ts('transactionModal.form.note.placeholder')"
-        class="w-full"
-      />
-    </UFormField>
-
-    <UFormField
-      :label="$ts('transactionModal.form.created_at.label')"
-      name="created_at"
-    >
-      <SharedDateTimePicker
-        v-model="state.created_at"
+        :id="controlId"
+        v-model="form.sum"
         :disabled="loading"
-        :placeholder="$ts('transactionModal.form.created_at.placeholder')"
-        class="w-full"
+        :has-error
       />
-    </UFormField>
+    </UiFormField>
 
-    <UCheckbox
-      v-model="state.is_marked"
-      :label="$ts('transactionModal.form.marked.label')"
-    />
-  </UForm>
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.note"
+      :label="$ts('transactionModal.form.note.label')"
+    >
+      <UiInput
+        :id="controlId"
+        v-model="form.note"
+        :disabled="loading"
+        :has-error
+        :placeholder="$ts('transactionModal.form.note.placeholder')"
+      />
+    </UiFormField>
+
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.created_at"
+      :label="$ts('transactionModal.form.created_at.label')"
+    >
+      <UiDateTimePicker
+        :id="controlId"
+        v-model="form.created_at"
+        :disabled="loading"
+        :has-error
+        :placeholder="$ts('transactionModal.form.created_at.placeholder')"
+      />
+    </UiFormField>
+
+    <UiCheckbox
+      v-model="form.is_marked"
+      class="self-start"
+    >
+      {{ $ts('transactionModal.form.marked.label') }}
+    </UiCheckbox>
+  </form>
 </template>

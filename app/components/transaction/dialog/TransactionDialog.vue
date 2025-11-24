@@ -44,47 +44,26 @@ async function deleteTransaction() {
 </script>
 
 <template>
-  <UModal :title>
-    <template #body>
+  <UiDialog :title>
+    <div
+      class="
+        flex flex-col gap-4
+        lg:gap-6
+      "
+    >
       <TransactionForm
         :id="formId"
         :loading="isLoading || isDeleting"
         :transaction
         @submit="handleSubmitForm"
       />
-    </template>
 
-    <template #footer>
-      <div class="flex w-full gap-4">
-        <template v-if="isEdit">
-          <UButton
-            :disabled="isLoading || isDeleting"
-            color="error"
-            variant="soft"
-            class="mr-auto"
-            @click="deleteTransaction"
-          >
-            {{ $ts('transactionModal.edit.delete') }}
-          </UButton>
-
-          <UButton
-            :disabled="isLoading || isDeleting"
-            :form="formId"
-            type="submit"
-          >
-            {{ $ts('transactionModal.edit.submit') }}
-          </UButton>
-        </template>
-
-        <UButton
-          v-else
-          :disabled="isLoading || isDeleting"
-          :form="formId"
-          type="submit"
-        >
-          {{ $ts('transactionModal.create.submit') }}
-        </UButton>
-      </div>
-    </template>
-  </UModal>
+      <TransactionDialogFooter
+        :disabled="isLoading || isDeleting"
+        :form-id
+        :is-edit
+        @click-delete="deleteTransaction()"
+      />
+    </div>
+  </UiDialog>
 </template>

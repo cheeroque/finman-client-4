@@ -116,9 +116,6 @@
     },
     "form": {
       "category": {
-        "error": {
-          "invalid": "Category required"
-        },
         "label": "Category",
         "placeholder": "Select category"
       },
@@ -152,6 +149,7 @@
   "validation": {
     "email": "Enter valid email",
     "minLength": "Should be at least {length} characters long",
+    "minValue": "Cannot be less than {min}",
     "required": "Field is required"
   }
 }

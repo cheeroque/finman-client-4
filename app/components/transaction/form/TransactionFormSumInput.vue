@@ -1,4 +1,9 @@
 <script setup lang="ts">
+defineProps<{
+  disabled?: boolean
+  hasError?: boolean
+}>()
+
 const modelValue = defineModel<number>()
 
 const isSubmittable = ref(false)
@@ -9,10 +14,6 @@ function handleBlur(event: FocusEvent) {
   }
 
   calculate(event.target)
-}
-
-function handleChange() {
-  isSubmittable.value = false
 }
 
 // Move caret to the end on input focus
@@ -41,6 +42,10 @@ function handleKeydown(event: KeyboardEvent) {
     && (event.key.length === 1 && !event.ctrlKey && !event.altKey && !event.metaKey) // Single letter & with no modifier
   ) {
     event.preventDefault()
+  }
+
+  if (event.key !== 'Enter') {
+    isSubmittable.value = false
   }
 
   // First time Enter pressed inside textfield, prevent default (form submit)
@@ -83,12 +88,13 @@ function updateValue(newValue: number) {
 </script>
 
 <template>
-  <UInput
+  <UiInput
     ref="inputRef"
+    :disabled
+    :has-error
     :model-value
     :placeholder="$ts('transactionModal.form.sum.placeholder')"
     @blur="handleBlur"
-    @change="handleChange"
     @focus="handleFocus"
     @keydown="handleKeydown"
   />
