@@ -59,8 +59,6 @@ const columns = computed(() => [
     },
   },
 ])
-
-const { open: openTransactionDialog } = useTransactionDialog()
 </script>
 
 <template>
@@ -85,16 +83,16 @@ const { open: openTransactionDialog } = useTransactionDialog()
     </template>
 
     <template #cell(sum)="{ item }">
-      <UiButtonBase
+      <TransactionDialogTrigger
+        :transaction="item"
         class="
           text-xl leading-6 font-medium transition-colors
           hover:text-(--c-primary)
           max-2xl:text-2xl max-2xl:text-(--c-primary)
         "
-        @click="openTransactionDialog({ transaction: item })"
       >
         {{ item.sum_formatted }}
-      </UiButtonBase>
+      </TransactionDialogTrigger>
     </template>
 
     <template #cell(category_id)="{ item }">
@@ -110,13 +108,13 @@ const { open: openTransactionDialog } = useTransactionDialog()
     </template>
 
     <template #cell(note)="{ item }">
-      <UiButtonBase
+      <TransactionDialogTrigger
+        :transaction="item"
         class="
           group/button flex w-full items-center gap-4 text-start
           transition-colors
           hover:text-(--c-primary)
         "
-        @click="openTransactionDialog({ transaction: item })"
       >
         <span class="flex-auto">
           {{ item.note }}
@@ -129,7 +127,7 @@ const { open: openTransactionDialog } = useTransactionDialog()
             group-hover/button:opacity-50
           "
         />
-      </UiButtonBase>
+      </TransactionDialogTrigger>
     </template>
   </UiTable>
 </template>

@@ -7,18 +7,20 @@ definePageMeta({
 
 const { page, state, isLoading } = useTransactionsQuery()
 
-const { open: openTransactionDialog } = useTransactionDialog()
-
 const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
 </script>
 
 <template>
   <NuxtLayout name="default">
     <template #header>
-      <LayoutCreateButton
-        :caption="$ts('createTransaction')"
-        @click="openTransactionDialog()"
-      />
+      <TransactionDialogTrigger>
+        <template #wrapper="{ open }">
+          <LayoutCreateButton
+            :caption="$ts('createTransaction')"
+            @click="open()"
+          />
+        </template>
+      </TransactionDialogTrigger>
     </template>
 
     <main class="flex flex-col gap-8">
