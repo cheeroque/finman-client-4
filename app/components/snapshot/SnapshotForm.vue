@@ -77,7 +77,7 @@ whenever(() => queryState.value.data?.balance, (latestBalance) => {
       :label="$ts('snapshotModal.form.created_at.label')"
       name="created_at"
     >
-      <SharedDateTimePicker
+      <UiDateTimePicker
         v-model="state.created_at"
         :disabled="loading"
         :placeholder="$ts('snapshotModal.form.created_at.placeholder')"
