@@ -69,13 +69,13 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <UForm
+  <form
     :disabled="loading"
     class="
       flex flex-col gap-4
       lg:gap-6
     "
-    @submit="handleSubmit()"
+    @submit.prevent="handleSubmit()"
   >
     <UiFormField
       v-slot="{ controlId, hasError }"
@@ -129,5 +129,5 @@ async function handleSubmit() {
     >
       {{ $ts('categoryModal.form.is_income.label') }}
     </UiCheckbox>
-  </UForm>
+  </form>
 </template>
