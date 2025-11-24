@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { LazyCategoryDialog } from '#components'
 import { useCategoriesQuery } from '~/composables/queries/categories'
 
 definePageMeta({
@@ -7,7 +8,8 @@ definePageMeta({
 
 const { state } = useCategoriesQuery()
 
-const { open: openCategoryModal } = useCategoryModal()
+const { register } = useDialog()
+const { open: openCategoryModal } = register(LazyCategoryDialog)
 </script>
 
 <template>

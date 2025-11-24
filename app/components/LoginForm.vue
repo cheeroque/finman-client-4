@@ -3,8 +3,6 @@ import type { RegleExternalErrorTree } from '@regle/core'
 import { email, minLength, required } from '@regle/rules'
 import { FetchError } from 'ofetch'
 
-import { useRegle } from '#imports'
-
 const { $localePath, $ts } = useI18n()
 
 const form = ref({

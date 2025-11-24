@@ -18,8 +18,7 @@
     "form": {
       "color": {
         "error": {
-          "invalid": "Enter valid hex color",
-          "required": "Choose color"
+          "invalid": "Enter valid hex color"
         },
         "label": "Color",
         "placeholder": "#"
@@ -36,8 +35,7 @@
       },
       "slug": {
         "error": {
-          "invalid": "Only use latin letters, numbers, hypens and underscores",
-          "required": "Slug is required"
+          "invalid": "Only use latin letters, numbers, hypens and underscores"
         },
         "label": "Slug",
         "placeholder": "Enter slug"
@@ -120,9 +118,6 @@
         "placeholder": "Select category"
       },
       "created_at": {
-        "error": {
-          "invalid": "Invalid datetime"
-        },
         "label": "Datetime",
         "placeholder": "Select datetime"
       },
@@ -130,17 +125,10 @@
         "label": "Is marked"
       },
       "note": {
-        "error": {
-          "invalid": "Note is required"
-        },
         "label": "Note",
         "placeholder": "Enter note"
       },
       "sum": {
-        "error": {
-          "invalid": "Invalid sum",
-          "min": "Sum cannot be less than zero"
-        },
         "label": "Sum",
         "placeholder": "0"
       }

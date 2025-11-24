@@ -1,41 +1,47 @@
 <script setup lang="ts">
-import * as z from 'zod'
+import { regex, required, withMessage } from '@regle/rules'
 
 import type { Category } from '~~/shared/types/category'
 
 const { category } = defineProps<{
-  loading?: boolean
   category?: Category
+  loading?: boolean
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   submit: [Partial<Category>]
 }>()
 
 const { $ts } = useI18n()
 
-const schema = z.object({
-  name: z.string($ts('categoryModal.form.name.error.invalid'))
-    .min(1, $ts('categoryModal.form.name.error.invalid')),
-  slug: z.string($ts('categoryModal.form.slug.error.required'))
-    .min(1, $ts('categoryModal.form.slug.error.required'))
-    .regex(/^[a-z0-9_-]+$/, $ts('categoryModal.form.slug.error.invalid')),
-  color: z.string($ts('categoryModal.form.color.error.required'))
-    .min(1, $ts('categoryModal.form.color.error.required'))
-    .regex(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i, $ts('categoryModal.form.color.error.invalid')),
-  is_income: z.boolean(),
-})
-
-type Schema = z.output<typeof schema>
-
-const state = ref<Partial<Schema>>(initForm())
+const form = ref(initForm())
 
 whenever(() => category, () => {
-  state.value = initForm()
+  form.value = initForm()
+})
+
+const { r$ } = useRegle(form, {
+  name: {
+    required,
+  },
+  slug: {
+    required,
+    valid: withMessage(
+      regex(/^[a-z0-9_-]+$/),
+      $ts('categoryModal.form.slug.error.invalid')
+    ),
+  },
+  color: {
+    required,
+    valid: withMessage(
+      regex(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i),
+      $ts('categoryModal.form.color.error.invalid')
+    ),
+  },
 })
 
 function initForm() {
-  const emptyForm: Partial<Schema> = {
+  const emptyForm = {
     name: undefined,
     slug: undefined,
     color: undefined,
@@ -50,55 +56,78 @@ function initForm() {
 
   return Object.assign(emptyForm, { name, slug, color, is_income })
 }
+
+async function handleSubmit() {
+  const { data, valid } = await r$.$validate()
+
+  if (!valid) {
+    return
+  }
+
+  emit('submit', data)
+}
 </script>
 
 <template>
   <UForm
-    v-bind="{ schema, state }"
     :disabled="loading"
-    class="flex flex-col gap-4"
-    @submit="$emit('submit', $event.data)"
+    class="
+      flex flex-col gap-4
+      lg:gap-6
+    "
+    @submit="handleSubmit()"
   >
-    <UFormField
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.name"
       :label="$ts('categoryModal.form.name.label')"
-      name="name"
     >
-      <UInput
-        v-model="state.name"
+      <UiInput
+        :id="controlId"
+        v-model="form.name"
+        :disabled="loading"
+        :has-error
         :placeholder="$ts('categoryModal.form.name.placeholder')"
-        class="w-full"
       />
-    </UFormField>
+    </UiFormField>
 
-    <UFormField
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.slug"
       :label="$ts('categoryModal.form.slug.label')"
-      name="slug"
     >
-      <UInput
-        v-model="state.slug"
+      <UiInput
+        :id="controlId"
+        v-model="form.slug"
+        :disabled="loading"
+        :has-error
         :placeholder="$ts('categoryModal.form.slug.placeholder')"
-        class="w-full"
       />
-    </UFormField>
+    </UiFormField>
 
-    <UFormField
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.color"
       :label="$ts('categoryModal.form.color.label')"
-      name="color"
     >
-      <UInput
-        v-model="state.color"
+      <UiInput
+        :id="controlId"
+        v-model="form.color"
+        :disabled="loading"
+        :has-error
         :placeholder="$ts('categoryModal.form.color.placeholder')"
-        class="w-full"
       >
-        <template #trailing>
-          <SharedColorPicker v-model="state.color" />
+        <template #trailing-icon>
+          <UiColorPicker v-model="form.color" />
         </template>
-      </UInput>
-    </UFormField>
+      </UiInput>
+    </UiFormField>
 
-    <UCheckbox
-      v-model="state.is_income"
-      :label="$ts('categoryModal.form.is_income.label')"
-    />
+    <UiCheckbox
+      v-model="form.is_income"
+      class="self-start"
+    >
+      {{ $ts('categoryModal.form.is_income.label') }}
+    </UiCheckbox>
   </UForm>
 </template>

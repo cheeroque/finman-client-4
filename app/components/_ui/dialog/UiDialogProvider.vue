@@ -9,5 +9,6 @@ const { dialogs } = useDialog()
     :key="dialog.id"
     v-model:open="dialog.isOpen"
     v-bind="dialog.props"
+    @close="dialog.isOpen = false"
   />
 </template>
