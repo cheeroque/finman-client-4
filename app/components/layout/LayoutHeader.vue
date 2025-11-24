@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useBalanceQuery } from '~/composables/queries/balance'
 
+const { $localePath } = useI18n()
+
 const { state } = useBalanceQuery()
 
 const { formatNumber } = useLocaleFormatter()
@@ -17,15 +19,23 @@ const title = computed(() => formatNumber(state.value.data ?? 0))
     "
   >
     <div class="flex-auto">
-      <h1
+      <NuxtLink
+        :to="$localePath('/')"
         class="
-          text-3xl font-medium
-          max-lg:text-center
-          lg:text-5xl
+          inline-flex transition-colors
+          hover:text-(--c-primary)
         "
       >
-        {{ title }}
-      </h1>
+        <h1
+          class="
+            text-3xl font-medium
+            max-lg:text-center
+            lg:text-5xl
+          "
+        >
+          {{ title }}
+        </h1>
+      </NuxtLink>
     </div>
 
     <div class="flex-none">
