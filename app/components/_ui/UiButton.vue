@@ -17,10 +17,11 @@ const {
   loading?: boolean
   trailingIcon?: string
   type?: string
-  variant?: 'danger' | 'danger-light' | 'primary' | 'primary-light' | 'success' | 'success-light'
+  variant?: 'content' | 'danger' | 'danger-light' | 'primary' | 'primary-light' | 'success' | 'success-light'
 }>()
 
 const VARIANT_CLASSES = {
+  content: 'bg-(--c-content-bg) outline outline-(--c-outline-light) text-(--c-text) not-data-disabled:hover:bg-(--c-content-hover-bg)',
   danger: 'bg-(--c-error) text-(--c-on-error) not-data-disabled:hover:bg-(--c-error-hover)',
   'danger-light': 'bg-(--c-error-light) text-(--c-on-error-light) not-data-disabled:hover:bg-(--c-error-light-hover)',
   primary: 'bg-(--c-primary) text-(--c-on-primary) not-data-disabled:hover:bg-(--c-primary-hover)',
@@ -45,7 +46,7 @@ const VARIANT_CLASSES = {
   >
     <span
       class="
-        flex items-center justify-center gap-2
+        flex flex-auto items-center justify-center gap-2
         group-data-loading/button:opacity-0
       "
     >

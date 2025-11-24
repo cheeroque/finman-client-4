@@ -63,6 +63,7 @@
   --c-app-hover-bg: var(--color-violet-100);
 
   --c-content-bg: var(--color-white);
+  --c-content-hover-bg: var(--color-neutral-100);
 
   --c-surface-bg: var(--color-violet-50);
 
@@ -131,6 +132,7 @@
   --c-app-hover-bg: var(--color-violet-900);
 
   --c-content-bg: var(--color-violet-990);
+  --c-content-hover-bg: var(--color-violet-950);
 
   --c-surface-bg: var(--color-violet-950);
 
