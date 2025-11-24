@@ -19,26 +19,33 @@ async function handleSubmitForm(data: Partial<Snapshot>) {
 </script>
 
 <template>
-  <UModal :title="$ts('snapshotModal.title')">
-    <template #body>
+  <UiDialog :title="$ts('snapshotModal.title')">
+    <div
+      class="
+        flex flex-col gap-4
+        lg:gap-6
+      "
+    >
       <SnapshotForm
         :id="formId"
         :loading="isLoading"
         @submit="handleSubmitForm"
       />
-    </template>
 
-    <template #footer>
       <div class="flex w-full gap-4">
-        <UButton
+        <UiButton
           :disabled="isLoading"
           :form="formId"
           type="submit"
-          class="ml-auto"
+          variant="success"
+          class="
+            max-lg:flex-1
+            lg:ml-auto
+          "
         >
           {{ $ts('snapshotModal.submit') }}
-        </UButton>
+        </UiButton>
       </div>
-    </template>
-  </UModal>
+    </div>
+  </UiDialog>
 </template>

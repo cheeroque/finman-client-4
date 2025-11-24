@@ -74,16 +74,10 @@
   "snapshotModal": {
     "form": {
       "balance": {
-        "error": {
-          "invalid": "Введите текущий баланс"
-        },
         "label": "Текущий баланс",
         "placeholder": "0"
       },
       "created_at": {
-        "error": {
-          "invalid": "Выберите дату и время"
-        },
         "label": "Дата и время",
         "placeholder": "Выберите дату и время"
       },

@@ -74,16 +74,10 @@
   "snapshotModal": {
     "form": {
       "balance": {
-        "error": {
-          "invalid": "Current balance is required"
-        },
         "label": "Current balance",
         "placeholder": "0"
       },
       "created_at": {
-        "error": {
-          "invalid": "Invalid datetime"
-        },
         "label": "Datetime",
         "placeholder": "Select datetime"
       },

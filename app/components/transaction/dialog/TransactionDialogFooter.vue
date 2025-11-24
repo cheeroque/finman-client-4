@@ -39,7 +39,10 @@ defineEmits<{
       :form="formId"
       type="submit"
       variant="success"
-      class="max-lg:flex-1"
+      class="
+        max-lg:flex-1
+        lg:ml-auto
+      "
     >
       {{ $ts('transactionModal.create.submit') }}
     </UiButton>

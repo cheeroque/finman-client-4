@@ -1,28 +1,15 @@
 <script setup lang="ts">
-import type { Snapshot } from '~~/shared/types/snapshot'
+import { LazySnapshotDialog } from '#components'
+import { useSnapshotsQuery } from '~/composables/queries/snapshots'
 
 definePageMeta({
   layout: false,
 })
 
-const page = useRouteQuery('page', '1', {
-  mode: 'push',
-  transform: Number,
-})
+const { state, isLoading } = useSnapshotsQuery()
 
-const { state, isLoading } = useQuery<PaginatedResponse<Snapshot>>({
-  key: () => ['snapshots', page.value],
-
-  query: () => useRequestFetch()('/api/snapshots', {
-    query: {
-      page: page.value,
-    },
-  }),
-
-  placeholderData: (previousData) => previousData,
-})
-
-const { open: openSnapshotModal } = useSnapshotModal()
+const { register } = useDialog()
+const { open: openSnapshotModal } = register(LazySnapshotDialog)
 
 const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
 </script>
