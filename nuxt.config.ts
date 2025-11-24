@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
+    '@nuxtjs/color-mode',
     '@pinia/colada-nuxt',
     '@pinia/nuxt',
     '@regle/nuxt',
