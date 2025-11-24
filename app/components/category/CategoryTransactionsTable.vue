@@ -72,7 +72,7 @@ function getRowClass(row: Row<NonNullable<(typeof tableData.value)>[number]>) {
     :tr-class="getRowClass"
   >
     <template #cell(subtotal)="{ item, toggleRowExpanded }">
-      <UiButtonLink
+      <UiButtonBase
         class="
           font-semibold
           hover:underline
@@ -80,7 +80,7 @@ function getRowClass(row: Row<NonNullable<(typeof tableData.value)>[number]>) {
         @click="toggleRowExpanded()"
       >
         {{ formatNumber(item.subtotal) }}
-      </UiButtonLink>
+      </UiButtonBase>
     </template>
 
     <template #row-expanded="{ row }">

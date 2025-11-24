@@ -85,7 +85,7 @@ const { open: openTransactionDialog } = useTransactionDialog()
     </template>
 
     <template #cell(sum)="{ item }">
-      <UiButtonLink
+      <UiButtonBase
         class="
           text-xl leading-6 font-medium transition-colors
           hover:text-(--c-primary)
@@ -94,7 +94,7 @@ const { open: openTransactionDialog } = useTransactionDialog()
         @click="openTransactionDialog({ transaction: item })"
       >
         {{ item.sum_formatted }}
-      </UiButtonLink>
+      </UiButtonBase>
     </template>
 
     <template #cell(category_id)="{ item }">
@@ -110,7 +110,7 @@ const { open: openTransactionDialog } = useTransactionDialog()
     </template>
 
     <template #cell(note)="{ item }">
-      <UiButtonLink
+      <UiButtonBase
         class="
           group/button flex w-full items-center gap-4 text-start
           transition-colors
@@ -129,7 +129,7 @@ const { open: openTransactionDialog } = useTransactionDialog()
             group-hover/button:opacity-50
           "
         />
-      </UiButtonLink>
+      </UiButtonBase>
     </template>
   </UiTable>
 </template>

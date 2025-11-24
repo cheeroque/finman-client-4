@@ -32,7 +32,7 @@ const VARIANT_CLASSES = {
 </script>
 
 <template>
-  <UiButtonLink
+  <UiButtonBase
     :active-class
     :data-loading="loading || undefined"
     :disabled="disabled || loading"
@@ -85,5 +85,5 @@ const VARIANT_CLASSES = {
         class="text-2xl"
       />
     </span>
-  </UiButtonLink>
+  </UiButtonBase>
 </template>

@@ -74,7 +74,7 @@ const modelValue = defineModel<boolean>()
                 lg:top-8 lg:right-8
               "
             >
-              <UiButtonLink
+              <UiButtonBase
                 class="
                   text-(--c-text-dimmed)
                   hover:text-(--c-text-muted)
@@ -84,7 +84,7 @@ const modelValue = defineModel<boolean>()
                   name="mingcute:close-circle-fill"
                   class="text-2xl"
                 />
-              </UiButtonLink>
+              </UiButtonBase>
             </DialogClose>
           </div>
         </DialogContent>

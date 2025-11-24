@@ -18,7 +18,7 @@ function handleClick() {
 </script>
 
 <template>
-  <UiButtonLink
+  <UiButtonBase
     exact-active-class="bg-(--c-app-active-bg) text-(--c-text-highlight)"
     :to
     class="
@@ -44,5 +44,5 @@ function handleClick() {
         ({{ labelSecondary }})
       </span>
     </span>
-  </UiButtonLink>
+  </UiButtonBase>
 </template>

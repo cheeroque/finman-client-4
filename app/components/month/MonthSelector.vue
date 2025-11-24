@@ -86,7 +86,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         headerClass,
       )"
     >
-      <UiButtonLink
+      <UiButtonBase
         :disabled="isStart"
         class="flex flex-none text-(--c-app-active-bg)"
         @click="shiftYear(-1)"
@@ -95,13 +95,13 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
           name="mingcute:arrow-left-line"
           class="text-2xl"
         />
-      </UiButtonLink>
+      </UiButtonBase>
 
       <span class="flex-auto text-center">
         {{ activeYear }}
       </span>
 
-      <UiButtonLink
+      <UiButtonBase
         :disabled="isEnd"
         class="flex flex-none text-(--c-app-active-bg)"
         @click="shiftYear(+1)"
@@ -110,7 +110,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
           name="mingcute:arrow-right-line"
           class="text-2xl"
         />
-      </UiButtonLink>
+      </UiButtonBase>
     </div>
 
     <div class="overflow-hidden">
@@ -132,7 +132,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
             :key="`${year.year}-${month}`"
             class="flex"
           >
-            <UiButtonLink
+            <UiButtonBase
               :data-active="isMonthActive(month) || undefined"
               :disabled="month.disabled"
               :to="$localePath(`/months/${formatPeriod(month)}`)"
@@ -151,7 +151,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
               "
             >
               {{ month.month }}
-            </UiButtonLink>
+            </UiButtonBase>
           </div>
         </div>
       </div>

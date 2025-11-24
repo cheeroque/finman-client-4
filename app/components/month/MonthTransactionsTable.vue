@@ -103,7 +103,7 @@ function getRowClass(row: Row<MonthCategoryWithTransactions>) {
     </template>
 
     <template #cell(subtotal)="{ item, toggleRowExpanded }">
-      <UiButtonLink
+      <UiButtonBase
         v-if="item.transactions.length"
         class="
           font-semibold
@@ -112,7 +112,7 @@ function getRowClass(row: Row<MonthCategoryWithTransactions>) {
         @click="toggleRowExpanded()"
       >
         {{ formatNumber(item.subtotal) }}
-      </UiButtonLink>
+      </UiButtonBase>
 
       <span
         v-else

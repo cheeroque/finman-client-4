@@ -9,7 +9,7 @@ const { to } = defineProps<{
 </script>
 
 <template>
-  <UiButtonLink
+  <UiButtonBase
     :to
     class="
       flex w-15 cursor-pointer flex-col items-center gap-0.5 text-center text-xs
@@ -28,5 +28,5 @@ const { to } = defineProps<{
     </span>
 
     <slot />
-  </UiButtonLink>
+  </UiButtonBase>
 </template>

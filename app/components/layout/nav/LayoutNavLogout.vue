@@ -7,7 +7,7 @@ async function logout() {
 </script>
 
 <template>
-  <UiButtonLink
+  <UiButtonBase
     class="
       flex w-full items-center justify-start gap-6 rounded-xl
       bg-(--c-app-hover-bg) px-6 py-5 text-start text-lg font-medium
@@ -26,5 +26,5 @@ async function logout() {
         class="text-2xl"
       />
     </span>
-  </UiButtonLink>
+  </UiButtonBase>
 </template>

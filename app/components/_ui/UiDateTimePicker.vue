@@ -98,7 +98,7 @@ function setNow() {
       <UiCalendar v-model="dateValue" />
 
       <div class="flex items-center border-t border-(--c-outline-light) p-2">
-        <UiButtonLink
+        <UiButtonBase
           class="
             flex rounded-md bg-(--c-app-bg) p-1 text-(--c-text-highlight)
             hover:bg-(--c-app-hover-bg)
@@ -109,14 +109,14 @@ function setNow() {
             name="mingcute:time-line"
             class="text-xl"
           />
-        </UiButtonLink>
+        </UiButtonBase>
 
         <UiTimeField
           v-model="timeValue"
           class="flex-auto justify-center"
         />
 
-        <UiButtonLink
+        <UiButtonBase
           class="
             flex rounded-md bg-(--c-success-light) p-1
             text-(--c-on-success-light)
@@ -128,7 +128,7 @@ function setNow() {
             name="mingcute:check-line"
             class="text-xl"
           />
-        </UiButtonLink>
+        </UiButtonBase>
       </div>
     </div>
   </UiPopover>
