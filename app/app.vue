@@ -22,7 +22,9 @@ const { getLocale } = useI18n()
     <ConfigProvider :locale="getLocale()">
       <NuxtPage />
 
-      <UiDialogProvider />
+      <ClientOnly>
+        <UiDialogProvider />
+      </ClientOnly>
     </ConfigProvider>
   </NuxtLayout>
 </template>
