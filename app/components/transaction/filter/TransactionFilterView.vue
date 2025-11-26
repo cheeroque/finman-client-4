@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useTransactionsQuery } from '~/composables/queries/transactions'
-
 const { $ts } = useI18n()
 
-const { view } = useTransactionsQuery()
+const { view } = useTransactionsQueryParams()
 
 const viewModel = computed({
   get: () => view.value ?? 'all',
