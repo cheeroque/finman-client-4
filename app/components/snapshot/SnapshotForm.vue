@@ -2,8 +2,6 @@
 import { required } from '@regle/rules'
 
 import type { Snapshot } from '~~/shared/types/snapshot'
-import { useBalanceQuery } from '~/composables/queries/balance'
-import { useSnapshotsLatestQuery } from '~/composables/queries/snapshots-latest'
 
 defineProps<{
   loading?: boolean
@@ -15,11 +13,12 @@ const emit = defineEmits<{
 
 const { $ts } = useI18n()
 
-const { state: balanceState, isLoading: balanceLoading } = useBalanceQuery()
+const { data: balance, status: balanceStatus } = useBalance()
+const balanceLoading = useAsyncDataLoading(balanceStatus)
 
 const form = ref(initForm())
 
-whenever(() => balanceState.value.data, (balance) => {
+whenever(balance, (balance) => {
   form.value.balance = balance
 })
 
@@ -34,16 +33,16 @@ const { r$ } = useRegle(form, {
 
 function initForm() {
   return {
-    balance: balanceState.value.data ?? 0,
+    balance: balance.value ?? 0,
     note: undefined,
     created_at: new Date().toISOString(),
   }
 }
 
 const previousBalance = ref(0)
-const { state: queryState } = useSnapshotsLatestQuery()
+const { data: latestSnapshot } = useLatestSnapshot()
 
-whenever(() => queryState.value.data?.balance, (latestBalance) => {
+whenever(() => latestSnapshot.value?.balance, (latestBalance) => {
   previousBalance.value = latestBalance
 }, { immediate: true })
 

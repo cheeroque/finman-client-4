@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { LayoutNavItem } from '~/components/layout'
-import { useSnapshotsLatestQuery } from '~/composables/queries/snapshots-latest'
 
 const { hideHome } = defineProps<{
   hideHome?: boolean
@@ -9,16 +8,16 @@ const { hideHome } = defineProps<{
 const { $localePath, $ts } = useI18n()
 
 const { formatDate, formatNumber } = useLocaleFormatter()
-const { state } = useSnapshotsLatestQuery()
+const { data } = useLatestSnapshot()
 
 const snapshotLabel = computed(() => {
-  if (!state.value.data?.balance) {
+  if (!data.value?.balance) {
     return {
       primary: $ts('mainMenu.snapshots'),
     }
   }
 
-  const { balance, created_at } = state.value.data
+  const { balance, created_at } = data.value
 
   return {
     primary: formatNumber(balance),

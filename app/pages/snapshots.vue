@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { LazySnapshotDialog } from '#components'
-import { useSnapshotsQuery } from '~/composables/queries/snapshots'
 
 definePageMeta({
   layout: false,
 })
 
-const { state, isLoading } = useSnapshotsQuery()
+const { data, status } = await useSnapshots()
+const loading = useAsyncDataLoading(status)
 
 const { register } = useDialog()
 const { open: openSnapshotModal } = register(LazySnapshotDialog)
 
-const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
+const paginationVisible = computed(() => Number(data.value?.total) > Number(data.value?.per_page))
 </script>
 
 <template>
@@ -25,14 +25,14 @@ const paginationVisible = computed(() => Number(state.value.data?.total) > Numbe
 
     <main class="flex flex-col gap-8">
       <SnapshotTable
-        :loading="isLoading"
-        :snapshots="state.data?.data"
+        :loading
+        :snapshots="data?.data"
       />
 
       <UiPagination
         v-if="paginationVisible"
-        :items-per-page="state.data?.per_page"
-        :total="state.data?.total"
+        :items-per-page="data?.per_page"
+        :total="data?.total"
       />
     </main>
   </NuxtLayout>
