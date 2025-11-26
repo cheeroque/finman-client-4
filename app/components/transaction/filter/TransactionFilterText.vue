@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { useTransactionsQuery } from '~/composables/queries/transactions'
-
 defineProps<{
   icon?: string
 }>()
 
 const { inputDebounce } = useAppConfig()
 
-const { filter } = useTransactionsQuery()
+const { filter } = useTransactionsParams()
 
 const modelValue = ref(filter.value)
 

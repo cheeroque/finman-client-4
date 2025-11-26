@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { useTransactionsQuery } from '~/composables/queries/transactions'
-
 definePageMeta({
   layout: false,
 })
 
-const { page, state, isLoading } = useTransactionsQuery()
+const { data, status } = await useTransactions()
+const loading = useAsyncDataLoading(status)
 
-const paginationVisible = computed(() => Number(state.value.data?.total) > Number(state.value.data?.per_page))
+const { page } = useTransactionsParams()
+
+const paginationVisible = computed(() => Number(data.value?.total) > Number(data.value?.per_page))
 </script>
 
 <template>
@@ -42,15 +43,15 @@ const paginationVisible = computed(() => Number(state.value.data?.total) > Numbe
       </div>
 
       <TransactionTable
-        :loading="isLoading"
-        :transactions="state.data?.data"
+        :loading
+        :transactions="data?.data"
       />
 
       <UiPagination
         v-if="paginationVisible"
         v-model="page"
-        :items-per-page="state.data?.per_page"
-        :total="state.data?.total"
+        :items-per-page="data?.per_page"
+        :total="data?.total"
         class="max-lg:mx-auto"
       />
     </main>
