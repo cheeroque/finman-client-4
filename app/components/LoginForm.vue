@@ -26,6 +26,8 @@ const { r$ } = useRegle(form, {
 const isLoading = ref(false)
 
 async function handleSubmit() {
+  externalErrors.value = {}
+
   const { data, valid } = await r$.$validate()
 
   if (!valid) {
