@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '~/components/_ui'
-import { useCategoryTransactionsQuery } from '~/composables/queries/category-transactions'
 
-const { perPage, state, isLoading } = useCategoryTransactionsQuery()
+const { categoryTransactionsPerPage } = useAppConfig()
 
-const paginationVisible = computed(() => Number(state.value.data?.total) > perPage.value)
+const { data, status } = await useCategoryTransactions()
+const loading = useAsyncDataLoading(status)
+
+const paginationVisible = computed(() => Number(data.value?.total) > categoryTransactionsPerPage)
 
 const { $localePath, $ts } = useI18n()
 
@@ -20,10 +22,10 @@ const breadcrumbs = computed(() => {
     },
   ]
 
-  if (state.value.data?.category) {
+  if (data.value?.category) {
     items.push({
       active: true,
-      text: state.value.data.category.name,
+      text: data.value.category.name,
     })
   }
 
@@ -45,15 +47,15 @@ const breadcrumbs = computed(() => {
       </div>
 
       <CategoryTransactionsTable
-        :data="state.data?.data"
-        :loading="isLoading"
+        :data="data?.data"
+        :loading
       />
     </div>
 
     <UiPagination
       v-if="paginationVisible"
-      :items-per-page="perPage"
-      :total="state.data?.total"
+      :items-per-page="categoryTransactionsPerPage"
+      :total="data?.total"
       class="max-lg:mx-auto"
     />
   </main>
