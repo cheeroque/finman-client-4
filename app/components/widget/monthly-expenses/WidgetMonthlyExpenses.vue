@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMonthCategoriesQuery } from '~/composables/queries/month-categories'
+import { useCurrentMonthTransactions } from '~/composables/loaders/transactions-month-current'
 
 const { limit = 5 } = defineProps<{
   limit?: number
@@ -14,9 +14,9 @@ const currentPeriod = computed(() => formatPeriod({
   year: now.getFullYear(),
 }))
 
-const { state } = useMonthCategoriesQuery(currentPeriod)
+const { data } = useCurrentMonthTransactions()
 
-const categories = computed(() => state.value.data?.expenseCategories ?? [])
+const categories = computed(() => data.value?.expenseCategories ?? [])
 
 const visibleCategories = computed(() => categories.value.slice(0, limit))
 const otherCategoriesTotal = computed(() => categories.value

@@ -1,10 +1,14 @@
-<script setup lang="ts">
+<script lang="ts">
 import type { BreadcrumbItem } from '~/components/_ui'
-import { useMonthCategoriesQuery } from '~/composables/queries/month-categories'
+import { useMonthTransactions } from '~/composables/loaders/transactions-month'
+
+export { useMonthTransactions }
+</script>
+
+<script setup lang="ts">
+const { data, isLoading } = useMonthTransactions()
 
 const route = useRoute()
-
-const { state, isLoading } = useMonthCategoriesQuery()
 
 const { formatDate, parsePeriod } = useLocaleFormatter()
 
@@ -47,7 +51,7 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
       </div>
 
       <MonthTransactionsTable
-        :data="state.data"
+        :data
         :loading="isLoading"
       />
     </div>

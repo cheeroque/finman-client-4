@@ -1,3 +1,4 @@
+// TODO Colada Data Loaders are currently broken: https://github.com/posva/unplugin-vue-router/issues/649
 import { defineColadaLoader } from 'unplugin-vue-router/data-loaders/pinia-colada'
 
 export const useCategoryTransactions = defineColadaLoader({
