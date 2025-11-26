@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { LazyCategoryDialog } from '#components'
-import { useCategoriesQuery } from '~/composables/queries/categories'
 
 definePageMeta({
   layout: false,
 })
 
-const { state } = useCategoriesQuery()
+const { data: categories } = await useCategories()
 
 const { register } = useDialog()
 const { open: openCategoryModal } = register(LazyCategoryDialog)
@@ -31,7 +30,7 @@ const { open: openCategoryModal } = register(LazyCategoryDialog)
       "
     >
       <CategoryCard
-        v-for="category in state.data"
+        v-for="category in categories"
         :key="category.id"
         :category
         @click-edit="openCategoryModal({ category })"

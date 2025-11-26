@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { minValue, required } from '@regle/rules'
 
-import { useCategoriesQuery } from '~/composables/queries/categories'
 import type { TransactionBase } from '~~/shared/types/transaction'
 
 const { transaction } = defineProps<{
@@ -15,12 +14,10 @@ const emit = defineEmits<{
 
 const { $ts } = useI18n()
 
-const {
-  state: categories,
-  isLoading: categoriesLoading,
-} = useCategoriesQuery()
+const { data: categories, status } = useCategories()
+const categoriesLoading = useAsyncDataLoading(status)
 
-const categoryOptions = computed(() => categories.value.data?.map(({ id, name }) => ({
+const categoryOptions = computed(() => categories.value?.map(({ id, name }) => ({
   label: name,
   value: id,
 })))
