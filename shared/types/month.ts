@@ -12,6 +12,15 @@ export interface MonthCategoryWithTransactions extends Partial<Category> {
   transactions: Transaction[]
 }
 
+export interface MonthTotal {
+  [period: string]: MonthTotalPeriod
+}
+
+export interface MonthTotalPeriod {
+  expenses: number
+  incomes: number
+}
+
 export interface MonthTransactionsData {
   expenseCategories: MonthCategoryWithTransactions[]
   expensesTotal: number

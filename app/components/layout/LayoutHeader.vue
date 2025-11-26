@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { useBalanceQuery } from '~/composables/queries/balance'
-
 const { $localePath } = useI18n()
-
-const { state } = useBalanceQuery()
 
 const { formatNumber } = useLocaleFormatter()
 
-const title = computed(() => formatNumber(state.value.data ?? 0))
+const { data: balance } = useBalance()
+const title = computed(() => formatNumber(balance.value ?? 0))
+
+const { data: total } = useCurrentMonthTotal()
+const totalExpenses = computed(() => total.value?.expenses && formatNumber(total.value.expenses))
+const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.value.incomes))
 </script>
 
 <template>
@@ -18,7 +19,7 @@ const title = computed(() => formatNumber(state.value.data ?? 0))
       lg:flex-row lg:pt-0 lg:pb-8
     "
   >
-    <div class="flex-auto">
+    <div class="flex flex-auto items-baseline gap-5">
       <NuxtLink
         :to="$localePath('/')"
         class="
@@ -36,6 +37,35 @@ const title = computed(() => formatNumber(state.value.data ?? 0))
           {{ title }}
         </h1>
       </NuxtLink>
+
+      <div
+        class="
+          flex translate-y-0.5 items-baseline gap-5 text-2xl
+          max-2xl:hidden
+        "
+      >
+        <span
+          v-if="totalIncomes"
+          class="flex items-center gap-1 text-(--c-text-muted)"
+        >
+          <Icon
+            name="mingcute:arrow-right-up-line"
+            class="text-(--c-success)"
+          />
+          {{ totalIncomes }}
+        </span>
+
+        <span
+          v-if="totalExpenses"
+          class="flex items-center gap-1 text-(--c-text-muted)"
+        >
+          <Icon
+            name="mingcute:arrow-right-down-line"
+            class="text-(--c-error)"
+          />
+          {{ totalExpenses }}
+        </span>
+      </div>
     </div>
 
     <div class="flex-none">

@@ -1,7 +1,9 @@
-import type { Transaction } from '~~/shared/types/transaction'
+import type { MonthTotal } from '~~/shared/types/month'
 
-export default defineEventHandler(() => {
+export default defineEventHandler(async () => {
   const apiFetch = useApiFetch()
 
-  return apiFetch<Transaction>('/transactions/current-month')
+  const total = await apiFetch<MonthTotal>('/transactions/current-month')
+
+  return Object.values(total)[0]
 })
