@@ -1,10 +1,17 @@
-<script setup lang="ts">
+<script lang="ts">
 import type { BreadcrumbItem } from '~/components/_ui'
-import { useCategoryTransactionsQuery } from '~/composables/queries/category-transactions'
+import { useCategoryTransactions } from '~/composables/loaders/transactions-category'
 
-const { perPage, state, isLoading } = useCategoryTransactionsQuery()
+export { useCategoryTransactions }
+</script>
 
-const paginationVisible = computed(() => Number(state.value.data?.total) > perPage.value)
+<script setup lang="ts">
+const { categoryTransactionsPerPage } = useAppConfig()
+
+const { data, isLoading } = useCategoryTransactions()
+const { page } = useCategoryTransactionsQueryParams()
+
+const paginationVisible = computed(() => Number(data.value?.total) > categoryTransactionsPerPage)
 
 const { $localePath, $ts } = useI18n()
 
@@ -20,10 +27,10 @@ const breadcrumbs = computed(() => {
     },
   ]
 
-  if (state.value.data?.category) {
+  if (data.value?.category) {
     items.push({
       active: true,
-      text: state.value.data.category.name,
+      text: data.value.category.name,
     })
   }
 
@@ -45,15 +52,16 @@ const breadcrumbs = computed(() => {
       </div>
 
       <CategoryTransactionsTable
-        :data="state.data?.data"
+        :data="data?.data"
         :loading="isLoading"
       />
     </div>
 
     <UiPagination
       v-if="paginationVisible"
-      :items-per-page="perPage"
-      :total="state.data?.total"
+      v-model="page"
+      :items-per-page="categoryTransactionsPerPage"
+      :total="data?.total"
       class="max-lg:mx-auto"
     />
   </main>
