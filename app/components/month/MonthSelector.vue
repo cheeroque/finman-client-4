@@ -15,9 +15,12 @@ const { $localePath } = useI18n()
 
 const { formatPeriod } = useLocaleFormatter()
 
-const { end, start } = useMonthSelector()
+const { data } = useTransactionDates()
 
-const activeYear = ref(modelValue.value?.year ?? end.value.year)
+const start = computed(() => data.value?.start)
+const end = computed(() => data.value?.end)
+
+const activeYear = ref(modelValue.value?.year ?? end.value?.year ?? 0)
 
 watch(activeYear, (year) => {
   if (modelValue.value) {
@@ -30,8 +33,8 @@ const visibleYears = computed(() => getEmptyArray(3).map((_, yearIndex) => {
 
   const months = getEmptyArray(12).map((_, monthIndex) => {
     const month = monthIndex + 1
-    const disabled = (year <= start.value.year && month < start.value.month)
-      || (year >= end.value.year && month > end.value.month)
+    const disabled = (year <= Number(start.value?.year) && month < Number(start.value?.month))
+      || (year >= Number(end.value?.year) && month > Number(end.value?.month))
 
     return {
       disabled,
@@ -46,8 +49,8 @@ const visibleYears = computed(() => getEmptyArray(3).map((_, yearIndex) => {
   }
 }))
 
-const isStart = computed(() => activeYear.value <= start.value.year)
-const isEnd = computed(() => activeYear.value >= end.value.year)
+const isStart = computed(() => activeYear.value <= Number(start.value?.year))
+const isEnd = computed(() => activeYear.value >= Number(end.value?.year))
 
 const sliderRef = useTemplateRef('sliderRef')
 
@@ -71,7 +74,7 @@ function shiftYear(delta: 1 | -1) {
 
 function isMonthActive({ month, year}: { month: number, year: number }) {
   if (!modelValue.value) {
-    return month === end.value.month && year === end.value.year
+    return month === end.value?.month && year === end.value.year
   }
 
   return month === modelValue.value.month && year === modelValue.value.year

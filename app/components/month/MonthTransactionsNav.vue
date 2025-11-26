@@ -24,14 +24,18 @@ function getPeriodCaptions(datetime: ZonedDateTime) {
   }
 }
 
-const { end, start, isLoading: isFirstTransactionLoading } = useMonthSelector()
+const { data, status } = useTransactionDates()
+const isFirstTransactionLoading = useAsyncDataLoading(status)
 
-const isPreviousDisabled = computed(() => previousDate.value.year <= start.value.year
-  && previousDate.value.month < start.value.month
+const start = computed(() => data.value?.start)
+const end = computed(() => data.value?.end)
+
+const isPreviousDisabled = computed(() => previousDate.value.year <= Number(start.value?.year)
+  && previousDate.value.month < Number(start.value?.month)
 )
 
-const isNextDisabled = computed(() => nextDate.value.year >= end.value.year
-  && nextDate.value.month > end.value.month
+const isNextDisabled = computed(() => nextDate.value.year >= Number(end.value?.year)
+  && nextDate.value.month > Number(end.value?.month)
 )
 </script>
 
