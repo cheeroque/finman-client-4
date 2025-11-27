@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxtjs/color-mode',
-    '@pinia/colada-nuxt',
     '@pinia/nuxt',
     '@regle/nuxt',
     '@vueuse/nuxt',
