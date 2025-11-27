@@ -7,7 +7,6 @@ import {
   SelectPortal,
   SelectRoot,
   SelectTrigger,
-  SelectValue,
   SelectViewport,
 } from 'reka-ui'
 import type { AcceptableValue } from 'reka-ui'
@@ -30,6 +29,11 @@ const {
 }>()
 
 const modelValue = defineModel<T>()
+
+// Reka-UI `SelectValue` component seems to have a bug,
+// where it resets displayed value when toggled open/closed,
+// so we use custom implementation instead
+const selectedOption = computed(() => options.find(({ value }) => value === modelValue.value))
 </script>
 
 <template>
@@ -48,20 +52,25 @@ const modelValue = defineModel<T>()
         focus:outline-(--c-outline-primary)
         data-disabled:bg-(--c-input-disabled-bg)
         data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
+        data-[state=open]:outline-(--c-outline-primary)
       "
       v-bind="$attrs"
     >
-      <SelectValue
-        :placeholder
+      <span
         class="
           min-w-0 flex-auto truncate text-start
           group-data-placeholder/trigger:opacity-50
         "
-      />
+      >
+        {{ selectedOption?.label ?? selectedOption?.value ?? placeholder }}
+      </span>
 
       <Icon
         name="mingcute:down-line"
-        class="size-3 self-center"
+        class="
+          size-3 flex-none self-center transition-transform
+          group-data-[state=open]/trigger:-rotate-180
+        "
       />
     </SelectTrigger>
 
