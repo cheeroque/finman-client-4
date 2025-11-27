@@ -63,6 +63,7 @@ function apply() {
 }
 
 function setNow() {
+  popoverOpen.value = false
   modelValue.value = new Date().toISOString()
 }
 </script>
