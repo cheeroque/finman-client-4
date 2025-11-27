@@ -14,6 +14,14 @@ export default defineNuxtConfig({
     'nuxt-svgo-loader',
   ],
 
+  imports: {
+    dirs: [
+      '~/composables',
+      '~/composables/mutations',
+      '~/composables/queries',
+    ],
+  },
+
   devtools: {
     enabled: true,
   },
