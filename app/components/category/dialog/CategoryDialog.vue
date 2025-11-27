@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useCategoryDelete } from '~/composables/mutations/category-delete'
-import { useCategoryUpsert } from '~/composables/mutations/category-upsert'
 import type { Category } from '~~/shared/types/category'
 
 const { category } = defineProps<{
@@ -17,10 +15,10 @@ const { $ts } = useI18n()
 const isEdit = computed(() => !!category)
 const title = computed(() => $ts(`categoryModal.${isEdit.value ? 'edit' : 'create'}.title`))
 
-const { mutateAsync: mutateAsyncUpsert, isLoading } = useCategoryUpsert()
+const { execute: executeUpsert, loading: isUpserting } = useCategoryUpsert()
 
 async function handleSubmitForm(data: Partial<Category>) {
-  await mutateAsyncUpsert({
+  await executeUpsert({
     ...data,
     id: category?.id,
   })
@@ -28,7 +26,7 @@ async function handleSubmitForm(data: Partial<Category>) {
   emit('close')
 }
 
-const { mutateAsync: mutateAsyncDelete, isLoading: isDeleting } = useCategoryDelete()
+const { execute: executeDelete, loading: isDeleting } = useCategoryDelete()
 
 // TODO add confirmation dialog
 async function deleteCategory() {
@@ -36,7 +34,7 @@ async function deleteCategory() {
     return
   }
 
-  await mutateAsyncDelete(category.id)
+  await executeDelete(category.id)
 
   emit('close')
 }
@@ -53,12 +51,12 @@ async function deleteCategory() {
       <CategoryForm
         :id="formId"
         :category
-        :loading="isLoading || isDeleting"
+        :loading="isUpserting || isDeleting"
         @submit="handleSubmitForm"
       />
 
       <CategoryDialogFooter
-        :disabled="isLoading || isDeleting"
+        :disabled="isUpserting || isDeleting"
         :form-id
         :is-edit
         @click-delete="deleteCategory()"

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSnapshotCreate } from '~/composables/mutations/snapshot-create'
 import type { Snapshot } from '~~/shared/types/snapshot'
 
 const emit = defineEmits<{
@@ -9,10 +8,10 @@ const emit = defineEmits<{
 const formId = useId()
 const { $ts } = useI18n()
 
-const { mutateAsync, isLoading } = useSnapshotCreate()
+const { execute, loading } = useSnapshotCreate()
 
 async function handleSubmitForm(data: Partial<Snapshot>) {
-  await mutateAsync(data)
+  await execute(data)
 
   emit('close')
 }
@@ -28,13 +27,13 @@ async function handleSubmitForm(data: Partial<Snapshot>) {
     >
       <SnapshotForm
         :id="formId"
-        :loading="isLoading"
+        :loading
         @submit="handleSubmitForm"
       />
 
       <div class="flex w-full gap-4">
         <UiButton
-          :disabled="isLoading"
+          :disabled="loading"
           :form="formId"
           type="submit"
           variant="success"

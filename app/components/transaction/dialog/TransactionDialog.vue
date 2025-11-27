@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useTransactionDelete } from '~/composables/mutations/transaction-delete'
-import { useTransactionUpsert } from '~/composables/mutations/transaction-upsert'
 import type { TransactionBase } from '~~/shared/types/transaction'
 
 const { transaction } = defineProps<{
@@ -18,10 +16,10 @@ const isEdit = computed(() => !!transaction)
 const title = computed(() => $ts(`transactionModal.${isEdit.value ? 'edit' : 'create'}.title`))
 
 const authStore = useAuthStore()
-const { mutateAsync: mutateAsyncUpsert, isLoading } = useTransactionUpsert()
+const { execute: executeUpsert, loading: isUpserting } = useTransactionUpsert()
 
 async function handleSubmitForm(data: Partial<TransactionBase>) {
-  await mutateAsyncUpsert({
+  await executeUpsert({
     ...data,
     id: transaction?.id,
     user_id: authStore.user?.id,
@@ -30,14 +28,14 @@ async function handleSubmitForm(data: Partial<TransactionBase>) {
   emit('close')
 }
 
-const { mutateAsync: mutateAsyncDelete, isLoading: isDeleting } = useTransactionDelete()
+const { execute: executeDelete, loading: isDeleting } = useTransactionDelete()
 
 async function deleteTransaction() {
   if (!transaction?.id) {
     return
   }
 
-  await mutateAsyncDelete(transaction.id)
+  await executeDelete(transaction.id)
 
   emit('close')
 }
@@ -53,13 +51,13 @@ async function deleteTransaction() {
     >
       <TransactionForm
         :id="formId"
-        :loading="isLoading || isDeleting"
+        :loading="isUpserting || isDeleting"
         :transaction
         @submit="handleSubmitForm"
       />
 
       <TransactionDialogFooter
-        :disabled="isLoading || isDeleting"
+        :disabled="isUpserting || isDeleting"
         :form-id
         :is-edit
         @click-delete="deleteTransaction()"
