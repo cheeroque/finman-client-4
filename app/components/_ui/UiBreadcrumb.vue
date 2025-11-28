@@ -10,8 +10,8 @@ defineProps<{
 <template>
   <ul
     class="
-      flex list-none flex-wrap items-baseline gap-1 text-sm
-      text-(--c-text-muted)
+      flex list-none flex-wrap items-baseline gap-1 text-sm text-neutral-500
+      dark:text-neutral-400
     "
   >
     <li
@@ -21,10 +21,13 @@ defineProps<{
     >
       <component
         :is="item.active ? 'span' : NuxtLink"
+        :data-active="item.active || undefined"
         :to="item.to"
-        :class="item.active
-          ? 'text-(--c-primary)'
-          : 'hover:text-(--c-primary) hover:underline'
+        class="
+          not-data-active:hover:text-primary-600 not-data-active:hover:underline
+          data-active:text-primary-600
+          dark:not-data-active:hover:text-primary-500
+          dark:data-active:text-primary-500
         "
       >
         <Icon

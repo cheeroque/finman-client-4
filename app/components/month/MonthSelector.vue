@@ -91,7 +91,10 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
     >
       <UiButtonBase
         :disabled="isStart"
-        class="flex flex-none text-(--c-app-active-bg)"
+        class="
+          flex flex-none text-neutral-400
+          dark:text-neutral-600
+        "
         @click="shiftYear(-1)"
       >
         <Icon
@@ -106,7 +109,10 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
 
       <UiButtonBase
         :disabled="isEnd"
-        class="flex flex-none text-(--c-app-active-bg)"
+        class="
+          flex flex-none text-neutral-400
+          dark:text-neutral-600
+        "
         @click="shiftYear(+1)"
       >
         <Icon
@@ -141,14 +147,19 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
               :to="$localePath(`/months/${formatPeriod(month)}`)"
               :class="
                 twMerge(
-                  'flex aspect-3/2 w-full items-center justify-center',
-                  'rounded-lg text-center',
-                  'text-(--c-on-primary-light)',
-                  'bg-(--c-primary-light)',
-                  'not-data-disabled:hover:bg-(--c-primary-light-hover)',
-                  'data-active:bg-(--c-primary) data-active:font-semibold',
-                  'data-active:text-(--c-on-primary)',
-                  'not-data-disabled:data-active:hover:bg-(--c-primary-hover)',
+                  `
+                    flex aspect-3/2 w-full items-center justify-center
+                    rounded-lg bg-primary-200 text-center text-primary-800
+                    not-data-disabled:hover:bg-primary-300
+                    data-active:bg-primary-600 data-active:font-semibold
+                    data-active:text-white
+                    not-data-disabled:data-active:hover:bg-primary-700
+                    dark:bg-primary-800 dark:text-primary-200
+                    dark:not-data-disabled:hover:bg-primary-700
+                    dark:data-active:bg-primary-500
+                    dark:data-active:text-neutral-900
+                    dark:not-data-disabled:data-active:hover:bg-primary-400
+                  `,
                   monthClass,
                 )
               "

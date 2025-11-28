@@ -12,7 +12,10 @@ whenever(filterRef, (value) => {
   <UiDrawer v-model="modelValue">
     <div class="p-3">
       <div
-        class="flex flex-col gap-3 border-b border-(--c-outline-primary) pb-3"
+        class="
+          flex flex-col gap-3 border-b border-primary-300/50 pb-3
+          dark:border-primary-900
+        "
       >
         <TransactionFilterText
           ref="filterRef"

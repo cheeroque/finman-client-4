@@ -61,14 +61,19 @@ function getCellClass(cell: Cell<TData, unknown>) {
     <table
       :data-loading="loading || undefined"
       :class="twMerge(
-        'w-full transition-opacity',
-        'data-loading:opacity-50',
+        `
+          w-full transition-opacity
+          data-loading:opacity-50
+        `,
         tableClass,
       )"
     >
       <thead
         :class="twMerge(
-          'text-sm text-(--c-text-muted)',
+          `
+            text-sm text-neutral-500
+            dark:text-neutral-400
+          `,
           theadClass,
         )"
       >
@@ -82,9 +87,12 @@ function getCellClass(cell: Cell<TData, unknown>) {
             :colspan="header.colSpan"
             :rowspan="header.rowSpan"
             :class="twMerge(
-              'bg-(--c-table-head-bg) p-4 text-start font-semibold',
-              'first:rounded-l-lg',
-              'last:rounded-r-lg',
+              `
+                bg-neutral-100 p-4 text-start font-semibold
+                first:rounded-l-lg
+                last:rounded-r-lg
+                dark:bg-neutral-800
+              `,
               getHeaderClass(header),
               thClass,
             )"
@@ -109,6 +117,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
           :key="row.id"
         >
           <tr
+            :data-expanded="row.getIsExpanded() || undefined"
             :class="twMerge(
               'group/row',
               getRowClass(row),
@@ -118,10 +127,16 @@ function getCellClass(cell: Cell<TData, unknown>) {
               v-for="cell in row.getVisibleCells()"
               :key="cell.id"
               :class="twMerge(
-                'px-4 py-3.5',
-                'first:rounded-l-lg',
-                'last:rounded-r-lg',
-                'group-even/row:bg-(--c-table-alternate-bg)',
+                `
+                  px-4 py-3.5
+                  group-even/row:bg-neutral-50
+                  group-data-expanded/row:bg-violet-100
+                  group-data-expanded/row:first:rounded-bl-none
+                  group-data-expanded/row:last:rounded-br-none
+                  lg:first:rounded-l-lg lg:last:rounded-r-lg
+                  dark:group-even/row:bg-neutral-900
+                  dark:group-data-expanded/row:bg-violet-950
+                `,
                 getCellClass(cell),
                 tdClass,
               )"
@@ -146,13 +161,24 @@ function getCellClass(cell: Cell<TData, unknown>) {
             enter-from-class="h-0"
             leave-to-class="h-0"
           >
-            <tr v-if="row.getIsExpanded()">
+            <tr
+              v-if="row.getIsExpanded()"
+              :data-expansion="row.getIsExpanded() || undefined"
+            >
               <td :colspan="row.getAllCells().length">
-                <slot
-                  name="row-expanded"
-                  :toggle-row-expanded="row.getToggleExpandedHandler()"
-                  :row
-                />
+                <div
+                  class="
+                    border border-violet-100
+                    lg:rounded-b-lg
+                    dark:border-violet-950
+                  "
+                >
+                  <slot
+                    name="row-expanded"
+                    :toggle-row-expanded="row.getToggleExpandedHandler()"
+                    :row
+                  />
+                </div>
               </td>
             </tr>
           </Transition>
@@ -161,7 +187,10 @@ function getCellClass(cell: Cell<TData, unknown>) {
         <tr v-if="!bodyRows.length">
           <td
             :colspan="table.getAllColumns().length"
-            class="p-4 text-center text-(--c-text-muted)"
+            class="
+              p-4 text-center text-neutral-500
+              dark:text-neutral-400
+            "
           >
             <slot name="empty">
               {{ $ts('table.empty') }}

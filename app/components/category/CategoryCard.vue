@@ -15,9 +15,10 @@ const { $localePath, $ts } = useI18n()
 <template>
   <div
     class="
-      flex gap-4 rounded-2xl border border-(--c-outline-light) transition-colors
-      hover:border-(--c-outline-primary-light) hover:bg-(--c-surface-bg)
-      hover:text-(--c-primary)
+      flex gap-4 rounded-2xl border border-neutral-200 transition-colors
+      hover:border-primary-300 hover:bg-primary-50 hover:text-primary-600
+      dark:border-neutral-800 dark:hover:border-primary-900
+      dark:hover:bg-primary-990 dark:hover:text-primary-500
     "
   >
     <NuxtLink
@@ -37,20 +38,31 @@ const { $localePath, $ts } = useI18n()
           {{ category.name }}
         </span>
 
-        <span class="text-sm text-(--c-text-muted)">
+        <span
+          class="
+            text-sm text-neutral-500
+            dark:text-neutral-400
+          "
+        >
           {{ category.slug }}
         </span>
 
         <span
           v-if="category.is_income"
-          class="text-sm text-(--c-success)"
+          class="
+            text-sm text-lime-600
+            dark:text-lime-500
+          "
         >
           {{ $ts('incomes') }}
         </span>
 
         <span
           v-else
-          class="text-sm text-(--c-error)"
+          class="
+            text-sm text-rose-600
+            dark:text-rose-500
+          "
         >
           {{ $ts('expenses') }}
         </span>
@@ -59,10 +71,11 @@ const { $localePath, $ts } = useI18n()
 
     <button
       class="
-        flex flex-none cursor-pointer self-end p-5 text-gray-300
+        flex flex-none cursor-pointer self-end p-5 text-neutral-300
         transition-colors
-        hover:text-(--c-primary)
+        hover:text-primary-600
         sm:p-6
+        dark:text-neutral-700 dark:hover:text-primary-500
       "
       @click="$emit('clickEdit')"
     >

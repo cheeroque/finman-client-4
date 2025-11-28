@@ -27,8 +27,9 @@ function toggleDrawer() {
 <template>
   <div
     class="
-      fixed inset-x-0 bottom-0 z-100 flex items-start gap-8 bg-(--c-app-bg) p-3
+      fixed inset-x-0 bottom-0 z-100 flex items-start gap-8 bg-primary-200 p-3
       pb-3.5
+      dark:bg-primary-950
     "
   >
     <LayoutDrawerToggle
@@ -36,7 +37,7 @@ function toggleDrawer() {
       @click="toggleDrawer()"
     />
 
-    <div class="flex flex-auto justify-between">
+    <div class="mx-auto flex max-w-90 flex-auto justify-between">
       <LayoutBottomNavItem
         :active="isHomeActive"
         icon="mingcute:home-7-line"

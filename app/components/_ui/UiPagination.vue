@@ -21,19 +21,16 @@ const modelValue = defineModel<number>({
   default: 1,
 })
 
-const ITEM_CLASS = `flex min-w-10 items-center justify-center rounded-lg border
-  border-(--c-pagination-border) bg-(--c-pagination-bg) p-2
+const ITEM_CLASS = `flex min-w-10 items-center justify-center rounded-lg bg-neutral-100 p-2
   transition-(--transition-button)
-  not-disabled:cursor-pointer
-  not-disabled:hover:border-(--c-pagination-hover-border)
-  not-disabled:hover:bg-(--c-pagination-hover-bg)
-  disabled:opacity-50`
+  not-disabled:cursor-pointer not-disabled:hover:bg-primary-100
+  disabled:opacity-50
+  dark:bg-neutral-900 dark:not-disabled:hover:bg-primary-900`
 
-const PAGE_ITEM_CLASS = `data-selected:border-(--c-pagination-active-border)
-  data-selected:bg-(--c-pagination-active-bg)
-  data-selected:text-(--c-pagination-active-text)
-  data-selected:hover:border-(--c-pagination-active-border)
-  data-selected:hover:bg-(--c-pagination-active-bg)`
+const PAGE_ITEM_CLASS = `data-selected:bg-primary-600 data-selected:text-white
+  data-selected:hover:bg-primary-700
+  dark:data-selected:bg-primary-500 dark:data-selected:text-neutral-900
+  dark:data-selected:hover:bg-primary-400`
 </script>
 
 <template>
@@ -44,7 +41,10 @@ const PAGE_ITEM_CLASS = `data-selected:border-(--c-pagination-active-border)
   >
     <PaginationList
       v-slot="{ items }"
-      class="flex items-center gap-1 text-(--c-pagination-text)"
+      class="
+        flex items-center gap-1 text-neutral-700
+        dark:text-neutral-300
+      "
     >
       <PaginationFirst :class="ITEM_CLASS">
         <Icon

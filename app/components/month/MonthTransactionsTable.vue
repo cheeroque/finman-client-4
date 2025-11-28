@@ -64,23 +64,21 @@ const columns = computed(() => [
 ])
 
 function getRowClass(row: Row<MonthCategoryWithTransactions>) {
-  if (row.getIsExpanded()) {
-    return 'text-(--c-primary)'
-  }
+  const classlist = []
 
   if (row.original.is_income) {
-    return 'row-income max-2xl:bg-(--c-success-light)'
+    classlist.push('row-income max-2xl:bg-lime-100 dark:max-2xl:bg-lime-800')
   }
 
   if (row.original.is_total) {
-    return 'row-total-expense max-2xl:bg-(--c-error-light)'
+    classlist.push('row-total-expense max-2xl:bg-rose-100 dark:max-2xl:bg-rose-800')
   }
 
   if (row.original.is_month_total) {
-    return 'row-total-month font-semibold max-2xl:bg-(--c-info-light)'
+    classlist.push('row-total-month font-semibold max-2xl:bg-sky-100 dark:max-2xl:bg-sky-800')
   }
 
-  return ''
+  return classlist
 }
 </script>
 
@@ -90,10 +88,23 @@ function getRowClass(row: Row<MonthCategoryWithTransactions>) {
     :data="tableData"
     table-class="table-fixed"
     td-class="
-      group-[.row-income]/row:text-(--c-on-success-light) group-[.row-income]/row:bg-(--c-success-light)
-      group-[.row-total-expense]/row:text-(--c-on-error-light) group-[.row-total-expense]/row:bg-(--c-error-light)
-      group-[.row-total-month]/row:text-(--c-on-info-light) group-[.row-total-month]/row:bg-(--c-info-light)
+      group-data-expanded/row:text-primary-600
+      group-[.row-income]/row:bg-lime-100
+      group-[.row-income]/row:text-lime-800
+      group-[.row-income[data-expanded]]/row:text-lime-600
+      group-[.row-total-expense]/row:bg-rose-100
+      group-[.row-total-expense]/row:text-rose-800
+      group-[.row-total-month]/row:bg-sky-100
+      group-[.row-total-month]/row:text-sky-800
       max-2xl:p-3
+      dark:group-data-expanded/row:text-primary-500
+      dark:group-[.row-income]/row:bg-lime-800
+      dark:group-[.row-income]/row:text-lime-200
+      dark:group-[.row-income[data-expanded]]/row:text-lime-500
+      dark:group-[.row-total-expense]/row:bg-rose-800
+      dark:group-[.row-total-expense]/row:text-rose-200
+      dark:group-[.row-total-month]/row:bg-sky-800
+      dark:group-[.row-total-month]/row:text-sky-200
     "
     thead-class="max-2xl:hidden"
     :tr-class="getRowClass"

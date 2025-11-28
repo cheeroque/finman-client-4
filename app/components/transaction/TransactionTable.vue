@@ -68,14 +68,20 @@ const columns = computed(() => [
     :loading
     td-class="max-2xl:p-0"
     thead-class="max-2xl:hidden"
-    tr-class="grid-cols-[auto_min-content] max-2xl:grid max-2xl:p-3 max-2xl:even:bg-(--c-table-alternate-bg)"
+    tr-class="
+      max-2xl:first:rounded-l-0 max-2xl:last:rounded-r-0
+      grid-cols-[auto_min-content]
+      max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50
+      dark:max-2xl:even:bg-neutral-900
+    "
   >
     <template #cell(created_at)="{ item }">
       <NuxtLink
         :to="$localePath(`/months/${item.period}`)"
         class="
           transition-colors
-          hover:text-(--c-primary) hover:underline
+          hover:text-primary-600 hover:underline
+          dark:hover:text-primary-500
         "
       >
         {{ item.created_at_formatted }}
@@ -87,8 +93,9 @@ const columns = computed(() => [
         :transaction="item"
         class="
           text-xl leading-6 font-medium transition-colors
-          hover:text-(--c-primary)
-          max-2xl:text-2xl max-2xl:text-(--c-primary)
+          hover:text-primary-600
+          max-2xl:text-2xl max-2xl:text-primary-600
+          dark:hover:text-primary-500 dark:max-2xl:text-primary-500
         "
       >
         {{ item.sum_formatted }}
@@ -100,7 +107,8 @@ const columns = computed(() => [
         :to="$localePath(`/categories/${item.category.slug}`)"
         class="
           transition-colors
-          hover:text-(--c-primary) hover:underline
+          hover:text-primary-600 hover:underline
+          dark:hover:text-primary-500
         "
       >
         {{ item.category.name }}
@@ -113,7 +121,8 @@ const columns = computed(() => [
         class="
           group/button flex w-full items-center gap-4 text-start
           transition-colors
-          hover:text-(--c-primary)
+          hover:text-primary-600
+          dark:hover:text-primary-500
         "
       >
         <span class="flex-auto">

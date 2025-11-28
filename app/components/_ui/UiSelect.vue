@@ -46,13 +46,18 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
       :data-invalid="hasError || undefined"
       :disabled
       class="
-        group/trigger flex cursor-pointer gap-4 rounded-lg bg-(--c-content-bg)
-        px-4 py-3 text-base outline outline-(--c-outline-light)
-        transition-colors
-        focus:outline-(--c-outline-primary)
-        data-disabled:bg-(--c-input-disabled-bg)
-        data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
-        data-[state=open]:outline-(--c-outline-primary)
+        group/trigger flex cursor-pointer gap-4 rounded-lg bg-white px-4 py-3
+        text-base outline outline-neutral-200 transition-colors
+        not-data-disabled:hover:outline-primary-300
+        focus:outline-primary-400
+        data-disabled:bg-neutral-100
+        data-invalid:text-rose-600 data-invalid:outline-rose-600
+        data-[state=open]:outline-primary-400
+        dark:bg-black dark:outline-neutral-800
+        dark:not-data-disabled:hover:outline-primary-900
+        dark:focus:outline-primary-800 dark:data-disabled:bg-neutral-900
+        dark:data-invalid:text-rose-500 dark:data-invalid:outline-rose-500
+        dark:data-[state=open]:outline-primary-800
       "
       v-bind="$attrs"
     >
@@ -81,8 +86,9 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
         class="
           z-500 max-h-(--reka-select-content-available-height)
           w-(--reka-select-trigger-width) min-w-40 overflow-hidden rounded-xl
-          border border-(--c-outline-light) bg-(--c-content-bg) py-1
+          border border-neutral-200 bg-white py-1
           will-change-[opacity,transform]
+          dark:border-neutral-800 dark:bg-black
         "
       >
         <SelectViewport>
@@ -92,11 +98,13 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
               :key="`option-${index}`"
               :value="option.value"
               class="
-                cursor-pointer truncate px-4 py-2 text-(--c-text)
-                data-highlighted:bg-(--c-app-hover-bg)
-                data-highlighted:outline-0
-                data-[state=checked]:bg-(--c-primary)
-                data-[state=checked]:text-(--c-on-primary)
+                cursor-pointer truncate px-4 py-2
+                data-highlighted:bg-primary-100 data-highlighted:outline-0
+                data-[state=checked]:bg-primary-600
+                data-[state=checked]:text-white
+                dark:data-highlighted:bg-primary-950
+                dark:data-[state=checked]:bg-primary-500
+                dark:data-[state=checked]:text-neutral-900
               "
             >
               <SelectItemText>

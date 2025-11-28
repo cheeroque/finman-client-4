@@ -25,8 +25,9 @@ const modelValue = defineModel<boolean>()
       >
         <DialogContent
           class="
-            fixed inset-x-0 bottom-18 z-40 rounded-t-xl bg-(--c-app-bg)
+            fixed inset-x-0 bottom-18 z-40 rounded-t-xl bg-primary-200
             transition-transform
+            dark:bg-primary-950
           "
         >
           <slot />

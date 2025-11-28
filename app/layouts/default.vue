@@ -18,8 +18,9 @@
 
     <div
       class="
-        flex min-h-0 flex-auto flex-col bg-(--c-content-bg) pt-3 pb-26
-        lg:rounded-3xl lg:py-8 lg:shadow-sm
+        flex min-h-0 flex-auto flex-col bg-white pt-3 pb-26
+        lg:rounded-2xl lg:py-8
+        dark:bg-black
       "
     >
       <LayoutHeader>
@@ -36,7 +37,7 @@
           <slot />
         </div>
 
-        <LayoutSecondarySidebar
+        <LayoutSidebar
           class="
             flex-none basis-96
             max-xl:hidden

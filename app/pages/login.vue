@@ -8,8 +8,9 @@ definePageMeta({
 <template>
   <main
     class="
-      m-auto w-full bg-(--c-content-bg) p-8 shadow-sm
+      m-auto w-full bg-white p-8
       md:w-100 md:rounded-2xl
+      dark:bg-black
     "
   >
     <LoginForm />

@@ -35,7 +35,10 @@ const displayError = computed(() => Array.isArray(error) && error.length
 
     <span
       v-if="hasError"
-      class="absolute top-full mt-0.5 truncate text-xs text-(--c-error)"
+      class="
+        absolute top-full mt-0.5 truncate text-xs text-rose-600
+        dark:text-rose-500
+      "
     >
       {{ displayError }}
     </span>

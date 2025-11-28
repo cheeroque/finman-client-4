@@ -32,17 +32,26 @@ defineExpose({ inputRef })
     :data-disabled="disabled || undefined"
     :data-invalid="hasError || undefined"
     class="
-      flex rounded-lg bg-(--c-input-bg) px-1.5 outline
-      outline-(--c-outline-light) transition-colors
-      focus-within:outline-(--c-outline-primary)
-      data-disabled:bg-(--c-input-disabled-bg)
-      data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
+      flex rounded-lg bg-white px-1.5 outline outline-neutral-200
+      transition-colors
+      focus-within:outline-primary-400
+      not-data-disabled:hover:outline-primary-300
+      data-disabled:bg-neutral-100
+      data-invalid:text-rose-600 data-invalid:outline-rose-600
+      dark:bg-black dark:outline-neutral-800
+      dark:focus-within:outline-primary-800
+      dark:not-data-disabled:hover:outline-primary-900
+      dark:data-disabled:bg-neutral-900 dark:data-invalid:text-rose-500
+      dark:data-invalid:outline-rose-500
     "
   >
     <slot name="icon">
       <span
         v-if="icon"
-        class="flex items-center pl-2.5 text-2xl text-(--c-text-dimmed)"
+        class="
+          flex items-center pl-2.5 text-2xl text-neutral-300
+          dark:text-neutral-700
+        "
       >
         <Icon :name="icon" />
       </span>
@@ -58,7 +67,7 @@ defineExpose({ inputRef })
       :required
       :type
       class="
-        flex-auto px-2.5 py-3 text-base text-(--c-text) outline-0
+        flex-auto px-2.5 py-3 text-base outline-0
         placeholder:opacity-50
       "
       @blur="emit('blur', $event)"
@@ -68,8 +77,9 @@ defineExpose({ inputRef })
     <button
       v-if="modelValue"
       class="
-        flex cursor-pointer items-center pr-2.5 text-(--c-text-dimmed)
-        focus:text-(--c-primary) focus:outline-0
+        flex cursor-pointer items-center pr-2.5 text-neutral-300
+        focus:text-primary-600 focus:outline-0
+        dark:text-neutral-700 dark:focus:text-primary-500
       "
       type="button"
       @click="modelValue = undefined"

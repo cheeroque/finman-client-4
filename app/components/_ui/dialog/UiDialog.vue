@@ -41,22 +41,30 @@ const modelValue = defineModel<boolean>()
       >
         <DialogContent
           :class="twMerge(
-            'fixed top-1/2 left-1/2 z-120 max-w-[calc(100%-1.5rem)]',
-            '-translate-1/2 transition-all',
+            `
+              fixed top-1/2 left-1/2 z-120 max-w-[calc(100%-1.5rem)]
+              -translate-1/2 transition-all
+            `,
             contentClass,
           )"
         >
           <div
             :class="twMerge(
-              'relative flex min-h-0 w-140 max-w-full flex-col gap-4',
-              'overflow-y-auto rounded-2xl bg-(--c-content-bg) p-5',
-              'lg:gap-6 lg:p-8',
+              `
+                relative flex min-h-0 w-140 max-w-full flex-col gap-4
+                overflow-y-auto rounded-xl bg-white p-5
+                lg:gap-6 lg:p-8
+                dark:border dark:border-neutral-800 dark:bg-neutral-950
+              `,
               bodyClass,
             )"
           >
             <DialogTitle
               v-if="title"
-              class="text-lg font-medium text-(--c-text-muted)"
+              class="
+                text-lg font-medium text-neutral-500
+                dark:text-neutral-400
+              "
             >
               {{ title }}
             </DialogTitle>
@@ -76,8 +84,9 @@ const modelValue = defineModel<boolean>()
             >
               <UiButtonBase
                 class="
-                  text-(--c-text-dimmed)
-                  hover:text-(--c-text-muted)
+                  text-neutral-300
+                  hover:text-neutral-500
+                  dark:text-neutral-700 dark:hover:text-neutral-400
                 "
               >
                 <Icon

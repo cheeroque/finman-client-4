@@ -24,12 +24,16 @@ const modelValue = defineModel<CalendarDate>()
     v-model="modelValue"
   >
     <CalendarHeader
-      class="flex items-center border-b border-(--c-outline-light) p-2"
+      class="
+        flex items-center border-b border-neutral-200 p-2
+        dark:border-neutral-800
+      "
     >
       <CalendarPrev
         class="
           flex size-6 cursor-pointer items-center justify-center
-          text-(--c-text-muted)
+          text-neutral-500
+          dark:text-neutral-400
         "
       >
         <Icon
@@ -43,7 +47,8 @@ const modelValue = defineModel<CalendarDate>()
       <CalendarNext
         class="
           flex size-6 cursor-pointer items-center justify-center
-          text-(--c-text-muted)
+          text-neutral-500
+          dark:text-neutral-400
         "
       >
         <Icon
@@ -93,15 +98,18 @@ const modelValue = defineModel<CalendarDate>()
                 :month="month.value"
                 class="
                   flex size-9 cursor-pointer items-center justify-center
-                  rounded-lg text-sm whitespace-nowrap
+                  rounded-md text-sm whitespace-nowrap
                   transition-(--transition-button) outline-none
-                  hover:bg-(--c-content-hover-bg)
+                  hover:bg-neutral-200
                   data-outside-view:opacity-25
-                  data-selected:border-2 data-selected:border-(--c-primary)
-                  data-today:bg-(--c-primary-light)
-                  data-today:hover:bg-(--c-primary-light-hover)
+                  data-selected:border-2 data-selected:border-primary-600
+                  data-today:bg-primary-200 data-today:hover:bg-primary-300
                   data-unavailable:pointer-events-none
                   data-unavailable:line-through data-unavailable:opacity-25
+                  dark:hover:bg-neutral-800
+                  dark:data-selected:border-primary-500
+                  dark:data-today:bg-primary-800
+                  dark:data-today:hover:bg-primary-700
                 "
               />
             </CalendarCell>

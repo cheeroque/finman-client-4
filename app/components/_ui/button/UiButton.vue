@@ -6,37 +6,52 @@ const {
   loading,
   type = 'button',
   variant = 'primary',
-} = defineProps<Pick<
-  NuxtLinkProps,
-  | 'activeClass'
-  | 'exactActiveClass'
-  | 'to'
-> & {
+} = defineProps<{
   disabled?: boolean
   icon?: string
   loading?: boolean
+  to?: NuxtLinkProps['to']
   trailingIcon?: string
   type?: string
   variant?: 'content' | 'danger' | 'danger-light' | 'primary' | 'primary-light' | 'success' | 'success-light'
 }>()
 
 const VARIANT_CLASSES = {
-  content: 'bg-(--c-content-bg) outline outline-(--c-outline-light) text-(--c-text) not-data-disabled:hover:bg-(--c-content-hover-bg)',
-  danger: 'bg-(--c-error) text-(--c-on-error) not-data-disabled:hover:bg-(--c-error-hover)',
-  'danger-light': 'bg-(--c-error-light) text-(--c-on-error-light) not-data-disabled:hover:bg-(--c-error-light-hover)',
-  primary: 'bg-(--c-primary) text-(--c-on-primary) not-data-disabled:hover:bg-(--c-primary-hover)',
-  'primary-light': 'bg-(--c-primary-light) text-(--c-on-primary-light) not-data-disabled:hover:bg-(--c-primary-light-hover)',
-  success: 'bg-(--c-success) text-(--c-on-success) not-data-disabled:hover:bg-(--c-success-hover)',
-  'success-light': 'bg-(--c-success-light) text-(--c-on-success-light) not-data-disabled:hover:bg-(--c-success-light-hover)',
+  content: `bg-white text-neutral-900 outline outline-neutral-200
+    not-data-disabled:hover:outline-primary-300
+    dark:bg-black dark:text-white dark:outline-neutral-800
+    dark:not-data-disabled:hover:outline-primary-900`,
+  danger: `bg-rose-600 text-white
+    not-data-disabled:hover:bg-rose-700
+    dark:bg-rose-500 dark:text-neutral-900
+    dark:not-data-disabled:hover:bg-rose-400`,
+  'danger-light': `bg-rose-100 text-rose-800
+    not-data-disabled:hover:bg-rose-200
+    dark:bg-rose-800 dark:text-rose-200
+    dark:not-data-disabled:hover:bg-rose-700`,
+  primary: `bg-primary-600 text-white
+    not-data-disabled:hover:bg-primary-700
+    dark:bg-primary-500 dark:text-neutral-900
+    dark:not-data-disabled:hover:bg-primary-400`,
+  'primary-light': `bg-primary-100 text-primary-800
+    not-data-disabled:hover:bg-primary-200
+    dark:bg-primary-800 dark:text-primary-200
+    dark:not-data-disabled:hover:bg-primary-700`,
+  success: `bg-lime-600 text-white
+    not-data-disabled:hover:bg-lime-700
+    dark:bg-lime-500 dark:text-neutral-900
+    dark:not-data-disabled:hover:bg-lime-400`,
+  'success-light': `bg-lime-100 text-lime-800
+    not-data-disabled:hover:bg-lime-200
+    dark:bg-lime-800 dark:text-lime-200
+    dark:not-data-disabled:hover:bg-lime-700`,
 } as const
 </script>
 
 <template>
   <UiButtonBase
-    :active-class
     :data-loading="loading || undefined"
     :disabled="disabled || loading"
-    :exact-active-class
     :to
     :type
     :class="[

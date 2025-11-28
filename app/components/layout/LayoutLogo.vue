@@ -8,6 +8,12 @@ const { $localePath } = useI18n()
   <NuxtLink
     :to="$localePath('/')"
     external
+    class="
+      [--color-caption:var(--color-neutral-900)]
+      [--color-icon:var(--color-primary-600)]
+      dark:[--color-caption:var(--color-white)]
+      dark:[--color-icon:var(--color-primary-500)]
+    "
   >
     <SvgLogo />
   </NuxtLink>
@@ -15,10 +21,10 @@ const { $localePath } = useI18n()
 
 <style lang="css" scoped>
 :deep(.logo-icon) {
-  fill: var(--c-primary);
+  fill: var(--color-icon);
 }
 
 :deep(.logo-caption) {
-  fill: var(--c-text);
+  fill: var(--color-caption);
 }
 </style>

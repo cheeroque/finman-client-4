@@ -10,16 +10,19 @@ const { to } = defineProps<{
 
 <template>
   <UiButtonBase
+    :data-active="active || undefined"
     :to
     class="
-      flex w-15 cursor-pointer flex-col items-center gap-0.5 text-center text-xs
+      group/nav-item flex w-15 cursor-pointer flex-col items-center gap-0.5
+      text-center text-xs
     "
   >
     <span
-      :class="[
-        'flex w-14 rounded-full py-0.5 transition-colors',
-        active && 'bg-(--c-app-active-bg)',
-      ]"
+      class="
+        flex w-14 rounded-full py-0.5 transition-colors
+        group-data-active/nav-item:bg-primary-300
+        dark:group-data-active/nav-item:bg-primary-800
+      "
     >
       <Icon
         :name="icon"

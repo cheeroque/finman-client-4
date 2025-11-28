@@ -84,7 +84,8 @@ function setNow() {
         variant="content"
         class="
           text-start
-          data-invalid:text-(--c-error) data-invalid:outline-(--c-error)
+          data-invalid:text-rose-600 data-invalid:outline-rose-600
+          dark:data-invalid:text-rose-500 dark:data-invalid:outline-rose-500
         "
       >
         <span class="flex-auto font-normal">
@@ -94,15 +95,24 @@ function setNow() {
     </template>
 
     <div
-      class="rounded-xl border border-(--c-outline-light) bg-(--c-content-bg)"
+      class="
+        rounded-lg border border-neutral-200 bg-white
+        dark:border-neutral-800 dark:bg-black
+      "
     >
       <UiCalendar v-model="dateValue" />
 
-      <div class="flex items-center border-t border-(--c-outline-light) p-2">
+      <div
+        class="
+          flex items-center border-t border-neutral-200 p-2
+          dark:border-neutral-800
+        "
+      >
         <UiButtonBase
           class="
-            flex rounded-md bg-(--c-app-bg) p-1 text-(--c-text-highlight)
-            hover:bg-(--c-app-hover-bg)
+            flex rounded-md bg-white p-1 text-primary-900
+            hover:bg-primary-100
+            dark:bg-black dark:text-primary-200 dark:hover:bg-primary-900
           "
           @click="setNow()"
         >
@@ -119,9 +129,9 @@ function setNow() {
 
         <UiButtonBase
           class="
-            flex rounded-md bg-(--c-success-light) p-1
-            text-(--c-on-success-light)
-            hover:bg-(--c-success-light-hover)
+            flex rounded-md bg-lime-200 p-1 text-lime-800
+            hover:bg-lime-300
+            dark:bg-lime-900 dark:text-lime-200 dark:hover:bg-lime-800
           "
           @click="apply()"
         >

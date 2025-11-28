@@ -53,7 +53,11 @@ const columns = computed(() => [
     :loading
     td-class="max-2xl:p-0"
     thead-class="max-2xl:hidden"
-    tr-class="grid-cols-[auto_min-content] max-2xl:even:bg-(--c-table-alternate-bg) max-2xl:grid max-2xl:p-3"
+    tr-class="
+      grid-cols-[auto_min-content]
+      max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50
+      dark:max-2xl:even:bg-neutral-900
+    "
   >
     <template #cell(balance)="{ text }">
       <span class="text-xl leading-6 font-medium transition-colors">

@@ -1,6 +1,9 @@
 <template>
   <div
-    class="flex h-dvh flex-col bg-(--c-app-bg) text-(--c-text)"
+    class="
+      flex h-dvh flex-col bg-primary-200
+      dark:bg-primary-990
+    "
   >
     <slot />
   </div>

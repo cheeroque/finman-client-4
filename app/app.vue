@@ -3,7 +3,7 @@ import { ConfigProvider } from 'reka-ui'
 
 useHead({
   bodyAttrs: {
-    class: 'bg-(--c-app-bg) text-(--c-text)',
+    class: 'bg-primary-200 text-neutral-900 dark:bg-primary-990 dark:text-white',
   },
 })
 

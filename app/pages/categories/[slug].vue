@@ -38,9 +38,10 @@ const breadcrumbs = computed(() => {
     <div>
       <div
         class="
-          border-(--c-outline-light)
+          border-primary-100
           max-lg:border-b max-lg:p-3
           lg:mb-8
+          dark:border-primary-990
         "
       >
         <UiBreadcrumb :items="breadcrumbs" />

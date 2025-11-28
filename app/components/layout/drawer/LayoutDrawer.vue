@@ -7,11 +7,19 @@ const modelValue = defineModel<boolean>()
     <div class="flex flex-col gap-3 p-3">
       <LayoutNavLogout />
 
-      <hr class="border-(--c-outline-primary)">
+      <hr
+        class="
+          border-primary-300/50
+          dark:border-primary-900
+        "
+      >
 
       <LayoutNav
         hide-home
-        class="gap-1 border-b border-(--c-outline-primary) pb-3"
+        class="
+          gap-1 border-b border-primary-300/50 pb-3
+          dark:border-primary-900
+        "
       />
     </div>
   </UiDrawer>

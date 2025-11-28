@@ -2,12 +2,9 @@
 import { NuxtLink } from '#components'
 import type { NuxtLinkProps } from '#app'
 
-const { to } = defineProps<Pick<
-  NuxtLinkProps,
-  | 'activeClass'
-  | 'exactActiveClass'
-  | 'to'
-> & {
+const { to } = defineProps<{
+  active?: boolean
+  to?: NuxtLinkProps['to']
   disabled?: boolean
 }>()
 
@@ -15,18 +12,40 @@ const isNuxtLink = computed(() => !!to)
 </script>
 
 <template>
-  <component
-    :is="isNuxtLink ? NuxtLink : 'button'"
-    :active-class
+  <NuxtLink
+    v-if="isNuxtLink"
+    v-slot="{ href, isActive, isExactActive, navigate }"
+    custom
+    :to
+  >
+    <a
+      v-bind="$attrs"
+      :data-active="active || isActive || undefined"
+      :data-disabled="disabled || undefined"
+      :data-exact-active="isExactActive || undefined"
+      :href
+      class="
+        transition-(--transition-button)
+        data-disabled:pointer-events-none data-disabled:cursor-default
+        data-disabled:opacity-50
+      "
+      @click="navigate"
+    >
+      <slot />
+    </a>
+  </NuxtLink>
+
+  <button
+    v-else
+    :active
+    :data-active="active || undefined"
     :data-disabled="disabled || undefined"
     :disabled
-    :exact-active-class
-    :to
     class="
       cursor-pointer transition-(--transition-button)
       data-disabled:cursor-default data-disabled:opacity-50
     "
   >
     <slot />
-  </component>
+  </button>
 </template>

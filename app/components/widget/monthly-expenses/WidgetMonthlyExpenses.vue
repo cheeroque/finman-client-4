@@ -39,7 +39,7 @@ const subtotalMax = computed(() => Math.max(
       />
 
       <WidgetMonthlyExpensesCategory
-        color="var(--c-primary)"
+        color="var(--color-primary-500)"
         :link="`/months/${currentPeriod}`"
         :name="$ts('sidebar.currentMonth.otherExpenses')"
         :subtotal="otherCategoriesTotal"

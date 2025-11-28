@@ -14,9 +14,9 @@ const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.v
 <template>
   <header
     class="
-      flex flex-col items-center border-b border-(--c-outline-light) px-8 pt-2
-      pb-4
+      flex flex-col items-center border-b border-primary-100 px-8 pt-2 pb-4
       lg:flex-row lg:pt-0 lg:pb-8
+      dark:border-primary-990
     "
   >
     <div class="flex flex-auto items-baseline gap-5">
@@ -24,7 +24,8 @@ const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.v
         :to="$localePath('/')"
         class="
           inline-flex transition-colors
-          hover:text-(--c-primary)
+          hover:text-primary-600
+          dark:hover:text-primary-500
         "
       >
         <h1
@@ -46,22 +47,34 @@ const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.v
       >
         <span
           v-if="totalIncomes"
-          class="flex items-center gap-1 text-(--c-text-muted)"
+          class="
+            flex items-center gap-1 text-neutral-500
+            dark:text-neutral-400
+          "
         >
           <Icon
             name="mingcute:arrow-right-up-line"
-            class="text-(--c-success)"
+            class="
+              text-lime-500
+              dark:text-lime-600
+            "
           />
           {{ totalIncomes }}
         </span>
 
         <span
           v-if="totalExpenses"
-          class="flex items-center gap-1 text-(--c-text-muted)"
+          class="
+            flex items-center gap-1 text-neutral-500
+            dark:text-neutral-400
+          "
         >
           <Icon
             name="mingcute:arrow-right-down-line"
-            class="text-(--c-error)"
+            class="
+              text-rose-500
+              dark:text-rose-600
+            "
           />
           {{ totalExpenses }}
         </span>

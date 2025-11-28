@@ -38,7 +38,12 @@ const width = computed(() => subtotalMax ? (subtotal * 100) / subtotalMax : 100)
     }"
   >
     <div class="flex gap-2">
-      <span class="text-(--c-text-muted)">
+      <span
+        class="
+          text-neutral-500
+          dark:text-neutral-400
+        "
+      >
         {{ name }}
       </span>
 

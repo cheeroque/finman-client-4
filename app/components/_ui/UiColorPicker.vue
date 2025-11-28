@@ -13,10 +13,11 @@ const dataTextDark = computed(() => modelValue.value
     :data-text-dark
     class="
       mr-0.5 flex cursor-pointer self-center rounded-full bg-(--bg-color) p-1.5
-      outline-(--c-outline-light)
+      outline-neutral-200
       data-empty:outline
-      data-[text-dark=false]:text-(--color-white)
-      data-[text-dark=true]:text-(--color-black)
+      data-[text-dark=false]:text-white
+      data-[text-dark=true]:text-neutral-900
+      dark:outline-neutral-800
     "
     :style="{
       '--bg-color': modelValue,
