@@ -19,6 +19,7 @@ whenever(filterRef, (value) => {
       >
         <TransactionFilterText
           ref="filterRef"
+          :placeholder="$ts('filter.text.placeholder')"
           class="col-span-2"
         />
 

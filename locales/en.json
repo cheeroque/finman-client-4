@@ -47,7 +47,8 @@
       "label": "Marked only"
     },
     "text": {
-      "placeholder": "Enter text to search"
+      "placeholder": "Enter text to search",
+      "placeholderHotkey": "Search transactions (Ctrl+K)"
     },
     "view": {
       "all": "All transactions",

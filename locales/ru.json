@@ -47,7 +47,8 @@
       "label": "Только отмеченные"
     },
     "text": {
-      "placeholder": "Введите текст для поиска"
+      "placeholder": "Введите текст для поиска",
+      "placeholderHotkey": "Поиск записей (Ctrl+K)"
     },
     "view": {
       "all": "Все записи",
