@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Row } from '@tanstack/vue-table'
+
 import type { Transaction } from '~~/shared/types/transaction'
 
 const { transactions = [] } = defineProps<{
@@ -59,6 +61,29 @@ const columns = computed(() => [
     },
   },
 ])
+
+function getTrClass(row: Row<Transaction>) {
+  const classlist = [
+    'grid-cols-[auto_min-content]',
+    'max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50',
+    'dark:max-2xl:even:bg-neutral-900',
+  ]
+
+  if (row.original.is_marked) {
+    classlist.push(
+      'row-marked',
+      'max-2xl:bg-amber-50 max-2xl:even:bg-amber-50',
+      'dark:max-2xl:bg-amber-950 dark:max-2xl:even:bg-amber-950'
+    )
+  }
+
+  return classlist
+}
+
+const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
+  group-[.row-marked]/row:hover:text-amber-600
+  dark:hover:text-primary-500
+  dark:group-[.row-marked]/row:hover:text-amber-500`
 </script>
 
 <template>
@@ -66,64 +91,72 @@ const columns = computed(() => [
     :columns
     :data
     :loading
-    td-class="max-2xl:p-0"
-    thead-class="max-2xl:hidden"
-    tr-class="
-      grid-cols-[auto_min-content]
-      max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50
-      dark:max-2xl:even:bg-neutral-900
+    td-class="
+      group-[.row-marked]/row:bg-amber-50
+      max-2xl:p-0
+      dark:group-[.row-marked]/row:bg-amber-950
     "
+    thead-class="max-2xl:hidden"
+    :tr-class="getTrClass"
   >
     <template #cell(created_at)="{ item }">
-      <NuxtLink
+      <UiButtonBase
         :to="$localePath(`/months/${item.period}`)"
-        class="
-          transition-colors
-          hover:text-primary-600 hover:underline
-          dark:hover:text-primary-500
-        "
+        :class="[
+          CELL_INTERACTIVE_CLASS,
+          'hover:underline',
+        ]"
       >
         {{ item.created_at_formatted }}
-      </NuxtLink>
+      </UiButtonBase>
     </template>
 
     <template #cell(sum)="{ item }">
       <TransactionDialogTrigger
         :transaction="item"
-        class="
-          text-xl leading-6 font-medium transition-colors
-          hover:text-primary-600
-          max-2xl:text-2xl max-2xl:text-primary-600
-          dark:hover:text-primary-500 dark:max-2xl:text-primary-500
-        "
+        :class="[
+          CELL_INTERACTIVE_CLASS,
+          'text-xl leading-6 font-medium',
+          'max-2xl:text-2xl max-2xl:text-primary-600',
+          'group-[.row-marked]/row:text-amber-600',
+          'dark:group-[.row-marked]/row:text-amber-500',
+          'dark:max-2xl:text-primary-500',
+        ]"
       >
         {{ item.sum_formatted }}
       </TransactionDialogTrigger>
     </template>
 
     <template #cell(category_id)="{ item }">
-      <NuxtLink
+      <UiButtonBase
         :to="$localePath(`/categories/${item.category.slug}`)"
-        class="
-          transition-colors
-          hover:text-primary-600 hover:underline
-          dark:hover:text-primary-500
-        "
+        :class="[
+          CELL_INTERACTIVE_CLASS,
+          'text-neutral-500',
+          'hover:underline',
+        ]"
       >
         {{ item.category.name }}
-      </NuxtLink>
+      </UiButtonBase>
     </template>
 
     <template #cell(note)="{ item }">
       <TransactionDialogTrigger
         :transaction="item"
-        class="
-          group/button flex w-full items-center gap-4 text-start
-          transition-colors
-          hover:text-primary-600
-          dark:hover:text-primary-500
-        "
+        :class="[
+          CELL_INTERACTIVE_CLASS,
+          'group/button flex w-full items-center gap-2 text-start',
+        ]"
       >
+        <Icon
+          v-if="item.is_marked"
+          name="mingcute:star-fill"
+          class="
+            text-lg text-amber-300
+            dark:text-amber-800
+          "
+        />
+
         <span class="flex-auto">
           {{ item.note }}
         </span>
