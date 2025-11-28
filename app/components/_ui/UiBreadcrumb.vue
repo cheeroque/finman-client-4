@@ -41,7 +41,7 @@ defineProps<{
 
       <Icon
         v-if="index < items.length - 1"
-        name="mingcute:right-line"
+        name="mynaui:chevron-right-solid"
         class="translate-y-px text-xs"
       />
     </li>

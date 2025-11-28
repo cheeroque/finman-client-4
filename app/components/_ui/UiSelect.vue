@@ -71,10 +71,11 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
       </span>
 
       <Icon
-        name="mingcute:down-line"
+        name="mynaui:chevron-down-solid"
         class="
-          size-3 flex-none self-center transition-transform
+          flex-none self-center text-lg text-neutral-300 transition-transform
           group-data-[state=open]/trigger:-rotate-180
+          dark:text-neutral-700
         "
       />
     </SelectTrigger>

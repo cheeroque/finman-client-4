@@ -80,7 +80,7 @@ function setNow() {
       <UiButton
         :data-invalid="hasError || undefined"
         :disabled
-        trailing-icon="mingcute:calendar-3-line"
+        trailing-icon="mynaui:calendar-check"
         variant="content"
         class="
           text-start
@@ -117,7 +117,7 @@ function setNow() {
           @click="setNow()"
         >
           <Icon
-            name="mingcute:time-line"
+            name="mynaui:alarm-check"
             class="text-xl"
           />
         </UiButtonBase>
@@ -136,7 +136,7 @@ function setNow() {
           @click="apply()"
         >
           <Icon
-            name="mingcute:check-line"
+            name="mynaui:check"
             class="text-xl"
           />
         </UiButtonBase>

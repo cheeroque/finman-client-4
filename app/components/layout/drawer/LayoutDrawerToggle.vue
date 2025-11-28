@@ -3,7 +3,7 @@ const { active } = defineProps<{
   active?: boolean
 }>()
 
-const icon = computed(() => active ? 'mingcute:close-line' : 'mingcute:menu-line')
+const icon = computed(() => active ? 'mynaui:x' : 'mynaui:menu')
 </script>
 
 <template>

@@ -205,7 +205,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
       class="absolute top-4 right-4 flex size-6 animate-spin opacity-50"
     >
       <Icon
-        name="mingcute:loading-3-fill"
+        name="mynaui:spinner"
         class="text-2xl"
       />
     </span>

@@ -33,7 +33,7 @@ const paginationVisible = computed(() => Number(data.value?.total) > Number(data
         "
       >
         <TransactionFilterText
-          icon="mingcute:search-line"
+          icon="mynaui:search"
           class="max-2xl:basis-full"
         />
 

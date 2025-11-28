@@ -28,8 +28,8 @@ defineEmits<{
       @click="$emit('click', $event)"
     >
       <Icon
-        name="mingcute:add-line"
-        class="text-[2rem]"
+        name="mynaui:plus"
+        class="text-3xl"
       />
     </UiButton>
   </div>

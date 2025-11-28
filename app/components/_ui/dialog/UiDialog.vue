@@ -90,7 +90,7 @@ const modelValue = defineModel<boolean>()
                 "
               >
                 <Icon
-                  name="mingcute:close-circle-fill"
+                  name="mynaui:x-circle-solid"
                   class="text-2xl"
                 />
               </UiButtonBase>

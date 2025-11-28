@@ -40,7 +40,7 @@ function toggleDrawer() {
     <div class="mx-auto flex max-w-90 flex-auto justify-between">
       <LayoutBottomNavItem
         :active="isHomeActive"
-        icon="mingcute:home-7-line"
+        icon="mynaui:home-smile"
         :to="$localeRoute({ name: 'index' })"
       >
         {{ $ts('bottomNav.home') }}
@@ -48,7 +48,7 @@ function toggleDrawer() {
 
       <LayoutBottomNavItem
         :active="isIncomesActive"
-        icon="mingcute:wallet-3-line"
+        icon="mynaui:credit-card-plus"
         :to="incomesRoute"
       >
         {{ $ts('bottomNav.incomes') }}
@@ -56,7 +56,7 @@ function toggleDrawer() {
 
       <LayoutBottomNavItem
         :active="isExpensesActive"
-        icon="mingcute:shopping-cart-1-line"
+        icon="mynaui:cart-minus"
         :to="expensesRoute"
       >
         {{ $ts('bottomNav.expenses') }}
@@ -64,7 +64,7 @@ function toggleDrawer() {
 
       <LayoutBottomNavItem
         :active="isSearchOpen"
-        icon="mingcute:search-line"
+        icon="mynaui:search"
         @click="toggleSearch()"
       >
         {{ $ts('bottomNav.search') }}

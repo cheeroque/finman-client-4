@@ -53,7 +53,7 @@ const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.v
           "
         >
           <Icon
-            name="mingcute:arrow-right-up-line"
+            name="mynaui:arrow-up-right-solid"
             class="
               text-lime-500
               dark:text-lime-600
@@ -70,7 +70,7 @@ const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.v
           "
         >
           <Icon
-            name="mingcute:arrow-right-down-line"
+            name="mynaui:arrow-down-right-solid"
             class="
               text-rose-500
               dark:text-rose-600

@@ -48,7 +48,7 @@ const PAGE_ITEM_CLASS = `data-selected:bg-primary-600 data-selected:text-white
     >
       <PaginationFirst :class="ITEM_CLASS">
         <Icon
-          name="mingcute:arrows-left-line"
+          name="mynaui:chevron-double-left"
           class="text-2xl"
         />
       </PaginationFirst>
@@ -60,7 +60,7 @@ const PAGE_ITEM_CLASS = `data-selected:bg-primary-600 data-selected:text-white
         ]"
       >
         <Icon
-          name="mingcute:arrow-left-line"
+          name="mynaui:chevron-left"
           class="text-2xl"
         />
       </PaginationPrev>
@@ -86,14 +86,14 @@ const PAGE_ITEM_CLASS = `data-selected:bg-primary-600 data-selected:text-white
         ]"
       >
         <Icon
-          name="mingcute:arrow-right-line"
+          name="mynaui:chevron-right"
           class="text-2xl"
         />
       </PaginationNext>
 
       <PaginationLast :class="ITEM_CLASS">
         <Icon
-          name="mingcute:arrows-right-line"
+          name="mynaui:chevron-double-right"
           class="text-2xl"
         />
       </PaginationLast>

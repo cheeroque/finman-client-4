@@ -24,7 +24,7 @@ const dataTextDark = computed(() => modelValue.value
     }"
   >
     <Icon
-      name="mingcute:paint-brush-line"
+      name="mynaui:droplet"
       class="text-xl"
     />
 

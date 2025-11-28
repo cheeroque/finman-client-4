@@ -93,12 +93,13 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         :disabled="isStart"
         class="
           flex flex-none text-neutral-400
-          dark:text-neutral-600
+          hover:text-primary-400
+          dark:text-neutral-600 dark:hover:text-primary-600
         "
         @click="shiftYear(-1)"
       >
         <Icon
-          name="mingcute:arrow-left-line"
+          name="mynaui:chevron-left"
           class="text-2xl"
         />
       </UiButtonBase>
@@ -111,12 +112,13 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         :disabled="isEnd"
         class="
           flex flex-none text-neutral-400
-          dark:text-neutral-600
+          hover:text-primary-400
+          dark:text-neutral-600 dark:hover:text-primary-600
         "
         @click="shiftYear(+1)"
       >
         <Icon
-          name="mingcute:arrow-right-line"
+          name="mynaui:chevron-right"
           class="text-2xl"
         />
       </UiButtonBase>

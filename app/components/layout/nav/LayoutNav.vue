@@ -27,42 +27,31 @@ const snapshotLabel = computed(() => {
   }
 })
 
-const route = useRoute()
-
 const menuItems = computed<LayoutNavItem[]>(() => [
   {
     label: $ts('mainMenu.home'),
-    icon: 'mingcute:home-7-line',
-    iconActive: 'mingcute:home-7-fill',
+    icon: 'mynaui:home-smile',
     to: $localePath('/'),
-    isActive: route.fullPath === '/',
   },
   {
     label: $ts('mainMenu.categories'),
-    icon: 'mingcute:layers-line',
-    iconActive: 'mingcute:layers-fill',
+    icon: 'mynaui:grid',
     to: $localePath('/categories'),
-    isActive: route.name === 'categories',
   },
   {
     label: $ts('mainMenu.months'),
-    icon: 'mingcute:calendar-3-line',
-    iconActive: 'mingcute:calendar-3-fill',
+    icon: 'mynaui:calendar',
     to: $localePath('/months'),
-    isActive: route.name === 'months',
   },
   {
     label: snapshotLabel.value.primary,
     labelSecondary: snapshotLabel.value.secondary,
-    icon: 'mingcute:history-anticlockwise-line',
-    iconActive: 'mingcute:history-anticlockwise-fill',
+    icon: 'mynaui:clock-ten',
     to: $localePath('/snapshots'),
-    isActive: route.name === 'snapshots',
   },
   {
     label: $ts('mainMenu.export'),
-    icon: 'mingcute:folder-download-line',
-    iconActive: 'mingcute:folder-download-line',
+    icon: 'mynaui:cloud-download',
     onClick: exportFile,
   },
 ])

@@ -150,7 +150,7 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
       >
         <Icon
           v-if="item.is_marked"
-          name="mingcute:star-fill"
+          name="mynaui:star-solid"
           class="
             text-lg text-amber-300
             dark:text-amber-800
@@ -162,7 +162,7 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
         </span>
 
         <Icon
-          name="mingcute:edit-2-line"
+          name="mynaui:edit"
           class="
             text-2xl opacity-0 transition-opacity
             group-hover/button:opacity-50

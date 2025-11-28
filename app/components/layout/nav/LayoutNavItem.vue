@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import type { LayoutNavItem } from '~/components/layout'
 
-const {
-  icon,
-  iconActive,
-  isActive,
-  onClick,
-} = defineProps<LayoutNavItem>()
-
-const iconName = computed(() => (isActive ? iconActive : icon) ?? icon)
+const { icon, onClick } = defineProps<LayoutNavItem>()
 
 function handleClick() {
   if (typeof onClick === 'function') {
@@ -35,7 +28,7 @@ function handleClick() {
   >
     <span class="flex size-6">
       <Icon
-        :name="iconName"
+        :name="icon"
         class="text-2xl opacity-80"
       />
     </span>

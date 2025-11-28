@@ -32,13 +32,14 @@ const modelValue = defineModel<CalendarDate>()
       <CalendarPrev
         class="
           flex size-6 cursor-pointer items-center justify-center
-          text-neutral-500
-          dark:text-neutral-400
+          text-neutral-500 transition-(--transition-button)
+          hover:text-primary-500
+          dark:text-neutral-400 dark:hover:text-primary-400
         "
       >
         <Icon
-          name="mingcute:left-line"
-          class="text-xl"
+          name="mynaui:chevron-left"
+          class="text-lg"
         />
       </CalendarPrev>
 
@@ -47,12 +48,13 @@ const modelValue = defineModel<CalendarDate>()
       <CalendarNext
         class="
           flex size-6 cursor-pointer items-center justify-center
-          text-neutral-500
-          dark:text-neutral-400
+          text-neutral-500 transition-(--transition-button)
+          hover:text-primary-500
+          dark:text-neutral-400 dark:hover:text-primary-400
         "
       >
         <Icon
-          name="mingcute:right-line"
+          name="mynaui:chevron-right"
           class="text-xl"
         />
       </CalendarNext>

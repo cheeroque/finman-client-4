@@ -96,7 +96,7 @@ const VARIANT_CLASSES = {
       "
     >
       <Icon
-        name="mingcute:loading-3-fill"
+        name="mynaui:spinner"
         class="text-2xl"
       />
     </span>

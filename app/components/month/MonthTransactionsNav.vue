@@ -43,7 +43,7 @@ const isNextDisabled = computed(() => nextDate.value.year >= Number(end.value?.y
   <div class="flex justify-between gap-5">
     <UiButton
       :disabled="isPreviousDisabled || isFirstTransactionLoading"
-      icon="mingcute:arrow-left-line"
+      icon="mynaui:chevron-left"
       :to="$localePath(`/months/${previousPeriod}`)"
       variant="primary-light"
     >
@@ -59,7 +59,7 @@ const isNextDisabled = computed(() => nextDate.value.year >= Number(end.value?.y
     <UiButton
       :disabled="isNextDisabled || isFirstTransactionLoading"
       :to="$localePath(`/months/${nextPeriod}`)"
-      trailing-icon="mingcute:arrow-right-line"
+      trailing-icon="mynaui:chevron-right"
       variant="primary-light"
     >
       <span class="max-lg:hidden">

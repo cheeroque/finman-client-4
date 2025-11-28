@@ -79,7 +79,7 @@ const columns = computed(() => [
         <Icon
           v-if="item.is_income"
           :aria-label="$ts('incomes')"
-          name="mingcute:arrow-right-up-line"
+          name="mynaui:arrow-up-right-solid"
           class="
             text-lime-500
             dark:text-lime-600
@@ -89,7 +89,7 @@ const columns = computed(() => [
         <Icon
           v-else
           :aria-label="$ts('expenses')"
-          name="mingcute:arrow-right-down-line"
+          name="mynaui:arrow-down-right-solid"
           class="
             text-rose-500
             dark:text-rose-600
@@ -128,7 +128,7 @@ const columns = computed(() => [
         @click="$emit('clickEdit', item)"
       >
         <Icon
-          name="mingcute:edit-2-line"
+          name="mynaui:edit"
           class="text-2xl"
         />
       </UiButtonBase>

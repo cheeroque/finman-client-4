@@ -13,7 +13,7 @@ const { $localePath, $ts } = useI18n()
 const breadcrumbs = computed(() => {
   const items: BreadcrumbItem[] = [
     {
-      icon: 'mingcute:home-7-line',
+      text: $ts('mainMenu.home'),
       to: $localePath('/'),
     },
     {

@@ -2,8 +2,16 @@
 import { CheckboxIndicator, CheckboxRoot } from 'reka-ui'
 import type { AcceptableValue } from 'reka-ui'
 
-const { id } = defineProps<{
+const {
+  iconChecked = 'mynaui:check-square-solid',
+  iconIndeterminate = 'mynaui:minus-square-solid',
+  iconUnchecked = 'mynaui:square',
+  id,
+} = defineProps<{
   disabled?: boolean
+  iconChecked?: string
+  iconIndeterminate?: string
+  iconUnchecked?: string
   id?: string
   required?: boolean
   value?: AcceptableValue
@@ -12,6 +20,18 @@ const { id } = defineProps<{
 const modelValue = defineModel<boolean | 'indeterminate'>()
 
 const inputId = computed(() => id ?? useId())
+
+const iconName = computed(() => {
+  if (modelValue.value === 'indeterminate') {
+    return iconIndeterminate
+  }
+
+  if (modelValue.value) {
+    return iconChecked
+  }
+
+  return iconUnchecked
+})
 </script>
 
 <template>
@@ -31,30 +51,22 @@ const inputId = computed(() => id ?? useId())
       :value
       class="
         flex size-5 flex-none appearance-none items-center justify-center
-        rounded border border-neutral-200 bg-white transition-colors
-        outline-none
-        group-hover/label:border-primary-300
-        data-[state=checked]:border-primary-600
-        data-[state=checked]:bg-primary-600
-        data-[state=indeterminate]:border-primary-600
-        data-[state=indeterminate]:bg-primary-600
-        dark:border-neutral-800 dark:bg-black
-        dark:group-hover/label:border-primary-900
-        dark:data-[state=checked]:border-primary-500
-        dark:data-[state=checked]:bg-primary-500
-        dark:data-[state=indeterminate]:border-primary-500
-        dark:data-[state=indeterminate]:bg-primary-500
+        text-neutral-200 transition-colors outline-none
+        group-hover/label:text-primary-300
+        data-[state=checked]:text-primary-600
+        data-[state=indeterminate]:text-primary-600
+        dark:text-neutral-800 dark:group-hover/label:text-primary-900
+        dark:data-[state=checked]:text-primary-500
+        dark:data-[state=indeterminate]:text-primary-500
       "
     >
       <CheckboxIndicator
-        class="flex h-full w-full items-center justify-center"
+        class="flex size-full items-center justify-center"
+        force-mount
       >
         <Icon
-          name="mingcute:check-fill"
-          class="
-            text-xs text-white
-            dark:text-neutral-900
-          "
+          :name="iconName"
+          class="text-xl"
         />
       </CheckboxIndicator>
     </CheckboxRoot>

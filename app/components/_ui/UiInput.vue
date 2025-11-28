@@ -74,18 +74,23 @@ defineExpose({ inputRef })
       @focus="emit('focus', $event)"
     >
 
-    <button
+    <UiButtonBase
       v-if="modelValue"
       class="
         flex cursor-pointer items-center pr-2.5 text-neutral-300
+        hover:text-primary-500
         focus:text-primary-600 focus:outline-0
-        dark:text-neutral-700 dark:focus:text-primary-500
+        dark:text-neutral-700 dark:hover:text-primary-400
+        dark:focus:text-primary-500
       "
       type="button"
       @click="modelValue = undefined"
     >
-      <Icon name="mingcute:close-circle-fill" />
-    </button>
+      <Icon
+        name="mynaui:x-octagon-solid"
+        class="text-lg"
+      />
+    </UiButtonBase>
 
     <slot name="trailing-icon" />
   </div>

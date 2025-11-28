@@ -14,7 +14,7 @@ async function logout() {
       hover:bg-primary-50/80
       dark:bg-primary-900/40 dark:text-neutral-300 dark:hover:bg-primary-900/80
     "
-    @click="logout()"
+    @click="logout"
   >
     <span class="flex-auto">
       {{ $ts('mainMenu.logout') }}
@@ -22,8 +22,8 @@ async function logout() {
 
     <span class="flex size-6">
       <Icon
-        name="mingcute:exit-line"
-        class="text-2xl"
+        name="mynaui:logout"
+        class="text-2xl opacity-80"
       />
     </span>
   </UiButtonBase>
