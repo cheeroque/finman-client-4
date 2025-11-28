@@ -59,9 +59,9 @@ const columns = computed(() => [
       dark:max-2xl:even:bg-neutral-900
     "
   >
-    <template #cell(balance)="{ text }">
+    <template #cell(balance)="{ value }">
       <span class="text-xl leading-6 font-medium transition-colors">
-        {{ text }}
+        {{ value }}
       </span>
     </template>
   </UiTable>

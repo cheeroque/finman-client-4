@@ -146,8 +146,8 @@ function getCellClass(cell: Cell<TData, unknown>) {
                 :cell
                 :is-row-expanded="row.getIsExpanded()"
                 :item="cell.row.original"
-                :text="cell.getValue()"
                 :toggle-row-expanded="row.getToggleExpandedHandler()"
+                :value="cell.getValue()"
               >
                 <FlexRender
                   :render="cell.column.columnDef.cell"
