@@ -1,4 +1,9 @@
 {
+  "columns": {
+    "color": "Цвет",
+    "name": "Имя",
+    "slug": "Слаг"
+  },
   "createCategory": "Добавить категорию",
   "expenses": "Расходы",
   "incomes": "Доходы"

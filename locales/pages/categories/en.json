@@ -1,4 +1,9 @@
 {
+  "columns": {
+    "color": "Color",
+    "name": "Name",
+    "slug": "Slug"
+  },
   "createCategory": "Add Category",
   "expenses": "Expenses",
   "incomes": "Incomes"

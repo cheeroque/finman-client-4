@@ -69,7 +69,6 @@ const columns = computed(() => [
     td-class="max-2xl:p-0"
     thead-class="max-2xl:hidden"
     tr-class="
-      max-2xl:first:rounded-l-0 max-2xl:last:rounded-r-0
       grid-cols-[auto_min-content]
       max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50
       dark:max-2xl:even:bg-neutral-900

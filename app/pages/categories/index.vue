@@ -5,7 +5,8 @@ definePageMeta({
   layout: false,
 })
 
-const { data: categories } = await useCategories()
+const { data: categories, status } = await useCategories()
+const loading = useAsyncDataLoading(status)
 
 const { register } = useDialog()
 const { open: openCategoryModal } = register(LazyCategoryDialog)
@@ -20,20 +21,11 @@ const { open: openCategoryModal } = register(LazyCategoryDialog)
       />
     </template>
 
-    <main
-      class="
-        grid gap-3
-        max-lg:px-3 max-lg:pt-3
-        sm:grid-cols-2
-        lg:gap-8
-        2xl:grid-cols-3
-      "
-    >
-      <CategoryCard
-        v-for="category in categories"
-        :key="category.id"
-        :category
-        @click-edit="openCategoryModal({ category })"
+    <main class="flex flex-col gap-8">
+      <CategoryTable
+        :categories
+        :loading
+        @click-edit="openCategoryModal({ category: $event })"
       />
     </main>
   </NuxtLayout>
