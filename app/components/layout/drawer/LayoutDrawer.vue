@@ -4,7 +4,12 @@ const modelValue = defineModel<boolean>()
 
 <template>
   <UiDrawer v-model="modelValue">
-    <div class="flex flex-col gap-3 p-3">
+    <div
+      class="
+        flex flex-col gap-3 rounded-t-xl bg-primary-200 p-3
+        dark:bg-primary-950
+      "
+    >
       <LayoutNavLogout />
 
       <hr

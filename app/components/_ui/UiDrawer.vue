@@ -24,11 +24,7 @@ const modelValue = defineModel<boolean>()
         leave-to-class="translate-y-full"
       >
         <DialogContent
-          class="
-            fixed inset-x-0 bottom-18 z-40 rounded-t-xl bg-primary-200
-            transition-transform
-            dark:bg-primary-950
-          "
+          class="fixed inset-x-0 bottom-18 z-40 transition-transform"
         >
           <slot />
         </DialogContent>
