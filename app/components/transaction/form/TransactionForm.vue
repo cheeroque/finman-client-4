@@ -143,6 +143,9 @@ async function handleSubmit() {
 
     <UiCheckbox
       v-model="form.is_marked"
+      icon-checked="mynaui:star-solid"
+      icon-unchecked="mynaui:star"
+      variant="amber"
       class="self-start"
     >
       {{ $ts('transactionModal.form.marked.label') }}
