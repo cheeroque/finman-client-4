@@ -56,6 +56,7 @@ export default defineNuxtConfig({
       weights: [400, 500, 600, 700],
       styles: ['normal'],
     },
+    provider: 'google',
   },
 
   i18n: {
