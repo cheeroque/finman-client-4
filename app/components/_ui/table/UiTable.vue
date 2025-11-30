@@ -128,7 +128,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
               :key="cell.id"
               :class="twMerge(
                 `
-                  px-4 py-3.5
+                  px-4 py-3.5 transition-all duration-300
                   group-even/row:bg-neutral-50
                   group-data-expanded/row:bg-violet-100
                   group-data-expanded/row:first:rounded-bl-none
@@ -157,31 +157,16 @@ function getCellClass(cell: Cell<TData, unknown>) {
             </td>
           </tr>
 
-          <Transition
-            enter-from-class="h-0"
-            leave-to-class="h-0"
+          <UiTableExpansion
+            :colspan="row.getAllCells().length"
+            :is-expanded="row.getIsExpanded()"
           >
-            <tr
-              v-if="row.getIsExpanded()"
-              :data-expansion="row.getIsExpanded() || undefined"
-            >
-              <td :colspan="row.getAllCells().length">
-                <div
-                  class="
-                    border border-violet-100
-                    lg:rounded-b-lg
-                    dark:border-violet-950
-                  "
-                >
-                  <slot
-                    name="row-expanded"
-                    :toggle-row-expanded="row.getToggleExpandedHandler()"
-                    :row
-                  />
-                </div>
-              </td>
-            </tr>
-          </Transition>
+            <slot
+              name="row-expanded"
+              :toggle-row-expanded="row.getToggleExpandedHandler()"
+              :row
+            />
+          </UiTableExpansion>
         </template>
 
         <tr v-if="!bodyRows.length">
