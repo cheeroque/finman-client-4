@@ -3,24 +3,12 @@ import type { Row } from '@tanstack/vue-table'
 
 import type { Transaction } from '~~/shared/types/transaction'
 
-const { transactions = [] } = defineProps<{
+defineProps<{
   loading?: boolean
   transactions?: Transaction[]
 }>()
 
 const { $localePath, $ts } = useI18n()
-
-const { formatDate, formatPeriod, formatNumber, parseDateTime } = useLocaleFormatter()
-
-const data = computed(() => transactions?.map((transaction) => ({
-  ...transaction,
-  created_at_formatted: formatDate(transaction.created_at, {
-    dateStyle: 'short',
-    timeStyle: 'short',
-  }),
-  period: formatPeriod(parseDateTime(transaction.created_at)),
-  sum_formatted: formatNumber(transaction.sum),
-})))
 
 const columns = computed(() => [
   {
@@ -89,7 +77,7 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
 <template>
   <UiTable
     :columns
-    :data
+    :data="transactions"
     :loading
     td-class="
       group-[.row-marked]/row:bg-amber-50
@@ -100,31 +88,21 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
     :tr-class="getTrClass"
   >
     <template #cell(created_at)="{ item }">
-      <UiButtonBase
-        :to="$localePath(`/months/${item.period}`)"
-        :class="[
-          CELL_INTERACTIVE_CLASS,
-          'hover:underline',
-        ]"
-      >
-        {{ item.created_at_formatted }}
-      </UiButtonBase>
+      <TransactionTableDatetime
+        :datetime="item.created_at"
+        :class="CELL_INTERACTIVE_CLASS"
+      />
     </template>
 
     <template #cell(sum)="{ item }">
-      <TransactionDialogTrigger
+      <TransactionTableSum
         :transaction="item"
         :class="[
           CELL_INTERACTIVE_CLASS,
-          'text-xl leading-6 font-medium',
+          'text-xl leading-6',
           'max-2xl:text-2xl max-2xl:text-primary-600',
-          'group-[.row-marked]/row:text-amber-600',
-          'dark:group-[.row-marked]/row:text-amber-500',
-          'dark:max-2xl:text-primary-500',
         ]"
-      >
-        {{ item.sum_formatted }}
-      </TransactionDialogTrigger>
+      />
     </template>
 
     <template #cell(category_id)="{ item }">
@@ -134,6 +112,7 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
           CELL_INTERACTIVE_CLASS,
           'text-neutral-500',
           'hover:underline',
+          'dark:text-neutral-400',
         ]"
       >
         {{ item.category.name }}
@@ -141,34 +120,10 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
     </template>
 
     <template #cell(note)="{ item }">
-      <TransactionDialogTrigger
+      <TransactionTableNote
         :transaction="item"
-        :class="[
-          CELL_INTERACTIVE_CLASS,
-          'group/button flex w-full items-center gap-2 text-start',
-        ]"
-      >
-        <Icon
-          v-if="item.is_marked"
-          name="mynaui:star-solid"
-          class="
-            text-lg text-amber-300
-            dark:text-amber-800
-          "
-        />
-
-        <span class="flex-auto">
-          {{ item.note }}
-        </span>
-
-        <Icon
-          name="mynaui:edit"
-          class="
-            text-2xl opacity-0 transition-opacity
-            group-hover/button:opacity-50
-          "
-        />
-      </TransactionDialogTrigger>
+        :class="CELL_INTERACTIVE_CLASS"
+      />
     </template>
   </UiTable>
 </template>

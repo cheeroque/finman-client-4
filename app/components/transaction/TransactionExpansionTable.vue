@@ -5,8 +5,6 @@ defineProps<{
   transactions?: TransactionBase[]
 }>()
 
-const { formatDate, formatNumber } = useLocaleFormatter()
-
 const columns = computed(() => [
   {
     accessorKey: 'created_at',
@@ -33,6 +31,8 @@ const columns = computed(() => [
     },
   },
 ])
+
+const CELL_INTERACTIVE_CLASS = `hover:text-primary-600 dark:hover:text-primary-500`
 </script>
 
 <template>
@@ -48,30 +48,35 @@ const columns = computed(() => [
       :data="transactions"
       td-class="max-2xl:w-full max-2xl:p-0"
       table-class="
-      table-fixed rounded-lg
-      max-2xl:text-sm
-    "
+        table-fixed rounded-lg
+        max-2xl:text-sm
+      "
       thead-class="hidden"
       tr-class="
-      grid-cols-[10rem_1fr]
-      max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50
-      dark:max-2xl:even:bg-neutral-900
-    "
+        grid-cols-[10rem_1fr]
+        max-2xl:grid max-2xl:p-3 max-2xl:even:bg-neutral-50
+        dark:max-2xl:even:bg-neutral-900
+      "
     >
       <template #cell(created_at)="{ item }">
-        {{ formatDate(item.created_at) }}
+        <TransactionTableDatetime
+          :datetime="item.created_at"
+          :class="CELL_INTERACTIVE_CLASS"
+        />
       </template>
 
       <template #cell(sum)="{ item }">
-        <TransactionDialogTrigger :transaction="item">
-          {{ formatNumber(item.sum) }}
-        </TransactionDialogTrigger>
+        <TransactionTableSum
+          :transaction="item"
+          :class="CELL_INTERACTIVE_CLASS"
+        />
       </template>
 
       <template #cell(note)="{ item }">
-        <TransactionDialogTrigger :transaction="item">
-          {{ item.note }}
-        </TransactionDialogTrigger>
+        <TransactionTableNote
+          :transaction="item"
+          :class="CELL_INTERACTIVE_CLASS"
+        />
       </template>
     </UiTable>
   </div>
