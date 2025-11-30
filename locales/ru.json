@@ -47,6 +47,10 @@
       }
     }
   },
+  "checkbox": {
+    "check": "Выбрать",
+    "uncheck": "Отменить выбор"
+  },
   "confirmationDialog": {
     "cancel": "Отмена",
     "confirm": "Подтвердить"

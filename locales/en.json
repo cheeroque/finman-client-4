@@ -47,6 +47,10 @@
       }
     }
   },
+  "checkbox": {
+    "check": "Check",
+    "uncheck": "Uncheck"
+  },
   "confirmationDialog": {
     "cancel": "Cancel",
     "confirm": "Confirm"

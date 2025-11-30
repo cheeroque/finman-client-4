@@ -8,6 +8,7 @@ const {
   iconIndeterminate = 'mynaui:minus-square-solid',
   iconUnchecked = 'mynaui:square',
   id,
+  label,
   variant = 'primary',
 } = defineProps<{
   checkedColor?: string
@@ -17,9 +18,14 @@ const {
   iconIndeterminate?: string
   iconUnchecked?: string
   id?: string
+  label?: string
   required?: boolean
   value?: AcceptableValue
   variant?: 'amber' | 'primary'
+}>()
+
+defineSlots<{
+  default(): unknown
 }>()
 
 const modelValue = defineModel<boolean | 'indeterminate'>()
@@ -52,6 +58,22 @@ const VARIANT_CLASSES = {
     dark:data-[state=checked]:text-primary-500
     dark:data-[state=indeterminate]:text-primary-500`,
 } as const
+
+const { $ts } = useI18n()
+
+// When aria-label is not set, reka-ui tries to get it from label inner text,
+// which causes hydration mismatch in SSR
+const ariaLabel = computed(() => {
+  if (label) {
+    return label
+  }
+
+  if (modelValue.value) {
+    return $ts('checkbox.uncheck')
+  }
+
+  return $ts('checkbox.check')
+})
 </script>
 
 <template>
@@ -66,6 +88,7 @@ const VARIANT_CLASSES = {
     <CheckboxRoot
       :id="inputId"
       v-model="modelValue"
+      :aria-label
       :disabled
       :required
       :value
@@ -79,8 +102,8 @@ const VARIANT_CLASSES = {
       )"
     >
       <CheckboxIndicator
-        class="flex size-full items-center justify-center"
         force-mount
+        class="flex size-full items-center justify-center"
       >
         <Icon
           :name="iconName"
@@ -92,6 +115,8 @@ const VARIANT_CLASSES = {
       </CheckboxIndicator>
     </CheckboxRoot>
 
-    <slot />
+    <slot>
+      {{ label }}
+    </slot>
   </label>
 </template>
