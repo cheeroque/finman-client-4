@@ -10,13 +10,20 @@ import {
 } from 'reka-ui'
 import { twMerge, type ClassNameValue } from 'tailwind-merge'
 
-defineProps<{
+const DIALOG_Z_INDEX_BASE = 110
+
+const {
+  depth = 0,
+} = defineProps<{
   bodyClass?: ClassNameValue
   contentClass?: ClassNameValue
+  depth?: number
   title?: string
 }>()
 
 const modelValue = defineModel<boolean>()
+
+const zIndex = computed(() => DIALOG_Z_INDEX_BASE + depth)
 </script>
 
 <template>
@@ -30,7 +37,12 @@ const modelValue = defineModel<boolean>()
         leave-to-class="opacity-0"
       >
         <DialogOverlay
-          class="fixed inset-0 z-110 bg-black/75 transition-opacity"
+          class="
+            fixed inset-0 z-(--z-index-overlay) bg-black/75 transition-opacity
+          "
+          :style="{
+            '--z-index-overlay': zIndex,
+          }"
           @click="close()"
         />
       </Transition>
@@ -42,11 +54,14 @@ const modelValue = defineModel<boolean>()
         <DialogContent
           :class="twMerge(
             `
-              fixed top-1/2 left-1/2 z-120 max-w-[calc(100%-1.5rem)]
-              -translate-1/2 transition-all
+              fixed top-1/2 left-1/2 z-(--z-index-content)
+              max-w-[calc(100%-1.5rem)] -translate-1/2 transition-all
             `,
             contentClass,
           )"
+          :style="{
+            '--z-index-content': zIndex + 1,
+          }"
         >
           <div
             :class="twMerge(

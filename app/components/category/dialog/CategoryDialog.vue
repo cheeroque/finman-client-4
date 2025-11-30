@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { LazyConfirmationDialog } from '#components'
 import type { Category } from '~~/shared/types/category'
 
 const { category } = defineProps<{
@@ -26,11 +27,23 @@ async function handleSubmitForm(data: Partial<Category>) {
   emit('close')
 }
 
+const { register } = useDialog()
+const { open: getConfirmation } = register(LazyConfirmationDialog)
+
 const { execute: executeDelete, loading: isDeleting } = useCategoryDelete()
 
-// TODO add confirmation dialog
 async function deleteCategory() {
   if (!category?.id) {
+    return
+  }
+
+  const confirmation = await getConfirmation({
+    title: $ts('categoryModal.deleteConfirmation.title'),
+    message: $ts('categoryModal.deleteConfirmation.message'),
+    captionConfirm: $ts('categoryModal.deleteConfirmation.confirm'),
+  })
+
+  if (!confirmation) {
     return
   }
 

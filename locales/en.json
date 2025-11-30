@@ -10,6 +10,11 @@
       "submit": "Submit",
       "title": "Create Category"
     },
+    "deleteConfirmation": {
+      "confirm": "Delete",
+      "message": "This action is irreversible and will delete all related transactions.",
+      "title": "Delete Category?"
+    },
     "edit": {
       "delete": "Delete",
       "submit": "Submit",
@@ -41,6 +46,10 @@
         "placeholder": "Enter slug"
       }
     }
+  },
+  "confirmationDialog": {
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "filter": {
     "marked": {

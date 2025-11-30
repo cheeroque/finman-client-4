@@ -1,5 +1,7 @@
 import type { Component } from 'vue'
-import type { ComponentProps } from 'vue-component-type-helpers'
+import type { ComponentEmit, ComponentProps } from 'vue-component-type-helpers'
+
+type CloseEventArgType<T> = T extends { (event: 'close', arg: infer Arg): void } ? Arg : never
 
 interface DialogState<T extends Component> {
   component?: T
@@ -7,6 +9,7 @@ interface DialogState<T extends Component> {
   isOpen: boolean
   originalProps?: ComponentProps<T>
   props?: ComponentProps<T>
+  resolvePromise?: (value: CloseEventArgType<ComponentEmit<T>>) => void
 }
 
 function _useDialog() {
@@ -28,7 +31,7 @@ function _useDialog() {
     return {
       ...dialogState,
       open: (newProps?: ComponentProps<T>) => open(dialogState.id, newProps),
-      close: () => close(dialogState.id),
+      close: (value: unknown) => close(dialogState.id, value),
       patch: (newProps: ComponentProps<T>) => patch(dialogState.id, newProps),
     }
   }
@@ -44,13 +47,24 @@ function _useDialog() {
 
     dialog.isOpen = true
 
-    return dialog
+    const result = new Promise<CloseEventArgType<ComponentEmit<T>>>((resolve) => dialog.resolvePromise = resolve)
+
+    return Object.assign(result, {
+      id,
+      isOpen: dialog.isOpen,
+      result,
+    })
   }
 
-  function close(id: symbol) {
+  function close(id: symbol, value?: unknown) {
     const dialog = getDialog(id)
 
     dialog.isOpen = false
+
+    if (dialog.resolvePromise) {
+      dialog.resolvePromise(value)
+      dialog.resolvePromise = undefined
+    }
   }
 
   function closeAll() {
