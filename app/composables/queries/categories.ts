@@ -6,6 +6,16 @@ export function useCategories() {
 
     (_, { signal }) => useRequestFetch()('/api/categories', {
       signal,
-    })
+    }),
+
+    {
+      getCachedData: (key, nuxtApp, ctx) => {
+        if (['refresh:hook', 'refresh:manual'].includes(ctx.cause)) {
+          return
+        }
+
+        return nuxtApp.payload.data[key]
+      },
+    }
   )
 }
