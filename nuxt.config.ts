@@ -26,6 +26,32 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+  app: {
+    head: {
+      meta: [
+        {
+          name: 'mobile-web-app-capable',
+          content: 'yes',
+        },
+      ],
+      link: [
+        {
+          rel: 'manifest',
+          href: '/manifest.json',
+        },
+        {
+          rel: 'shortcut icon',
+          type: 'image/svg',
+          href: '/icon.svg',
+        },
+        {
+          rel: 'apple-touch-icon',
+          type: 'image/png',
+          href: '/apple-touch-icon-180x180.png',
+        },
+      ],
+    },
+  },
 
   css: ['~/assets/css/main.css'],
 
