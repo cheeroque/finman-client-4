@@ -13,8 +13,13 @@ const { getLocale } = useI18n()
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator
+      :color="false"
       :height="2"
       :throttle="0"
+      class="
+        bg-amber-500
+        dark:bg-amber-600
+      "
     />
 
     <NuxtRouteAnnouncer />
