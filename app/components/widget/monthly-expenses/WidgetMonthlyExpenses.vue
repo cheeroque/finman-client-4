@@ -31,6 +31,16 @@ const subtotalMax = computed(() => Math.max(
 <template>
   <WidgetBase :title="$ts('sidebar.currentMonth.title')">
     <div class="flex flex-col gap-4">
+      <p
+        v-if="!visibleCategories.length"
+        class="
+          text-sm text-neutral-500
+          dark:text-neutral-400
+        "
+      >
+        {{ $ts('sidebar.currentMonth.empty') }}
+      </p>
+
       <WidgetMonthlyExpensesCategory
         v-for="category in visibleCategories"
         :key="category.id"
@@ -39,6 +49,7 @@ const subtotalMax = computed(() => Math.max(
       />
 
       <WidgetMonthlyExpensesCategory
+        v-if="otherCategoriesTotal"
         color="var(--color-primary-500)"
         :link="`/months/${currentPeriod}`"
         :name="$ts('sidebar.currentMonth.otherExpenses')"

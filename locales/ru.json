@@ -80,6 +80,7 @@
   },
   "sidebar": {
     "currentMonth": {
+      "empty": "Пока нет расходов.",
       "otherExpenses": "Остальные расходы",
       "title": "Расходы в этом месяце"
     },

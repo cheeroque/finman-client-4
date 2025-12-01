@@ -80,6 +80,7 @@
   },
   "sidebar": {
     "currentMonth": {
+      "empty": "Nothing to show.",
       "otherExpenses": "Other expenses",
       "title": "Expenses this month"
     },
