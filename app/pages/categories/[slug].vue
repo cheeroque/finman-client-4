@@ -6,6 +6,8 @@ const { categoryTransactionsPerPage } = useAppConfig()
 const { data, status } = await useCategoryTransactions()
 const loading = useAsyncDataLoading(status)
 
+const { page } = useCategoryTransactionsParams()
+
 const paginationVisible = computed(() => Number(data.value?.total) > categoryTransactionsPerPage)
 
 const { $localePath, $ts } = useI18n()
@@ -55,6 +57,7 @@ const breadcrumbs = computed(() => {
 
     <UiPagination
       v-if="paginationVisible"
+      v-model="page"
       :items-per-page="categoryTransactionsPerPage"
       :total="data?.total"
       class="max-lg:mx-auto"
