@@ -4,7 +4,6 @@ import {
   SelectGroup,
   SelectItem,
   SelectItemText,
-  SelectPortal,
   SelectRoot,
   SelectTrigger,
   SelectViewport,
@@ -37,52 +36,53 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
 </script>
 
 <template>
-  <SelectRoot
-    v-model="modelValue"
-    :disabled
-    :required
-  >
-    <SelectTrigger
-      :data-invalid="hasError || undefined"
+  <div class="relative">
+    <SelectRoot
+      v-model="modelValue"
       :disabled
-      class="
-        group/trigger flex cursor-pointer gap-4 rounded-lg bg-white px-4 py-3
-        text-base outline outline-neutral-200 transition-colors
-        not-data-disabled:hover:outline-primary-300
-        focus:outline-primary-400
-        data-disabled:bg-neutral-100
-        data-invalid:text-rose-600 data-invalid:outline-rose-600
-        data-[state=open]:outline-primary-400
-        dark:bg-black dark:outline-neutral-800
-        dark:not-data-disabled:hover:outline-primary-900
-        dark:focus:outline-primary-800 dark:data-disabled:bg-neutral-900
-        dark:data-invalid:text-rose-500 dark:data-invalid:outline-rose-500
-        dark:data-[state=open]:outline-primary-800
-      "
-      v-bind="$attrs"
+      :required
     >
-      <span
+      <SelectTrigger
+        :data-invalid="hasError || undefined"
+        :disabled
         class="
-          min-w-0 flex-auto truncate text-start
-          group-data-placeholder/trigger:opacity-50
+          group/trigger flex cursor-pointer gap-4 rounded-lg bg-white px-4 py-3
+          text-base outline outline-neutral-200 transition-colors
+          not-data-disabled:hover:outline-primary-300
+          focus:outline-primary-400
+          data-disabled:bg-neutral-100
+          data-invalid:text-rose-600 data-invalid:outline-rose-600
+          data-[state=open]:outline-primary-400
+          dark:bg-black dark:outline-neutral-800
+          dark:not-data-disabled:hover:outline-primary-900
+          dark:focus:outline-primary-800 dark:data-disabled:bg-neutral-900
+          dark:data-invalid:text-rose-500 dark:data-invalid:outline-rose-500
+          dark:data-[state=open]:outline-primary-800
         "
+        v-bind="$attrs"
       >
-        {{ selectedOption?.label ?? selectedOption?.value ?? placeholder }}
-      </span>
+        <span
+          class="
+            min-w-0 flex-auto truncate text-start
+            group-data-placeholder/trigger:opacity-50
+          "
+        >
+          {{ selectedOption?.label ?? selectedOption?.value ?? placeholder }}
+        </span>
 
-      <Icon
-        name="mynaui:chevron-down-solid"
-        class="
-          flex-none self-center text-lg text-neutral-300 transition-transform
-          group-data-[state=open]/trigger:-rotate-180
-          dark:text-neutral-700
-        "
-      />
-    </SelectTrigger>
+        <Icon
+          name="mynaui:chevron-down-solid"
+          class="
+            flex-none self-center text-lg text-neutral-300 transition-transform
+            group-data-[state=open]/trigger:-rotate-180
+            dark:text-neutral-700
+          "
+        />
+      </SelectTrigger>
 
-    <SelectPortal>
       <SelectContent
         position="popper"
+        position-strategy="absolute"
         :side-offset="4"
         class="
           z-500 max-h-(--reka-select-content-available-height)
@@ -115,6 +115,6 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
           </SelectGroup>
         </SelectViewport>
       </SelectContent>
-    </SelectPortal>
-  </SelectRoot>
+    </SelectRoot>
+  </div>
 </template>
