@@ -1,4 +1,10 @@
 <script setup lang="ts">
+/* For some stupid reason Reka-UI locks body (or closest fixed position parent)
+ * with `overflow: hidden; pointer-events: none;` when opening Select
+ * or DropdownMenu without an option to disable this behavior.
+ * This completely breaks Select/DropdownMenu inside UiDialog, so we force
+ * `pointer-events-auto!` for DialogContent on line 63
+ * See: https://github.com/unovue/reka-ui/issues/1670 */
 import {
   DialogClose,
   DialogContent,
@@ -54,7 +60,7 @@ const zIndex = computed(() => DIALOG_Z_INDEX_BASE + depth)
         <DialogContent
           :class="twMerge(
             `
-              fixed top-1/2 left-1/2 z-(--z-index-content)
+              pointer-events-auto! fixed top-1/2 left-1/2 z-(--z-index-content)
               max-w-[calc(100%-1.5rem)] -translate-1/2 transition-all
             `,
             contentClass,
