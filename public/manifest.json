@@ -30,8 +30,8 @@
     }
   ],
   "display": "standalone",
-  "background_color": "#7f22fe",
-  "theme_color": "#7f22fe",
+  "background_color": "#7008e7",
+  "theme_color": "#7008e7",
   "lang": "en",
   "start_url": "/"
 }
