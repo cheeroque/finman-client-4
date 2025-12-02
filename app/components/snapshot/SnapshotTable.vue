@@ -8,17 +8,6 @@ const { snapshots } = defineProps<{
 
 const { $ts } = useI18n()
 
-const { formatDate, formatNumber } = useLocaleFormatter()
-
-const data = computed(() => snapshots?.map((snapshot) => ({
-  ...snapshot,
-  created_at: formatDate(snapshot.created_at, {
-    dateStyle: 'short',
-    timeStyle: 'short',
-  }),
-  balance: formatNumber(snapshot.balance),
-})))
-
 const columns = computed(() => [
   {
     accessorKey: 'created_at',
@@ -49,7 +38,7 @@ const columns = computed(() => [
 <template>
   <UiTable
     :columns
-    :data
+    :data="snapshots"
     :loading
     td-class="max-2xl:p-0"
     thead-class="max-2xl:hidden"
@@ -59,10 +48,15 @@ const columns = computed(() => [
       dark:max-2xl:even:bg-neutral-900
     "
   >
-    <template #cell(balance)="{ value }">
-      <span class="text-xl leading-6 font-medium transition-colors">
-        {{ value }}
-      </span>
+    <template #cell(created_at)="{ item }">
+      <TableCellDatetime :datetime="item.created_at" />
+    </template>
+
+    <template #cell(balance)="{ item }">
+      <TableCellSum
+        class="text-xl leading-6"
+        :sum="item.balance"
+      />
     </template>
   </UiTable>
 </template>
