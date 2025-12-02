@@ -185,14 +185,16 @@ function getCellClass(cell: Cell<TData, unknown>) {
       </tbody>
     </table>
 
-    <span
-      v-if="loading"
-      class="absolute top-4 right-4 flex size-6 animate-spin opacity-50"
-    >
-      <Icon
-        name="mynaui:spinner"
-        class="text-2xl"
-      />
-    </span>
+    <ClientOnly>
+      <span
+        v-if="loading"
+        class="absolute top-4 right-4 flex size-6 animate-spin opacity-50"
+      >
+        <Icon
+          name="mynaui:spinner"
+          class="text-2xl"
+        />
+      </span>
+    </ClientOnly>
   </div>
 </template>
