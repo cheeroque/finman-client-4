@@ -18,7 +18,7 @@ async function handleSubmitForm(data: Partial<Snapshot>) {
 </script>
 
 <template>
-  <UiDialog :title="$ts('snapshotDialog.title')">
+  <UiDialog :title="$ts('snapshotModal.title')">
     <div
       class="
         flex flex-col gap-4
@@ -42,7 +42,7 @@ async function handleSubmitForm(data: Partial<Snapshot>) {
             lg:ml-auto
           "
         >
-          {{ $ts('snapshotDialog.submit') }}
+          {{ $ts('snapshotModal.submit') }}
         </UiButton>
       </div>
     </div>

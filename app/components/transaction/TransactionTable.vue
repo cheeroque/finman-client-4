@@ -13,7 +13,7 @@ const { $localePath, $ts } = useI18n()
 const columns = computed(() => [
   {
     accessorKey: 'created_at',
-    header: $ts('transactions.columns.date'),
+    header: $ts('columns.date'),
     meta: {
       class: {
         td: 'max-2xl:text-sm max-2xl:font-semibold',
@@ -22,7 +22,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'sum',
-    header: $ts('transactions.columns.sum'),
+    header: $ts('columns.sum'),
     meta: {
       class: {
         th: 'text-end',
@@ -32,7 +32,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'category_id',
-    header: $ts('transactions.columns.category'),
+    header: $ts('columns.category'),
     meta: {
       class: {
         td: 'max-2xl:text-sm max-2xl:opacity-50',
@@ -41,7 +41,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'note',
-    header: $ts('transactions.columns.note'),
+    header: $ts('columns.note'),
     meta: {
       class: {
         td: 'max-2xl:col-start-1 max-2xl:col-span-full max-2xl:row-start-1 max-2xl:mb-1',

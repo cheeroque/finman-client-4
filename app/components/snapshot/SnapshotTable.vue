@@ -11,7 +11,7 @@ const { $ts } = useI18n()
 const columns = computed(() => [
   {
     accessorKey: 'created_at',
-    header: $ts('snapshots.columns.date'),
+    header: $ts('columns.date'),
     meta: {
       class: {
         td: 'max-2xl:text-sm max-2xl:font-semibold',
@@ -20,7 +20,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'balance',
-    header: $ts('snapshots.columns.balance'),
+    header: $ts('columns.balance'),
     meta: {
       class: {
         th: 'text-end',
@@ -30,7 +30,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'note',
-    header: $ts('snapshots.columns.note'),
+    header: $ts('columns.note'),
   },
 ])
 </script>

@@ -31,7 +31,7 @@ const tableData = computed(() => {
 const columns = computed(() => [
   {
     accessorKey: 'period',
-    header: $ts('category.columns.period'),
+    header: $ts('columns.period'),
     meta: {
       class: {
         td: 'max-2xl:w-40',
@@ -41,7 +41,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'subtotal',
-    header: $ts('category.columns.sum'),
+    header: $ts('columns.sum'),
     meta: {
       class: {
         th: 'w-[70%]',

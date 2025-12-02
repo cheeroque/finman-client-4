@@ -66,7 +66,7 @@ async function handleSubmit() {
     "
     @submit.prevent="handleSubmit()"
   >
-    <UiFormField :label="$ts('snapshotForm.previousBalance.label')">
+    <UiFormField :label="$ts('snapshotModal.form.previousBalance.label')">
       <UiInput
         :model-value="previousBalance"
         disabled
@@ -77,7 +77,7 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.balance"
-      :label="$ts('snapshotForm.balance.label')"
+      :label="$ts('snapshotModal.form.balance.label')"
     >
       <UiInput
         :id="controlId"
@@ -90,21 +90,21 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.created_at"
-      :label="$ts('snapshotForm.created_at.label')"
+      :label="$ts('snapshotModal.form.created_at.label')"
     >
       <UiDateTimePicker
         :id="controlId"
         v-model="form.created_at"
         :disabled="loading || balanceLoading"
         :has-error
-        :placeholder="$ts('snapshotForm.created_at.placeholder')"
+        :placeholder="$ts('snapshotModal.form.created_at.placeholder')"
       />
     </UiFormField>
 
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.note"
-      :label="$ts('snapshotForm.note.label')"
+      :label="$ts('snapshotModal.form.note.label')"
       name="note"
     >
       <UiInput
@@ -112,7 +112,7 @@ async function handleSubmit() {
         v-model="form.note"
         :disabled="loading || balanceLoading"
         :has-error
-        :placeholder="$ts('snapshotForm.note.placeholder')"
+        :placeholder="$ts('snapshotModal.form.note.placeholder')"
       />
     </UiFormField>
   </form>

@@ -16,7 +16,7 @@ const { open: openCategoryModal } = register(LazyCategoryDialog)
   <NuxtLayout name="default">
     <template #header>
       <LayoutCreateButton
-        :caption="$ts('categories.create')"
+        :caption="$ts('createCategory')"
         @click="openCategoryModal()"
       />
     </template>

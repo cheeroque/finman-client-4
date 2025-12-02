@@ -19,7 +19,7 @@ defineEmits<{
         class="max-lg:flex-1"
         @click="$emit('clickDelete')"
       >
-        {{ $ts('transactionDialog.edit.delete') }}
+        {{ $ts('transactionModal.edit.delete') }}
       </UiButton>
 
       <UiButton
@@ -29,7 +29,7 @@ defineEmits<{
         type="submit"
         class="max-lg:flex-1"
       >
-        {{ $ts('transactionDialog.edit.submit') }}
+        {{ $ts('transactionModal.edit.submit') }}
       </UiButton>
     </template>
 
@@ -44,7 +44,7 @@ defineEmits<{
         lg:ml-auto
       "
     >
-      {{ $ts('transactionDialog.create.submit') }}
+      {{ $ts('transactionModal.create.submit') }}
     </UiButton>
   </div>
 </template>

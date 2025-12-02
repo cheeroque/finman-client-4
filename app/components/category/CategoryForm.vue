@@ -28,21 +28,21 @@ const { r$ } = useRegle(form, {
     required,
     valid: withMessage(
       regex(/^[a-z0-9_-]+$/),
-      $ts('categoryForm.slug.error.invalid')
+      $ts('categoryModal.form.slug.error.invalid')
     ),
   },
   color: {
     required,
     valid: withMessage(
       regex(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i),
-      $ts('categoryForm.color.error.invalid')
+      $ts('categoryModal.form.color.error.invalid')
     ),
   },
   sort_order: {
     required,
     valid: withMessage(
       regex(/^\d+$/),
-      $ts('categoryForm.sortOrder.error.invalid')
+      $ts('categoryModal.form.sortOrder.error.invalid')
     ),
   },
 })
@@ -94,42 +94,42 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.name"
-      :label="$ts('categoryForm.name.label')"
+      :label="$ts('categoryModal.form.name.label')"
     >
       <UiInput
         :id="controlId"
         v-model="form.name"
         :disabled="loading"
         :has-error
-        :placeholder="$ts('categoryForm.name.placeholder')"
+        :placeholder="$ts('categoryModal.form.name.placeholder')"
       />
     </UiFormField>
 
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.slug"
-      :label="$ts('categoryForm.slug.label')"
+      :label="$ts('categoryModal.form.slug.label')"
     >
       <UiInput
         :id="controlId"
         v-model="form.slug"
         :disabled="loading"
         :has-error
-        :placeholder="$ts('categoryForm.slug.placeholder')"
+        :placeholder="$ts('categoryModal.form.slug.placeholder')"
       />
     </UiFormField>
 
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.color"
-      :label="$ts('categoryForm.color.label')"
+      :label="$ts('categoryModal.form.color.label')"
     >
       <UiInput
         :id="controlId"
         v-model="form.color"
         :disabled="loading"
         :has-error
-        :placeholder="$ts('categoryForm.color.placeholder')"
+        :placeholder="$ts('categoryModal.form.color.placeholder')"
       >
         <template #trailing-icon>
           <UiColorPicker v-model="form.color" />
@@ -140,7 +140,7 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.sort_order"
-      :label="$ts('categoryForm.sortOrder.label')"
+      :label="$ts('categoryModal.form.sortOrder.label')"
     >
       <UiInput
         :id="controlId"
@@ -155,7 +155,7 @@ async function handleSubmit() {
       v-model="form.is_income"
       class="self-start"
     >
-      {{ $ts('categoryForm.is_income.label') }}
+      {{ $ts('categoryModal.form.is_income.label') }}
     </UiCheckbox>
   </form>
 </template>

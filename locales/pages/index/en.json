@@ -1,1 +1,9 @@
-{}
+{
+  "columns": {
+    "category": "Category",
+    "date": "Date",
+    "note": "Note",
+    "sum": "Sum"
+  },
+  "createTransaction": "Create Transaction"
+}

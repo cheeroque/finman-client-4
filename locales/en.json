@@ -5,23 +5,7 @@
     "home": "Home",
     "search": "Search"
   },
-  "categories": {
-    "columns": {
-      "color": "Color",
-      "name": "Name",
-      "slug": "Slug"
-    },
-    "create": "Add Category",
-    "expenses": "Expenses",
-    "incomes": "Incomes"
-  },
-  "category": {
-    "columns": {
-      "period": "Period",
-      "sum": "Sum"
-    }
-  },
-  "categoryDialog": {
+  "categoryModal": {
     "create": {
       "submit": "Submit",
       "title": "Create Category"
@@ -35,32 +19,32 @@
       "delete": "Delete",
       "submit": "Submit",
       "title": "Update Category"
-    }
-  },
-  "categoryForm": {
-    "color": {
-      "error": {
-        "invalid": "Enter valid hex color"
-      },
-      "label": "Color",
-      "placeholder": "#"
     },
-    "is_income": {
-      "label": "Is income"
-    },
-    "name": {
-      "error": {
-        "invalid": "Name is required"
+    "form": {
+      "color": {
+        "error": {
+          "invalid": "Enter valid hex color"
+        },
+        "label": "Color",
+        "placeholder": "#"
       },
-      "label": "Name",
-      "placeholder": "Enter name"
-    },
-    "slug": {
-      "error": {
-        "invalid": "Only use latin letters, numbers, hypens and underscores"
+      "is_income": {
+        "label": "Is income"
       },
-      "label": "Slug",
-      "placeholder": "Enter slug"
+      "name": {
+        "error": {
+          "invalid": "Name is required"
+        },
+        "label": "Name",
+        "placeholder": "Enter name"
+      },
+      "slug": {
+        "error": {
+          "invalid": "Only use latin letters, numbers, hypens and underscores"
+        },
+        "label": "Slug",
+        "placeholder": "Enter slug"
+      }
     }
   },
   "checkbox": {
@@ -86,21 +70,6 @@
       "placeholder": "Select view"
     }
   },
-  "loginForm": {
-    "email": {
-      "label": "Email",
-      "placeholder": "Enter email"
-    },
-    "error": {
-      "default": "Unknown error",
-      "invalidCredentials": "Invalid credentials"
-    },
-    "password": {
-      "label": "Password",
-      "placeholder": "Enter password"
-    },
-    "submit": "Submit"
-  },
   "mainMenu": {
     "categories": "Categories",
     "export": "Export to file",
@@ -108,12 +77,6 @@
     "logout": "Log Out",
     "months": "Months",
     "snapshots": "Snapshots"
-  },
-  "month": {
-    "total": {
-      "expenses": "Expenses Total",
-      "month": "Monthly Balance"
-    }
   },
   "sidebar": {
     "currentMonth": {
@@ -123,40 +86,32 @@
     },
     "months": "Months"
   },
-  "snapshotDialog": {
+  "snapshotModal": {
+    "form": {
+      "balance": {
+        "label": "Current balance",
+        "placeholder": "0"
+      },
+      "created_at": {
+        "label": "Datetime",
+        "placeholder": "Select datetime"
+      },
+      "note": {
+        "label": "Note",
+        "placeholder": "Enter note"
+      },
+      "previousBalance": {
+        "label": "Previous balance",
+        "placeholder": "0"
+      }
+    },
     "submit": "Submit",
     "title": "Create Snapshot"
-  },
-  "snapshotForm": {
-    "balance": {
-      "label": "Current balance",
-      "placeholder": "0"
-    },
-    "created_at": {
-      "label": "Datetime",
-      "placeholder": "Select datetime"
-    },
-    "note": {
-      "label": "Note",
-      "placeholder": "Enter note"
-    },
-    "previousBalance": {
-      "label": "Previous balance",
-      "placeholder": "0"
-    }
-  },
-  "snapshots": {
-    "columns": {
-      "balance": "Balance",
-      "date": "Date",
-      "note": "Note"
-    },
-    "create": "Create Snapshot"
   },
   "table": {
     "empty": "Nothing to show."
   },
-  "transactionDialog": {
+  "transactionModal": {
     "create": {
       "submit": "Submit",
       "title": "Create Transaction"
@@ -165,37 +120,28 @@
       "delete": "Delete",
       "submit": "Submit",
       "title": "Update Transaction"
+    },
+    "form": {
+      "category": {
+        "label": "Category",
+        "placeholder": "Select category"
+      },
+      "created_at": {
+        "label": "Datetime",
+        "placeholder": "Select datetime"
+      },
+      "marked": {
+        "label": "Is marked"
+      },
+      "note": {
+        "label": "Note",
+        "placeholder": "Enter note"
+      },
+      "sum": {
+        "label": "Sum",
+        "placeholder": "0"
+      }
     }
-  },
-  "transactionForm": {
-    "category": {
-      "label": "Category",
-      "placeholder": "Select category"
-    },
-    "created_at": {
-      "label": "Datetime",
-      "placeholder": "Select datetime"
-    },
-    "marked": {
-      "label": "Is marked"
-    },
-    "note": {
-      "label": "Note",
-      "placeholder": "Enter note"
-    },
-    "sum": {
-      "label": "Sum",
-      "placeholder": "0"
-    }
-  },
-  "transactions": {
-    "columns": {
-      "category": "Category",
-      "date": "Date",
-      "note": "Note",
-      "sum": "Sum"
-    },
-    "create": "Create Transaction"
   },
   "validation": {
     "email": "Enter valid email",

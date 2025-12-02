@@ -93,7 +93,7 @@ function updateValue(newValue: number) {
     :disabled
     :has-error
     :model-value
-    :placeholder="$ts('transactionForm.sum.placeholder')"
+    :placeholder="$ts('transactionModal.form.sum.placeholder')"
     @blur="handleBlur"
     @focus="handleFocus"
     @keydown="handleKeydown"

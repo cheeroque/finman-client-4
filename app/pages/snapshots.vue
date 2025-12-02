@@ -18,7 +18,7 @@ const paginationVisible = computed(() => Number(data.value?.total) > Number(data
   <NuxtLayout name="default">
     <template #header>
       <LayoutCreateButton
-        :caption="$ts('snapshots.create')"
+        :caption="$ts('createSnapshot')"
         @click="openSnapshotModal()"
       />
     </template>
