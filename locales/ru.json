@@ -5,7 +5,23 @@
     "home": "Главная",
     "search": "Поиск"
   },
-  "categoryModal": {
+  "categories": {
+    "columns": {
+      "color": "Цвет",
+      "name": "Имя",
+      "slug": "Слаг"
+    },
+    "create": "Добавить категорию",
+    "expenses": "Расходы",
+    "incomes": "Доходы"
+  },
+  "category": {
+    "columns": {
+      "period": "Период",
+      "sum": "Сумма"
+    }
+  },
+  "categoryDialog": {
     "create": {
       "submit": "Сохранить",
       "title": "Создать категорию"
@@ -19,38 +35,38 @@
       "delete": "Удалить",
       "submit": "Обновить",
       "title": "Изменить категорию"
+    }
+  },
+  "categoryForm": {
+    "color": {
+      "error": {
+        "invalid": "Введите корректное значение цвета"
+      },
+      "label": "Цвет",
+      "placeholder": "#"
     },
-    "form": {
-      "color": {
-        "error": {
-          "invalid": "Введите корректное значение цвета"
-        },
-        "label": "Цвет",
-        "placeholder": "#"
+    "is_income": {
+      "label": "Доход"
+    },
+    "name": {
+      "error": {
+        "invalid": "Поле необходимо заполнить"
       },
-      "is_income": {
-        "label": "Доход"
+      "label": "Имя",
+      "placeholder": "Введите имя"
+    },
+    "slug": {
+      "error": {
+        "invalid": "Только латиница, цифры, дефис и нижнее подчёркивание"
       },
-      "name": {
-        "error": {
-          "invalid": "Поле необходимо заполнить"
-        },
-        "label": "Имя",
-        "placeholder": "Введите имя"
+      "label": "Слаг",
+      "placeholder": "Введите слаг"
+    },
+    "sortOrder": {
+      "error": {
+        "invalid": "Только цифры"
       },
-      "slug": {
-        "error": {
-          "invalid": "Только латиница, цифры, дефис и нижнее подчёркивание"
-        },
-        "label": "Слаг",
-        "placeholder": "Введите слаг"
-      },
-      "sortOrder": {
-        "error": {
-          "invalid": "Только цифры"
-        },
-        "label": "Порядок"
-      }
+      "label": "Порядок"
     }
   },
   "checkbox": {
@@ -76,6 +92,21 @@
       "placeholder": "Выберите фильтр"
     }
   },
+  "loginForm": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Введите email"
+    },
+    "error": {
+      "default": "Неизвестная ошибка",
+      "invalidCredentials": "Неверный email или пароль"
+    },
+    "password": {
+      "label": "Пароль",
+      "placeholder": "Введите пароль"
+    },
+    "submit": "Войти"
+  },
   "mainMenu": {
     "categories": "Категории",
     "export": "Экспорт данных",
@@ -83,6 +114,12 @@
     "logout": "Выйти",
     "months": "Календарь",
     "snapshots": "Снапшоты"
+  },
+  "month": {
+    "total": {
+      "expenses": "Всего расходов",
+      "month": "Остаток за месяц"
+    }
   },
   "sidebar": {
     "currentMonth": {
@@ -92,32 +129,40 @@
     },
     "months": "Календарь"
   },
-  "snapshotModal": {
-    "form": {
-      "balance": {
-        "label": "Текущий баланс",
-        "placeholder": "0"
-      },
-      "created_at": {
-        "label": "Дата и время",
-        "placeholder": "Выберите дату и время"
-      },
-      "note": {
-        "label": "Комментарий",
-        "placeholder": "Введите комментарий"
-      },
-      "previousBalance": {
-        "label": "Предыдущий баланс",
-        "placeholder": "0"
-      }
-    },
+  "snapshotDialog": {
     "submit": "Сохранить",
     "title": "Создать снапшот"
+  },
+  "snapshotForm": {
+    "balance": {
+      "label": "Текущий баланс",
+      "placeholder": "0"
+    },
+    "created_at": {
+      "label": "Дата и время",
+      "placeholder": "Выберите дату и время"
+    },
+    "note": {
+      "label": "Комментарий",
+      "placeholder": "Введите комментарий"
+    },
+    "previousBalance": {
+      "label": "Предыдущий баланс",
+      "placeholder": "0"
+    }
+  },
+  "snapshots": {
+    "columns": {
+      "balance": "Баланс",
+      "date": "Дата",
+      "note": "Комментарий"
+    },
+    "create": "Добавить снапшот"
   },
   "table": {
     "empty": "Нет записей."
   },
-  "transactionModal": {
+  "transactionDialog": {
     "create": {
       "submit": "Сохранить",
       "title": "Создать запись"
@@ -126,28 +171,37 @@
       "delete": "Удалить",
       "submit": "Обновить",
       "title": "Изменить запись"
-    },
-    "form": {
-      "category": {
-        "label": "Категория",
-        "placeholder": "Выберите категорию"
-      },
-      "created_at": {
-        "label": "Дата и время",
-        "placeholder": "Выберите дату и время"
-      },
-      "marked": {
-        "label": "Отметка"
-      },
-      "note": {
-        "label": "Комментарий",
-        "placeholder": "Введите комментарий"
-      },
-      "sum": {
-        "label": "Сумма",
-        "placeholder": "0"
-      }
     }
+  },
+  "transactionForm": {
+    "category": {
+      "label": "Категория",
+      "placeholder": "Выберите категорию"
+    },
+    "created_at": {
+      "label": "Дата и время",
+      "placeholder": "Выберите дату и время"
+    },
+    "marked": {
+      "label": "Отметка"
+    },
+    "note": {
+      "label": "Комментарий",
+      "placeholder": "Введите комментарий"
+    },
+    "sum": {
+      "label": "Сумма",
+      "placeholder": "0"
+    }
+  },
+  "transactions": {
+    "columns": {
+      "category": "Категория",
+      "date": "Дата",
+      "note": "Комментарий",
+      "sum": "Сумма"
+    },
+    "create": "Добавить запись"
   },
   "validation": {
     "email": "Введите корректный email",

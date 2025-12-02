@@ -13,7 +13,7 @@ const formId = useId()
 const { $ts } = useI18n()
 
 const isEdit = computed(() => !!transaction)
-const title = computed(() => $ts(`transactionModal.${isEdit.value ? 'edit' : 'create'}.title`))
+const title = computed(() => $ts(`transactionDialog.${isEdit.value ? 'edit' : 'create'}.title`))
 
 const authStore = useAuthStore()
 const { execute: executeUpsert, loading: isUpserting } = useTransactionUpsert()

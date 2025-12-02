@@ -27,13 +27,13 @@ const tableData = computed(() => {
   const rows = expenseCategories.concat(incomeCategories).concat({
     is_income: false,
     is_total: true,
-    name: $ts('total.expenses'),
+    name: $ts('month.total.expenses'),
     subtotal: expensesTotal,
     transactions: [],
   }).concat({
     is_income: false,
     is_month_total: true,
-    name: $ts('total.month'),
+    name: $ts('month.total.month'),
     subtotal: total,
     transactions: [],
   })
@@ -44,7 +44,7 @@ const tableData = computed(() => {
 const columns = computed(() => [
   {
     accessorKey: 'category',
-    header: $ts('columns.category'),
+    header: $ts('transactions.columns.category'),
     meta: {
       class: {
         td: 'max-2xl:w-40',
@@ -54,7 +54,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'subtotal',
-    header: $ts('columns.sum'),
+    header: $ts('transactions.columns.sum'),
     meta: {
       class: {
         th: 'w-[70%]',

@@ -92,6 +92,8 @@ export default defineNuxtConfig({
       { code: 'en', iso: 'en-US', displayName: 'English' },
     ],
     defaultLocale: 'ru',
+    // When enabled, translations flash to keypath placeholder on route change
+    disablePageLocales: true,
     translationDir: 'locales',
     meta: true,
     strategy: 'prefix_except_default',
