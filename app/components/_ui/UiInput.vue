@@ -67,7 +67,7 @@ defineExpose({ inputRef })
       :required
       :type
       class="
-        flex-auto px-2.5 py-3 text-base outline-0
+        min-w-0 flex-auto px-2.5 py-3 text-base outline-0
         placeholder:opacity-50
       "
       @blur="emit('blur', $event)"
