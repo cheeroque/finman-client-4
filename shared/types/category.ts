@@ -6,6 +6,7 @@ export interface Category {
   slug: string
   is_income: boolean
   color?: string
+  sort_order: number
   created_at: string
   updated_at: string
 }
