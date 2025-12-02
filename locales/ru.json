@@ -44,6 +44,12 @@
         },
         "label": "Слаг",
         "placeholder": "Введите слаг"
+      },
+      "sortOrder": {
+        "error": {
+          "invalid": "Только цифры"
+        },
+        "label": "Порядок"
       }
     }
   },

@@ -38,6 +38,13 @@ const { r$ } = useRegle(form, {
       $ts('categoryModal.form.color.error.invalid')
     ),
   },
+  sort_order: {
+    required,
+    valid: withMessage(
+      regex(/^\d+$/),
+      $ts('categoryModal.form.sortOrder.error.invalid')
+    ),
+  },
 })
 
 function initForm() {
@@ -46,15 +53,22 @@ function initForm() {
     slug: undefined,
     color: undefined,
     is_income: false,
+    sort_order: 0,
   }
 
   if (!category) {
     return emptyForm
   }
 
-  const { name, slug, color, is_income } = category
+  const { name, slug, color, is_income, sort_order } = category
 
-  return Object.assign(emptyForm, { name, slug, color, is_income })
+  return Object.assign(emptyForm, {
+    name,
+    slug,
+    color,
+    is_income,
+    sort_order,
+  })
 }
 
 async function handleSubmit() {
@@ -121,6 +135,20 @@ async function handleSubmit() {
           <UiColorPicker v-model="form.color" />
         </template>
       </UiInput>
+    </UiFormField>
+
+    <UiFormField
+      v-slot="{ controlId, hasError }"
+      :error="r$.$errors.sort_order"
+      :label="$ts('categoryModal.form.sortOrder.label')"
+    >
+      <UiInput
+        :id="controlId"
+        v-model="form.sort_order"
+        :disabled="loading"
+        :has-error
+        placeholder="0"
+      />
     </UiFormField>
 
     <UiCheckbox
