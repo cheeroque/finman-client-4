@@ -4,6 +4,7 @@
       "category": "Category",
       "sum": "Sum"
     },
+    "title": "Months",
     "total": {
       "expenses": "Expenses Total",
       "month": "Monthly Balance"

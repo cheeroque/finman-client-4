@@ -3,6 +3,10 @@ definePageMeta({
   layout: 'auth',
   isPublic: true,
 })
+
+useHead({
+  titleTemplate: usePageTitle('login.title'),
+})
 </script>
 
 <template>

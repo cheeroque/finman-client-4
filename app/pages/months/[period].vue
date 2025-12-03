@@ -30,6 +30,10 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
     text: displayPeriod.value,
   },
 ])
+
+useHead({
+  titleTemplate: usePageTitle('month.title', capitalize(displayPeriod.value)),
+})
 </script>
 
 <template>

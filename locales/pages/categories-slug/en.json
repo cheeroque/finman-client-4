@@ -3,6 +3,7 @@
     "columns": {
       "period": "Period",
       "sum": "Sum"
-    }
+    },
+    "title": "Categories"
   }
 }

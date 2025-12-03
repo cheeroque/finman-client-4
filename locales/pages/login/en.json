@@ -12,6 +12,7 @@
       "label": "Password",
       "placeholder": "Enter password"
     },
-    "submit": "Submit"
+    "submit": "Submit",
+    "title": "Log In"
   }
 }

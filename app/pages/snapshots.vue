@@ -12,6 +12,10 @@ const { register } = useDialog()
 const { open: openSnapshotModal } = register(LazySnapshotDialog)
 
 const paginationVisible = computed(() => Number(data.value?.total) > Number(data.value?.per_page))
+
+useHead({
+  titleTemplate: usePageTitle('snapshots.title'),
+})
 </script>
 
 <template>

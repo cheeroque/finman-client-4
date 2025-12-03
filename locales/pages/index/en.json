@@ -6,6 +6,7 @@
       "note": "Note",
       "sum": "Sum"
     },
-    "create": "Create Transaction"
+    "create": "Create Transaction",
+    "title": "Home"
   }
 }
