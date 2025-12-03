@@ -14,7 +14,7 @@ const isNuxtLink = computed(() => !!to)
 <template>
   <NuxtLink
     v-if="isNuxtLink"
-    v-slot="{ href, isActive, isExactActive, navigate }"
+    v-slot="{ href, isActive, navigate }"
     custom
     :to
   >
@@ -22,7 +22,7 @@ const isNuxtLink = computed(() => !!to)
       v-bind="$attrs"
       :data-active="active || isActive || undefined"
       :data-disabled="disabled || undefined"
-      :data-exact-active="isExactActive || undefined"
+      :data-exact-active="href === $route.fullPath || undefined"
       :href
       class="
         transition-(--transition-button)

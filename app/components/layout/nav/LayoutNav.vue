@@ -44,6 +44,11 @@ const menuItems = computed<LayoutNavItem[]>(() => [
     to: $localePath('/months'),
   },
   {
+    label: $ts('mainMenu.marked'),
+    icon: 'mynaui:star',
+    to: $localePath('/?marked=true'),
+  },
+  {
     label: snapshotLabel.value.primary,
     labelSecondary: snapshotLabel.value.secondary,
     icon: 'mynaui:clock-ten',

@@ -3,11 +3,6 @@ export function useTransactionsParams() {
     mode: 'push',
   })
 
-  const marked = useRouteQuery('marked', 'false', {
-    mode: 'push',
-    transform: (value: string) => String(value) === 'true',
-  })
-
   const page = useRouteQuery('page', '1', {
     mode: 'push',
     transform: Number,
@@ -16,6 +11,33 @@ export function useTransactionsParams() {
   const view = useRouteQuery<ViewMode | undefined>('view', undefined, {
     mode: 'push',
     transform: (value) => value && ['expense', 'income'].includes(value) ? value : undefined,
+  })
+
+  const route = useRoute()
+  const router = useRouter()
+
+  const marked = computed({
+    get: () => route.query.marked === 'true',
+    set: (value) => {
+      const query = { ...route.query }
+
+      if (value) {
+        router.push({
+          ...route,
+          query: {
+            ...query,
+            marked: 'true',
+          },
+        })
+      } else {
+        delete query.marked
+
+        router.push({
+          ...route,
+          query,
+        })
+      }
+    },
   })
 
   const asyncDataKey = computed(() => [
