@@ -36,10 +36,7 @@ useHead({
           max-lg:hidden
         "
       >
-        <TransactionFilterText
-          icon="mynaui:search"
-          class="max-2xl:basis-full"
-        />
+        <TransactionFilterText class="max-2xl:basis-full" />
 
         <TransactionFilterView class="w-50" />
 

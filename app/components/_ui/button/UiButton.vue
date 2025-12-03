@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { twMerge, type ClassNameValue } from 'tailwind-merge'
+
 import type { NuxtLinkProps } from '#app'
 
 const {
+  class: rootClass,
   disabled,
   loading,
   type = 'button',
   variant = 'primary',
 } = defineProps<{
+  class?: ClassNameValue
   disabled?: boolean
   icon?: string
   loading?: boolean
@@ -54,10 +58,11 @@ const VARIANT_CLASSES = {
     :disabled="disabled || loading"
     :to
     :type
-    :class="[
+    :class="twMerge(
       'group/button relative rounded-lg px-4 py-3 font-medium',
       VARIANT_CLASSES[variant],
-    ]"
+      rootClass,
+    )"
   >
     <span
       class="
