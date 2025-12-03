@@ -10,6 +10,10 @@ const loading = useAsyncDataLoading(status)
 
 const { register } = useDialog()
 const { open: openCategoryModal } = register(LazyCategoryDialog)
+
+useHead({
+  titleTemplate: usePageTitle('categories.title'),
+})
 </script>
 
 <template>

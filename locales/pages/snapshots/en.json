@@ -5,6 +5,7 @@
       "date": "Date",
       "note": "Note"
     },
-    "create": "Create Snapshot"
+    "create": "Create Snapshot",
+    "title": "Snapshots"
   }
 }

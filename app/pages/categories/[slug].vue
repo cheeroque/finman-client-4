@@ -33,6 +33,10 @@ const breadcrumbs = computed(() => {
 
   return items
 })
+
+useHead({
+  titleTemplate: usePageTitle('category.title', data.value?.category.name),
+})
 </script>
 
 <template>

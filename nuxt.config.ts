@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'Finance Manager 4',
       meta: [
         {
           name: 'mobile-web-app-capable',

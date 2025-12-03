@@ -9,6 +9,10 @@ const loading = useAsyncDataLoading(status)
 const { page } = useTransactionsParams()
 
 const paginationVisible = computed(() => Number(data.value?.total) > Number(data.value?.per_page))
+
+useHead({
+  titleTemplate: usePageTitle('transactions.title'),
+})
 </script>
 
 <template>

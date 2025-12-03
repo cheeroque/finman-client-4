@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useHead({
+  titleTemplate: usePageTitle('months.title'),
+})
+</script>
+
 <template>
   <main class="max-lg:px-3 max-lg:pt-3">
     <MonthSelector
