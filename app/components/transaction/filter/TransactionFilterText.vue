@@ -1,9 +1,4 @@
 <script setup lang="ts">
-defineProps<{
-  icon?: string
-  placeholder?: string
-}>()
-
 const { inputDebounce } = useAppConfig()
 
 const { filter } = useTransactionsParams()
@@ -34,8 +29,8 @@ useEventListener('keydown', (event) => {
   <UiInput
     ref="inputRef"
     v-model="modelValue"
-    :icon
-    :placeholder="placeholder ?? $ts('filter.text.placeholderHotkey')"
+    icon="mynaui:search"
+    :placeholder="$ts('filter.text.placeholderHotkey')"
     class="flex-auto"
     @update:model-value="handleUpdateFilter"
   />
