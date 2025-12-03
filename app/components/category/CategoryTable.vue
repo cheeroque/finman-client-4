@@ -15,7 +15,7 @@ const { $localePath, $ts } = useI18n()
 const columns = computed(() => [
   {
     accessorKey: 'name',
-    header: $ts('columns.name'),
+    header: $ts('categories.columns.name'),
     meta: {
       class: {
         td: 'max-2xl:col-span-full',
@@ -24,7 +24,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'slug',
-    header: $ts('columns.slug'),
+    header: $ts('categories.columns.slug'),
     meta: {
       class: {
         td: 'max-2xl:text-sm',
@@ -33,7 +33,7 @@ const columns = computed(() => [
   },
   {
     accessorKey: 'color',
-    header: $ts('columns.color'),
+    header: $ts('categories.columns.color'),
     meta: {
       class: {
         td: 'max-2xl:mt-1.5',

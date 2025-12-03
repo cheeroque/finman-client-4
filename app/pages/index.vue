@@ -17,7 +17,7 @@ const paginationVisible = computed(() => Number(data.value?.total) > Number(data
       <TransactionDialogTrigger>
         <template #wrapper="{ open }">
           <LayoutCreateButton
-            :caption="$ts('createTransaction')"
+            :caption="$ts('transactions.create')"
             @click="open()"
           />
         </template>

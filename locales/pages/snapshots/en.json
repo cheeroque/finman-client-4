@@ -1,8 +1,10 @@
 {
-  "columns": {
-    "balance": "Balance",
-    "date": "Date",
-    "note": "Note"
-  },
-  "createSnapshot": "Create Snapshot"
+  "snapshots": {
+    "columns": {
+      "balance": "Balance",
+      "date": "Date",
+      "note": "Note"
+    },
+    "create": "Create Snapshot"
+  }
 }

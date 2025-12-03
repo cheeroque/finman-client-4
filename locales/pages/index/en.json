@@ -1,9 +1,11 @@
 {
-  "columns": {
-    "category": "Category",
-    "date": "Date",
-    "note": "Note",
-    "sum": "Sum"
-  },
-  "createTransaction": "Create Transaction"
+  "transactions": {
+    "columns": {
+      "category": "Category",
+      "date": "Date",
+      "note": "Note",
+      "sum": "Sum"
+    },
+    "create": "Create Transaction"
+  }
 }
