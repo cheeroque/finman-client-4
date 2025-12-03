@@ -5,7 +5,7 @@
     "home": "Home",
     "search": "Search"
   },
-  "categoryModal": {
+  "categoryDialog": {
     "create": {
       "submit": "Submit",
       "title": "Create Category"
@@ -19,32 +19,32 @@
       "delete": "Delete",
       "submit": "Submit",
       "title": "Update Category"
+    }
+  },
+  "categoryForm": {
+    "color": {
+      "error": {
+        "invalid": "Enter valid hex color"
+      },
+      "label": "Color",
+      "placeholder": "#"
     },
-    "form": {
-      "color": {
-        "error": {
-          "invalid": "Enter valid hex color"
-        },
-        "label": "Color",
-        "placeholder": "#"
+    "is_income": {
+      "label": "Is income"
+    },
+    "name": {
+      "error": {
+        "invalid": "Name is required"
       },
-      "is_income": {
-        "label": "Is income"
+      "label": "Name",
+      "placeholder": "Enter name"
+    },
+    "slug": {
+      "error": {
+        "invalid": "Only use latin letters, numbers, hypens and underscores"
       },
-      "name": {
-        "error": {
-          "invalid": "Name is required"
-        },
-        "label": "Name",
-        "placeholder": "Enter name"
-      },
-      "slug": {
-        "error": {
-          "invalid": "Only use latin letters, numbers, hypens and underscores"
-        },
-        "label": "Slug",
-        "placeholder": "Enter slug"
-      }
+      "label": "Slug",
+      "placeholder": "Enter slug"
     }
   },
   "checkbox": {
@@ -86,32 +86,32 @@
     },
     "months": "Months"
   },
-  "snapshotModal": {
-    "form": {
-      "balance": {
-        "label": "Current balance",
-        "placeholder": "0"
-      },
-      "created_at": {
-        "label": "Datetime",
-        "placeholder": "Select datetime"
-      },
-      "note": {
-        "label": "Note",
-        "placeholder": "Enter note"
-      },
-      "previousBalance": {
-        "label": "Previous balance",
-        "placeholder": "0"
-      }
-    },
+  "snapshotDialog": {
     "submit": "Submit",
     "title": "Create Snapshot"
+  },
+  "snapshotForm": {
+    "balance": {
+      "label": "Current balance",
+      "placeholder": "0"
+    },
+    "created_at": {
+      "label": "Datetime",
+      "placeholder": "Select datetime"
+    },
+    "note": {
+      "label": "Note",
+      "placeholder": "Enter note"
+    },
+    "previousBalance": {
+      "label": "Previous balance",
+      "placeholder": "0"
+    }
   },
   "table": {
     "empty": "Nothing to show."
   },
-  "transactionModal": {
+  "transactionDialog": {
     "create": {
       "submit": "Submit",
       "title": "Create Transaction"
@@ -120,27 +120,27 @@
       "delete": "Delete",
       "submit": "Submit",
       "title": "Update Transaction"
+    }
+  },
+  "transactionForm": {
+    "category": {
+      "label": "Category",
+      "placeholder": "Select category"
     },
-    "form": {
-      "category": {
-        "label": "Category",
-        "placeholder": "Select category"
-      },
-      "created_at": {
-        "label": "Datetime",
-        "placeholder": "Select datetime"
-      },
-      "marked": {
-        "label": "Is marked"
-      },
-      "note": {
-        "label": "Note",
-        "placeholder": "Enter note"
-      },
-      "sum": {
-        "label": "Sum",
-        "placeholder": "0"
-      }
+    "created_at": {
+      "label": "Datetime",
+      "placeholder": "Select datetime"
+    },
+    "marked": {
+      "label": "Is marked"
+    },
+    "note": {
+      "label": "Note",
+      "placeholder": "Enter note"
+    },
+    "sum": {
+      "label": "Sum",
+      "placeholder": "0"
     }
   },
   "validation": {

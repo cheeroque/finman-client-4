@@ -1,8 +1,10 @@
 {
-  "columns": {
-    "balance": "Баланс",
-    "date": "Дата",
-    "note": "Комментарий"
-  },
-  "createSnapshot": "Добавить снапшот"
+  "snapshots": {
+    "columns": {
+      "balance": "Баланс",
+      "date": "Дата",
+      "note": "Комментарий"
+    },
+    "create": "Добавить снапшот"
+  }
 }

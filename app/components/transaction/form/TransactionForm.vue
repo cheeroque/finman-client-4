@@ -89,7 +89,7 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.category_id"
-      :label="$ts('transactionModal.form.category.label')"
+      :label="$ts('transactionForm.category.label')"
     >
       <UiSelect
         :id="controlId"
@@ -103,7 +103,7 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.sum"
-      :label="$ts('transactionModal.form.sum.label')"
+      :label="$ts('transactionForm.sum.label')"
     >
       <TransactionFormSumInput
         :id="controlId"
@@ -116,28 +116,28 @@ async function handleSubmit() {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.note"
-      :label="$ts('transactionModal.form.note.label')"
+      :label="$ts('transactionForm.note.label')"
     >
       <UiInput
         :id="controlId"
         v-model="form.note"
         :disabled="loading"
         :has-error
-        :placeholder="$ts('transactionModal.form.note.placeholder')"
+        :placeholder="$ts('transactionForm.note.placeholder')"
       />
     </UiFormField>
 
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.created_at"
-      :label="$ts('transactionModal.form.created_at.label')"
+      :label="$ts('transactionForm.created_at.label')"
     >
       <UiDateTimePicker
         :id="controlId"
         v-model="form.created_at"
         :disabled="loading"
         :has-error
-        :placeholder="$ts('transactionModal.form.created_at.placeholder')"
+        :placeholder="$ts('transactionForm.created_at.placeholder')"
       />
     </UiFormField>
 
@@ -148,7 +148,7 @@ async function handleSubmit() {
       variant="amber"
       class="self-start"
     >
-      {{ $ts('transactionModal.form.marked.label') }}
+      {{ $ts('transactionForm.marked.label') }}
     </UiCheckbox>
   </form>
 </template>

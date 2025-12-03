@@ -14,7 +14,7 @@ const formId = useId()
 const { $ts } = useI18n()
 
 const isEdit = computed(() => !!category)
-const title = computed(() => $ts(`categoryModal.${isEdit.value ? 'edit' : 'create'}.title`))
+const title = computed(() => $ts(`categoryDialog.${isEdit.value ? 'edit' : 'create'}.title`))
 
 const { execute: executeUpsert, loading: isUpserting } = useCategoryUpsert()
 
@@ -38,9 +38,9 @@ async function deleteCategory() {
   }
 
   const confirmation = await getConfirmation({
-    title: $ts('categoryModal.deleteConfirmation.title'),
-    message: $ts('categoryModal.deleteConfirmation.message'),
-    captionConfirm: $ts('categoryModal.deleteConfirmation.confirm'),
+    title: $ts('categoryDialog.deleteConfirmation.title'),
+    message: $ts('categoryDialog.deleteConfirmation.message'),
+    captionConfirm: $ts('categoryDialog.deleteConfirmation.confirm'),
   })
 
   if (!confirmation) {

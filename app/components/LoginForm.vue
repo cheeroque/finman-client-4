@@ -54,10 +54,10 @@ async function handleSubmit() {
 
 function getErrorMessage(error: unknown) {
   if (error instanceof FetchError && error.statusCode === 401) {
-    return $ts('error.invalidCredentials')
+    return $ts('login.error.invalidCredentials')
   }
 
-  return $ts('error.default')
+  return $ts('login.error.default')
 }
 </script>
 
@@ -69,14 +69,14 @@ function getErrorMessage(error: unknown) {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.email"
-      :label="$ts('email.label')"
+      :label="$ts('login.email.label')"
     >
       <UiInput
         :id="controlId"
         v-model="form.email"
         :disabled="isLoading"
         :has-error
-        :placeholder="$ts('email.placeholder')"
+        :placeholder="$ts('login.email.placeholder')"
         type="email"
       />
     </UiFormField>
@@ -84,14 +84,14 @@ function getErrorMessage(error: unknown) {
     <UiFormField
       v-slot="{ controlId, hasError }"
       :error="r$.$errors.password"
-      :label="$ts('password.label')"
+      :label="$ts('login.password.label')"
     >
       <UiInput
         :id="controlId"
         v-model="form.password"
         :disabled="isLoading"
         :has-error
-        :placeholder="$ts('password.placeholder')"
+        :placeholder="$ts('login.password.placeholder')"
         type="password"
       />
     </UiFormField>
@@ -102,7 +102,7 @@ function getErrorMessage(error: unknown) {
       variant="success"
       class="w-full"
     >
-      {{ $ts('submit') }}
+      {{ $ts('login.submit') }}
     </UiButton>
   </form>
 </template>

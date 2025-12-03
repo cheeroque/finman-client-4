@@ -1,6 +1,8 @@
 {
-  "columns": {
-    "period": "Период",
-    "sum": "Сумма"
+  "category": {
+    "columns": {
+      "period": "Период",
+      "sum": "Сумма"
+    }
   }
 }

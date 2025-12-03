@@ -1,10 +1,12 @@
 {
-  "columns": {
-    "color": "Цвет",
-    "name": "Имя",
-    "slug": "Слаг"
-  },
-  "createCategory": "Добавить категорию",
-  "expenses": "Расходы",
-  "incomes": "Доходы"
+  "categories": {
+    "columns": {
+      "color": "Цвет",
+      "name": "Имя",
+      "slug": "Слаг"
+    },
+    "create": "Добавить категорию",
+    "expenses": "Расходы",
+    "incomes": "Доходы"
+  }
 }

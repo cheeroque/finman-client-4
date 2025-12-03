@@ -5,7 +5,7 @@
     "home": "Главная",
     "search": "Поиск"
   },
-  "categoryModal": {
+  "categoryDialog": {
     "create": {
       "submit": "Сохранить",
       "title": "Создать категорию"
@@ -19,38 +19,38 @@
       "delete": "Удалить",
       "submit": "Обновить",
       "title": "Изменить категорию"
+    }
+  },
+  "categoryForm": {
+    "color": {
+      "error": {
+        "invalid": "Введите корректное значение цвета"
+      },
+      "label": "Цвет",
+      "placeholder": "#"
     },
-    "form": {
-      "color": {
-        "error": {
-          "invalid": "Введите корректное значение цвета"
-        },
-        "label": "Цвет",
-        "placeholder": "#"
+    "is_income": {
+      "label": "Доход"
+    },
+    "name": {
+      "error": {
+        "invalid": "Поле необходимо заполнить"
       },
-      "is_income": {
-        "label": "Доход"
+      "label": "Имя",
+      "placeholder": "Введите имя"
+    },
+    "slug": {
+      "error": {
+        "invalid": "Только латиница, цифры, дефис и нижнее подчёркивание"
       },
-      "name": {
-        "error": {
-          "invalid": "Поле необходимо заполнить"
-        },
-        "label": "Имя",
-        "placeholder": "Введите имя"
+      "label": "Слаг",
+      "placeholder": "Введите слаг"
+    },
+    "sortOrder": {
+      "error": {
+        "invalid": "Только цифры"
       },
-      "slug": {
-        "error": {
-          "invalid": "Только латиница, цифры, дефис и нижнее подчёркивание"
-        },
-        "label": "Слаг",
-        "placeholder": "Введите слаг"
-      },
-      "sortOrder": {
-        "error": {
-          "invalid": "Только цифры"
-        },
-        "label": "Порядок"
-      }
+      "label": "Порядок"
     }
   },
   "checkbox": {
@@ -92,32 +92,32 @@
     },
     "months": "Календарь"
   },
-  "snapshotModal": {
-    "form": {
-      "balance": {
-        "label": "Текущий баланс",
-        "placeholder": "0"
-      },
-      "created_at": {
-        "label": "Дата и время",
-        "placeholder": "Выберите дату и время"
-      },
-      "note": {
-        "label": "Комментарий",
-        "placeholder": "Введите комментарий"
-      },
-      "previousBalance": {
-        "label": "Предыдущий баланс",
-        "placeholder": "0"
-      }
-    },
+  "snapshotDialog": {
     "submit": "Сохранить",
     "title": "Создать снапшот"
+  },
+  "snapshotForm": {
+    "balance": {
+      "label": "Текущий баланс",
+      "placeholder": "0"
+    },
+    "created_at": {
+      "label": "Дата и время",
+      "placeholder": "Выберите дату и время"
+    },
+    "note": {
+      "label": "Комментарий",
+      "placeholder": "Введите комментарий"
+    },
+    "previousBalance": {
+      "label": "Предыдущий баланс",
+      "placeholder": "0"
+    }
   },
   "table": {
     "empty": "Нет записей."
   },
-  "transactionModal": {
+  "transactionDialog": {
     "create": {
       "submit": "Сохранить",
       "title": "Создать запись"
@@ -126,27 +126,27 @@
       "delete": "Удалить",
       "submit": "Обновить",
       "title": "Изменить запись"
+    }
+  },
+  "transactionForm": {
+    "category": {
+      "label": "Категория",
+      "placeholder": "Выберите категорию"
     },
-    "form": {
-      "category": {
-        "label": "Категория",
-        "placeholder": "Выберите категорию"
-      },
-      "created_at": {
-        "label": "Дата и время",
-        "placeholder": "Выберите дату и время"
-      },
-      "marked": {
-        "label": "Отметка"
-      },
-      "note": {
-        "label": "Комментарий",
-        "placeholder": "Введите комментарий"
-      },
-      "sum": {
-        "label": "Сумма",
-        "placeholder": "0"
-      }
+    "created_at": {
+      "label": "Дата и время",
+      "placeholder": "Выберите дату и время"
+    },
+    "marked": {
+      "label": "Отметка"
+    },
+    "note": {
+      "label": "Комментарий",
+      "placeholder": "Введите комментарий"
+    },
+    "sum": {
+      "label": "Сумма",
+      "placeholder": "0"
     }
   },
   "validation": {

@@ -1,9 +1,11 @@
 {
-  "columns": {
-    "category": "Категория",
-    "date": "Дата",
-    "note": "Комментарий",
-    "sum": "Сумма"
-  },
-  "createTransaction": "Добавить запись"
+  "transactions": {
+    "columns": {
+      "category": "Категория",
+      "date": "Дата",
+      "note": "Комментарий",
+      "sum": "Сумма"
+    },
+    "create": "Добавить запись"
+  }
 }

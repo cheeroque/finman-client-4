@@ -1,15 +1,17 @@
 {
-  "email": {
-    "label": "Email",
-    "placeholder": "Введите email"
-  },
-  "error": {
-    "default": "Неизвестная ошибка",
-    "invalidCredentials": "Неверный email или пароль"
-  },
-  "password": {
-    "label": "Пароль",
-    "placeholder": "Введите пароль"
-  },
-  "submit": "Войти"
+  "login": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Введите email"
+    },
+    "error": {
+      "default": "Неизвестная ошибка",
+      "invalidCredentials": "Неверный email или пароль"
+    },
+    "password": {
+      "label": "Пароль",
+      "placeholder": "Введите пароль"
+    },
+    "submit": "Войти"
+  }
 }
