@@ -12,19 +12,15 @@ whenever(filterRef, (value) => {
   <UiDrawer v-model="modelValue">
     <div
       class="
-        rounded-t-xl bg-white p-3
-        dark:border dark:border-neutral-800 dark:bg-neutral-950
+        rounded-t-xl bg-primary-200 p-3
+        dark:bg-primary-950
       "
     >
-      <div class="flex flex-col gap-3">
-        <TransactionFilterText
-          ref="filterRef"
-          :placeholder="$ts('filter.text.placeholder')"
-          class="col-span-2"
-        />
-
-        <TransactionFilterMarked class="h-8" />
-      </div>
+      <TransactionFilterText
+        ref="filterRef"
+        :placeholder="$ts('filter.text.placeholder')"
+        class="col-span-2"
+      />
     </div>
   </UiDrawer>
 </template>

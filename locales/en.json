@@ -57,7 +57,7 @@
   },
   "filter": {
     "marked": {
-      "label": "Marked only"
+      "label": "Bookmarks"
     },
     "text": {
       "placeholder": "Enter text to search",
@@ -75,6 +75,7 @@
     "export": "Export to file",
     "home": "Home",
     "logout": "Log Out",
+    "marked": "Bookmarks",
     "months": "Months",
     "snapshots": "Snapshots"
   },

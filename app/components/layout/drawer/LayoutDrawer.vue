@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const modelValue = defineModel<boolean>()
+
+const route = useRoute()
+
+watch(() => route.fullPath, () => {
+  modelValue.value = false
+})
 </script>
 
 <template>
