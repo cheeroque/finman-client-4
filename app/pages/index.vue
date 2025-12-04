@@ -28,7 +28,12 @@ useHead({
       </TransactionDialogTrigger>
     </template>
 
-    <main class="flex flex-col gap-8">
+    <main
+      class="
+        flex flex-col gap-8
+        max-lg:pb-16
+      "
+    >
       <div
         class="
           flex gap-6

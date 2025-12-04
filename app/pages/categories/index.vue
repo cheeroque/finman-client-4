@@ -25,7 +25,12 @@ useHead({
       />
     </template>
 
-    <main class="flex flex-col gap-8">
+    <main
+      class="
+        flex flex-col gap-8
+        max-lg:pb-16
+      "
+    >
       <CategoryTable
         :categories
         :loading
