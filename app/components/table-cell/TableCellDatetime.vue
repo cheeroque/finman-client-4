@@ -10,7 +10,7 @@ const locale = computed(() => getLocale())
 </script>
 
 <template>
-  <span>
+  <span class="whitespace-nowrap">
     <NuxtTime
       date-style="short"
       :datetime="datetimeParsed"
@@ -21,10 +21,7 @@ const locale = computed(() => getLocale())
       time-style="short"
       :datetime="datetimeParsed"
       :locale
-      class="
-        text-neutral-500
-        dark:text-neutral-400
-      "
+      class="opacity-65"
     />
   </span>
 </template>

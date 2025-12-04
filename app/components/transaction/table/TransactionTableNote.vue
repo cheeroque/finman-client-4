@@ -9,13 +9,14 @@ const { transaction } = defineProps<{
 <template>
   <TransactionDialogTrigger
     :transaction
-    class="group/button flex w-full items-center gap-2 text-start"
+    class="group/button flex w-full items-start gap-2 text-start"
   >
     <Icon
       v-if="transaction.is_marked"
       name="mynaui:star-solid"
       class="
-        text-lg text-amber-300
+        my-0.75 flex-none text-lg text-amber-300
+        max-2xl:order-99
         dark:text-amber-800
       "
     />
@@ -28,7 +29,7 @@ const { transaction } = defineProps<{
       name="mynaui:edit"
       class="
         text-2xl opacity-0 transition-opacity
-        group-hover/button:opacity-50
+        2xl:group-hover/button:opacity-50
       "
     />
   </TransactionDialogTrigger>
