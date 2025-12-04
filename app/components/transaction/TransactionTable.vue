@@ -16,6 +16,7 @@ const columns = computed(() => [
     header: $ts('transactions.columns.date'),
     meta: {
       class: {
+        th: '2xl:w-50',
         td: 'max-2xl:text-sm max-2xl:font-semibold',
       },
     },
@@ -25,7 +26,7 @@ const columns = computed(() => [
     header: $ts('transactions.columns.sum'),
     meta: {
       class: {
-        th: 'text-end',
+        th: 'text-end 2xl:w-45',
         td: 'self-end row-span-2 text-end whitespace-nowrap max-2xl:pl-2',
       },
     },
@@ -35,6 +36,7 @@ const columns = computed(() => [
     header: $ts('transactions.columns.category'),
     meta: {
       class: {
+        th: '2xl:w-55',
         td: 'max-2xl:text-sm max-2xl:opacity-50',
       },
     },
@@ -50,6 +52,8 @@ const columns = computed(() => [
   },
 ])
 
+const { view } = useTransactionsParams()
+
 function getTrClass(row: Row<Transaction>) {
   const classlist = [
     'grid-cols-[auto_min-content]',
@@ -63,14 +67,22 @@ function getTrClass(row: Row<Transaction>) {
       'max-2xl:bg-amber-50 max-2xl:even:bg-amber-50',
       'dark:max-2xl:bg-amber-950 dark:max-2xl:even:bg-amber-950'
     )
+  } else if (row.original.category.is_income && !view.value) {
+    classlist.push(
+      'row-income',
+      'max-2xl:bg-lime-100 max-2xl:even:bg-lime-100',
+      'dark:max-2xl:bg-lime-800 dark:max-2xl:even:bg-lime-800'
+    )
   }
 
   return classlist
 }
 
 const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
+  group-[.row-income]/row:hover:text-lime-600
   group-[.row-marked]/row:hover:text-amber-600
   dark:hover:text-primary-500
+  dark:group-[.row-income]/row:hover:text-lime-500
   dark:group-[.row-marked]/row:hover:text-amber-500`
 </script>
 
@@ -80,8 +92,12 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
     :data="transactions"
     :loading
     td-class="
+      group-[.row-income]/row:bg-lime-100
+      group-[.row-income]/row:text-lime-800
       group-[.row-marked]/row:bg-amber-50
       max-2xl:p-0
+      dark:group-[.row-income]/row:bg-lime-800
+      dark:group-[.row-income]/row:text-lime-200
       dark:group-[.row-marked]/row:bg-amber-950
     "
     thead-class="max-2xl:hidden"
@@ -100,7 +116,7 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
         :class="[
           CELL_INTERACTIVE_CLASS,
           'text-xl leading-6',
-          'max-2xl:text-2xl max-2xl:text-primary-600',
+          'max-2xl:text-2xl',
         ]"
       />
     </template>
@@ -110,9 +126,8 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
         :to="$localePath(`/categories/${item.category.slug}`)"
         :class="[
           CELL_INTERACTIVE_CLASS,
-          'text-neutral-500',
+          'opacity-65',
           'hover:underline',
-          'dark:text-neutral-400',
         ]"
       >
         {{ item.category.name }}
