@@ -70,7 +70,10 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      // @ts-expect-error vite type mismatch between @nuxt/schema and @tailwindcss/vite
+      tailwindcss()
+    ],
   },
 
   eslint: {
