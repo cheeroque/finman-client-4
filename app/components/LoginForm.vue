@@ -68,7 +68,7 @@ function getErrorMessage(error: unknown) {
   >
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.email"
+      :error="r$.email.$error"
       :label="$ts('login.email.label')"
     >
       <UiInput
@@ -83,7 +83,7 @@ function getErrorMessage(error: unknown) {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.password"
+      :error="r$.password.$error"
       :label="$ts('login.password.label')"
     >
       <UiInput

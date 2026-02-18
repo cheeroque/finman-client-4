@@ -93,7 +93,7 @@ async function handleSubmit() {
   >
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.name"
+      :error="r$.name.$error"
       :label="$ts('categoryForm.name.label')"
     >
       <UiInput
@@ -107,7 +107,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.slug"
+      :error="r$.slug.$error"
       :label="$ts('categoryForm.slug.label')"
     >
       <UiInput
@@ -121,7 +121,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.color"
+      :error="r$.color.$error"
       :label="$ts('categoryForm.color.label')"
     >
       <UiInput
@@ -139,7 +139,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.sort_order"
+      :error="r$.sort_order.$error"
       :label="$ts('categoryForm.sortOrder.label')"
     >
       <UiInput

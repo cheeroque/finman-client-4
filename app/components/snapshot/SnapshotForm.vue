@@ -76,7 +76,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.balance"
+      :error="r$.balance.$error"
       :label="$ts('snapshotForm.balance.label')"
     >
       <UiInput
@@ -89,7 +89,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.created_at"
+      :error="r$.created_at.$error"
       :label="$ts('snapshotForm.created_at.label')"
     >
       <UiDateTimePicker
@@ -103,7 +103,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.$errors.note"
+      :error="r$.note.$error"
       :label="$ts('snapshotForm.note.label')"
       name="note"
     >
