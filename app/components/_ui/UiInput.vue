@@ -41,8 +41,8 @@ defineExpose({ inputRef })
       dark:bg-black dark:outline-neutral-800
       dark:focus-within:outline-primary-800
       dark:not-data-disabled:hover:outline-primary-900
-      dark:data-disabled:bg-neutral-900 dark:data-invalid:text-rose-500
-      dark:data-invalid:outline-rose-500
+      dark:data-disabled:bg-neutral-900
+      dark:data-invalid:text-rose-500 dark:data-invalid:outline-rose-500
     "
   >
     <slot name="icon">
@@ -80,7 +80,8 @@ defineExpose({ inputRef })
         flex cursor-pointer items-center pr-2.5 text-neutral-300
         hover:text-primary-500
         focus:text-primary-600 focus:outline-0
-        dark:text-neutral-700 dark:hover:text-primary-400
+        dark:text-neutral-700
+        dark:hover:text-primary-400
         dark:focus:text-primary-500
       "
       type="button"

@@ -22,7 +22,7 @@ defineEmits<{
       :title="caption"
       variant="success"
       class="
-        fixed! right-4 bottom-22 z-30 size-16 rounded-full! shadow
+        fixed! right-4 bottom-22 z-30 size-16 rounded-full! shadow-sm
         lg:hidden
       "
       @click="$emit('click', $event)"

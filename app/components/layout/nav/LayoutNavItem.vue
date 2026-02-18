@@ -19,9 +19,9 @@ function handleClick() {
       hover:bg-primary-300/50 hover:text-primary-800
       data-exact-active:bg-primary-300 data-exact-active:text-primary-900
       data-exact-active:hover:bg-primary-400/60
-      dark:text-white/60 dark:hover:bg-primary-900/50
-      dark:hover:text-primary-300 dark:data-exact-active:bg-primary-900
-      dark:data-exact-active:text-white
+      dark:text-white/60
+      dark:hover:bg-primary-900/50 dark:hover:text-primary-300
+      dark:data-exact-active:bg-primary-900 dark:data-exact-active:text-white
       dark:data-exact-active:hover:bg-primary-800
     "
     @click="handleClick()"

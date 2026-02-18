@@ -54,7 +54,7 @@ const columns = computed(() => [
 
     <template #cell(balance)="{ item }">
       <TableCellSum
-        class="text-xl leading-6"
+        class="text-xl/6"
         :sum="item.balance"
       />
     </template>

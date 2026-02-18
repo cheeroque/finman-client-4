@@ -112,7 +112,8 @@ function setNow() {
           class="
             flex rounded-md bg-white p-1 text-primary-900
             hover:bg-primary-100
-            dark:bg-black dark:text-primary-200 dark:hover:bg-primary-900
+            dark:bg-black dark:text-primary-200
+            dark:hover:bg-primary-900
           "
           @click="setNow()"
         >
@@ -131,7 +132,8 @@ function setNow() {
           class="
             flex rounded-md bg-lime-200 p-1 text-lime-800
             hover:bg-lime-300
-            dark:bg-lime-900 dark:text-lime-200 dark:hover:bg-lime-800
+            dark:bg-lime-900 dark:text-lime-200
+            dark:hover:bg-lime-800
           "
           @click="apply()"
         >

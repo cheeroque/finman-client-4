@@ -107,7 +107,8 @@ const zIndex = computed(() => DIALOG_Z_INDEX_BASE + depth)
                 class="
                   text-neutral-300
                   hover:text-neutral-500
-                  dark:text-neutral-700 dark:hover:text-neutral-400
+                  dark:text-neutral-700
+                  dark:hover:text-neutral-400
                 "
               >
                 <Icon
