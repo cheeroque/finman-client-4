@@ -1,18 +1,18 @@
 <script setup lang="ts" generic="T extends string | number | null">
-import type { InputHTMLAttributes } from 'vue'
+import type { InputTypeHTMLAttribute } from 'vue'
 
 const {
   id,
   type = 'text',
 } = defineProps<{
-  autocomplete?: InputHTMLAttributes['autocomplete']
+  autocomplete?: string
   disabled?: boolean
   icon?: string
   id?: string
   hasError?: boolean
   placeholder?: string
   required?: boolean
-  type?: InputHTMLAttributes['type']
+  type?: InputTypeHTMLAttribute
 }>()
 
 const emit = defineEmits<{
