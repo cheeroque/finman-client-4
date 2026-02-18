@@ -99,6 +99,7 @@ export default defineNuxtConfig({
     translationDir: 'locales',
     meta: true,
     strategy: 'prefix_except_default',
+    localeCookie: 'user-locale',
   },
 
   regle: {
