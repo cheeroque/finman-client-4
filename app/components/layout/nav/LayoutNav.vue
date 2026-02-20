@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LayoutNavItem } from '~/components/layout'
+import type { LayoutNavItem } from '~/components/layout/types'
 
 const { hideHome } = defineProps<{
   hideHome?: boolean

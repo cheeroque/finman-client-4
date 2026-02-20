@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge'
 
-import type { LayoutNavItem } from '~/components/layout'
+import type { LayoutNavItem } from '~/components/layout/types'
 
 const {
   disabled,

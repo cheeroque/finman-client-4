@@ -11,7 +11,7 @@ import {
 } from 'reka-ui'
 import type { AcceptableValue } from 'reka-ui'
 
-import type { SelectOption } from '~/components/_ui'
+import type { SelectOption } from '~/components/_ui/types'
 
 defineOptions({
   inheritAttrs: false,

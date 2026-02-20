@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BreadcrumbItem } from '~/components/_ui'
+import type { BreadcrumbItem } from '~/components/_ui/types'
 
 const { data, status } = await useMonthTransactions()
 const loading = useAsyncDataLoading(status)
