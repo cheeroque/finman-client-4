@@ -22,6 +22,12 @@ const end = computed(() => data.value?.end)
 
 const activeYear = ref(modelValue.value?.year ?? end.value?.year ?? 0)
 
+watch(end, (newEnd) => {
+  if (newEnd && !activeYear.value) {
+    activeYear.value = newEnd.year
+  }
+})
+
 watch(activeYear, (year) => {
   if (modelValue.value) {
     modelValue.value.year = year
