@@ -5,6 +5,7 @@
  * This completely breaks Select/DropdownMenu inside UiDialog, so we force
  * `pointer-events-auto!` for DialogContent on line 63
  * See: https://github.com/unovue/reka-ui/issues/1670 */
+
 import {
   DialogClose,
   DialogContent,
@@ -30,6 +31,13 @@ const {
 const modelValue = defineModel<boolean>()
 
 const zIndex = computed(() => DIALOG_Z_INDEX_BASE + depth)
+
+// Close dialog on route change
+const route = useRoute()
+
+watch(route, () => {
+  modelValue.value = false
+})
 </script>
 
 <template>
