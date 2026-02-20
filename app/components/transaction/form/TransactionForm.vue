@@ -88,7 +88,7 @@ async function handleSubmit() {
   >
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.category_id.$error"
+      :error="r$.category_id.$errors"
       :label="$ts('transactionForm.category.label')"
     >
       <UiSelect
@@ -102,7 +102,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.sum.$error"
+      :error="r$.sum.$errors"
       :label="$ts('transactionForm.sum.label')"
     >
       <TransactionFormSumInput
@@ -115,7 +115,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.note.$error"
+      :error="r$.note.$errors"
       :label="$ts('transactionForm.note.label')"
     >
       <UiInput
@@ -129,7 +129,7 @@ async function handleSubmit() {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.created_at.$error"
+      :error="r$.created_at.$errors"
       :label="$ts('transactionForm.created_at.label')"
     >
       <UiDateTimePicker

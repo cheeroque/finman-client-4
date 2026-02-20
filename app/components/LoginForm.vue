@@ -53,7 +53,7 @@ async function handleSubmit() {
 }
 
 function getErrorMessage(error: unknown) {
-  if (error instanceof FetchError && error.statusCode === 401) {
+  if (error instanceof FetchError && error.status === 401) {
     return $ts('login.error.invalidCredentials')
   }
 
@@ -68,7 +68,7 @@ function getErrorMessage(error: unknown) {
   >
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.email.$error"
+      :error="r$.email.$errors"
       :label="$ts('login.email.label')"
     >
       <UiInput
@@ -83,7 +83,7 @@ function getErrorMessage(error: unknown) {
 
     <UiFormField
       v-slot="{ controlId, hasError }"
-      :error="r$.password.$error"
+      :error="r$.password.$errors"
       :label="$ts('login.password.label')"
     >
       <UiInput
