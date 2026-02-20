@@ -12,6 +12,8 @@ const controlId = computed(() => id ?? useId())
 
 const hasError = computed(() => Array.isArray(error) ? !!error.length : !!error)
 
+const hasErrorMessage = computed(() => hasError.value && !(typeof error === 'boolean'))
+
 const displayError = computed(() => Array.isArray(error) && error.length
   ? error.join('. ')
   : error
@@ -34,7 +36,7 @@ const displayError = computed(() => Array.isArray(error) && error.length
     />
 
     <span
-      v-if="hasError"
+      v-if="hasErrorMessage"
       class="
         absolute top-full mt-0.5 truncate text-xs text-rose-600
         dark:text-rose-500
