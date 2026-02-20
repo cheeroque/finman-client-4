@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
     authStore.user = await useRequestFetch()('/api/me')
   } catch (error) {
     // Throw all errors except auth related further
-    if (!(error instanceof FetchError && error.statusCode === 401)) {
+    if (!(error instanceof FetchError && error.status === 401)) {
       throw error
     }
 
