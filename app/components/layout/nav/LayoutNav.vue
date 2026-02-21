@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LayoutNavItem } from '~/components/layout'
+import type { LayoutNavItem } from '~/components/layout/types'
 
 const { hideHome } = defineProps<{
   hideHome?: boolean
@@ -54,19 +54,9 @@ const menuItems = computed<LayoutNavItem[]>(() => [
     icon: 'mynaui:clock-ten',
     to: $localePath('/snapshots'),
   },
-  {
-    label: $ts('mainMenu.export'),
-    icon: 'mynaui:cloud-download',
-    onClick: exportFile,
-  },
 ])
 
 const visibleMenuItems = computed(() => hideHome ? menuItems.value.slice(1) : menuItems.value)
-
-async function exportFile() {
-  const url = await useRequestFetch()('/api/transactions/export')
-  downloadFileByUrl(url)
-}
 </script>
 
 <template>
@@ -76,6 +66,10 @@ async function exportFile() {
       :key="item.label"
     >
       <LayoutNavItem v-bind="item" />
+    </li>
+
+    <li>
+      <LayoutNavExport />
     </li>
   </ul>
 </template>

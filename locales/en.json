@@ -45,6 +45,12 @@
       },
       "label": "Slug",
       "placeholder": "Enter slug"
+    },
+    "sortOrder": {
+      "error": {
+        "invalid": "Numbers only"
+      },
+      "label": "Sort order"
     }
   },
   "checkbox": {
@@ -54,6 +60,11 @@
   "confirmationDialog": {
     "cancel": "Cancel",
     "confirm": "Confirm"
+  },
+  "error": {
+    "404": "Page not found.",
+    "error": "Error",
+    "goHome": "Return to main page"
   },
   "filter": {
     "marked": {

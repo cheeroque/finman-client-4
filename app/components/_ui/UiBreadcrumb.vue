@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components'
-import type { BreadcrumbItem } from '~/components/_ui'
+import type { BreadcrumbItem } from '~/components/_ui/types'
 
 defineProps<{
   items: BreadcrumbItem[]

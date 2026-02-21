@@ -34,7 +34,8 @@ const modelValue = defineModel<CalendarDate>()
           flex size-6 cursor-pointer items-center justify-center
           text-neutral-500 transition-(--transition-button)
           hover:text-primary-500
-          dark:text-neutral-400 dark:hover:text-primary-400
+          dark:text-neutral-400
+          dark:hover:text-primary-400
         "
       >
         <Icon
@@ -50,7 +51,8 @@ const modelValue = defineModel<CalendarDate>()
           flex size-6 cursor-pointer items-center justify-center
           text-neutral-500 transition-(--transition-button)
           hover:text-primary-500
-          dark:text-neutral-400 dark:hover:text-primary-400
+          dark:text-neutral-400
+          dark:hover:text-primary-400
         "
       >
         <Icon
@@ -105,7 +107,8 @@ const modelValue = defineModel<CalendarDate>()
                   hover:bg-neutral-200
                   data-outside-view:opacity-25
                   data-selected:border-2 data-selected:border-primary-600
-                  data-today:bg-primary-200 data-today:hover:bg-primary-300
+                  data-today:bg-primary-200
+                  data-today:hover:bg-primary-300
                   data-unavailable:pointer-events-none
                   data-unavailable:line-through data-unavailable:opacity-25
                   dark:hover:bg-neutral-800

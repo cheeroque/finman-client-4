@@ -104,7 +104,8 @@ const columns = computed(() => [
         class="
           text-neutral-500
           hover:text-primary-600 hover:underline
-          dark:text-neutral-400 dark:hover:text-primary-500
+          dark:text-neutral-400
+          dark:hover:text-primary-500
         "
       >
         {{ value }}
@@ -123,7 +124,8 @@ const columns = computed(() => [
           inline-flex px-4 py-3 text-neutral-300
           hover:text-primary-600
           max-2xl:-m-2 max-2xl:p-2
-          dark:text-neutral-700 dark:hover:text-primary-500
+          dark:text-neutral-700
+          dark:hover:text-primary-500
         "
         @click="$emit('clickEdit', item)"
       >

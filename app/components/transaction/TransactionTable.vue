@@ -115,7 +115,7 @@ const CELL_INTERACTIVE_CLASS = `hover:text-primary-600
         :transaction="item"
         :class="[
           CELL_INTERACTIVE_CLASS,
-          'text-xl leading-6',
+          'text-xl/6',
           'max-2xl:text-2xl',
         ]"
       />

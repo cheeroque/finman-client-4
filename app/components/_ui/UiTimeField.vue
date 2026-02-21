@@ -25,10 +25,11 @@ const modelValue = defineModel<TimeFieldRootProps['modelValue']>()
         v-else
         :part="item.part"
         class="
-          rounded p-0.5
+          rounded-sm p-0.5
           focus:outline-2 focus:outline-primary-600
           data-placeholder:text-neutral-500
-          dark:focus:outline-primary-500 dark:data-placeholder:text-neutral-400
+          dark:focus:outline-primary-500
+          dark:data-placeholder:text-neutral-400
         "
       >
         {{ item.value }}

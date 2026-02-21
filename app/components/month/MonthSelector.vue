@@ -22,6 +22,12 @@ const end = computed(() => data.value?.end)
 
 const activeYear = ref(modelValue.value?.year ?? end.value?.year ?? 0)
 
+watch(end, (newEnd) => {
+  if (newEnd && !activeYear.value) {
+    activeYear.value = newEnd.year
+  }
+})
+
 watch(activeYear, (year) => {
   if (modelValue.value) {
     modelValue.value.year = year
@@ -94,7 +100,8 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         class="
           flex flex-none text-neutral-400
           hover:text-primary-400
-          dark:text-neutral-600 dark:hover:text-primary-600
+          dark:text-neutral-600
+          dark:hover:text-primary-600
         "
         @click="shiftYear(-1)"
       >
@@ -113,7 +120,8 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
         class="
           flex flex-none text-neutral-400
           hover:text-primary-400
-          dark:text-neutral-600 dark:hover:text-primary-600
+          dark:text-neutral-600
+          dark:hover:text-primary-600
         "
         @click="shiftYear(+1)"
       >

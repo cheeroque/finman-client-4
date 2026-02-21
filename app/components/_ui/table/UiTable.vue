@@ -133,7 +133,8 @@ function getCellClass(cell: Cell<TData, unknown>) {
                   group-data-expanded/row:bg-violet-100
                   group-data-expanded/row:first:rounded-bl-none
                   group-data-expanded/row:last:rounded-br-none
-                  lg:first:rounded-l-lg lg:last:rounded-r-lg
+                  lg:first:rounded-l-lg
+                  lg:last:rounded-r-lg
                   dark:group-even/row:bg-neutral-900
                   dark:group-data-expanded/row:bg-violet-950
                 `,

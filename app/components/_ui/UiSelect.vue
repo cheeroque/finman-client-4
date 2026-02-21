@@ -11,7 +11,7 @@ import {
 } from 'reka-ui'
 import type { AcceptableValue } from 'reka-ui'
 
-import type { SelectOption } from '~/components/_ui'
+import type { SelectOption } from '~/components/_ui/types'
 
 defineOptions({
   inheritAttrs: false,
@@ -55,7 +55,8 @@ const selectedOption = computed(() => options.find(({ value }) => value === mode
         data-[state=open]:outline-primary-400
         dark:bg-black dark:outline-neutral-800
         dark:not-data-disabled:hover:outline-primary-900
-        dark:focus:outline-primary-800 dark:data-disabled:bg-neutral-900
+        dark:focus:outline-primary-800
+        dark:data-disabled:bg-neutral-900
         dark:data-invalid:text-rose-500 dark:data-invalid:outline-rose-500
         dark:data-[state=open]:outline-primary-800
       "
