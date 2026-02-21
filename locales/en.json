@@ -45,6 +45,12 @@
       },
       "label": "Slug",
       "placeholder": "Enter slug"
+    },
+    "sortOrder": {
+      "error": {
+        "invalid": "Numbers only"
+      },
+      "label": "Sort order"
     }
   },
   "checkbox": {

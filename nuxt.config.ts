@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+
   app: {
     head: {
       title: 'Finance Manager 4',
@@ -93,12 +94,13 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       { code: 'ru', iso: 'ru-RU', displayName: 'Русский' },
-      { code: 'en', iso: 'en-US', displayName: 'English' },
+      { code: 'en', iso: 'en-GB', displayName: 'English' },
     ],
     defaultLocale: 'ru',
     translationDir: 'locales',
+    autoDetectLanguage: false,
     meta: true,
-    strategy: 'prefix_except_default',
+    strategy: 'no_prefix',
     localeCookie: 'user-locale',
   },
 
