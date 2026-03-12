@@ -29,7 +29,7 @@
     "@vueuse/nuxt": "^14.1.0",
     "@vueuse/router": "^14.1.0",
     "eslint": "^9.39.2",
-    "nuxt": "^4.3.1",
+    "nuxt": "^4.4.2",
     "nuxt-i18n-micro": "^3.11.0",
     "nuxt-svgo-loader": "^0.6.3",
     "pinia": "^3.0.4",
@@ -42,7 +42,7 @@
     "@iconify-json/mynaui": "^1.2.17",
     "@vite-pwa/assets-generator": "^1.0.2",
     "eslint-plugin-better-tailwindcss": "^4.3.0",
-    "tailwind-merge": "^3.4.1",
+    "tailwind-merge": "^3.5.0",
     "typescript": "^5.9.3",
     "vue-component-type-helpers": "^3.2.3"
   }
