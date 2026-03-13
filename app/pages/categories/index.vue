@@ -8,7 +8,7 @@ definePageMeta({
 const categoryStore = useCategoryStore()
 const { categories, loading } = storeToRefs(categoryStore)
 
-await useAsyncData(() => categoryStore.fetchCategories(true))
+await useAsyncData(() => categoryStore.fetchCategories())
 
 const { register } = useDialog()
 const { open: openCategoryModal } = register(LazyCategoryDialog)
