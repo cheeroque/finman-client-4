@@ -10,6 +10,7 @@ const { categoryTransactions, loading } = storeToRefs(categoryStore)
 const slug = computed(() => String(route.params.slug))
 
 await useAsyncData(
+  `category-${slug.value}`,
   () => categoryStore.fetchCategoryTransactions(slug.value),
   { watch: [() => route.query] }
 )

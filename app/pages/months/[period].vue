@@ -8,7 +8,10 @@ const { loading, monthTransactions } = storeToRefs(monthStore)
 
 const period = computed(() => String(route.params.period))
 
-await useAsyncData(() => monthStore.fetchMonthTransactions(period.value))
+await useAsyncData(
+  `month-${period.value}`,
+  () => monthStore.fetchMonthTransactions(period.value)
+)
 
 const { formatDate, parsePeriod } = useLocaleFormatter()
 
