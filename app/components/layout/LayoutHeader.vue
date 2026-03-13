@@ -9,11 +9,23 @@ const transactionStore = useTransactionStore()
 const { currentMonthTotal: total } = storeToRefs(transactionStore)
 
 const { status } = useLazyAsyncData(
+  'header-balance',
+
   () => Promise.all([
-    balanceStore.fetchBalance(),
+    balanceStore.fetchBalance(true),
     transactionStore.fetchCurrentMonthTotal(),
   ]),
-  { server: false }
+
+  {
+    getCachedData: (key, nuxtApp, ctx) => {
+      if (['refresh:hook', 'refresh:manual'].includes(ctx.cause)) {
+        return
+      }
+
+      return nuxtApp.payload.data[key]
+    },
+    server: false,
+  }
 )
 
 const loading = useAsyncDataLoading(status)
