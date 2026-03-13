@@ -14,7 +14,7 @@ export const useCategoryStore = defineStore('CategoryStore', () => {
   })
 
   async function fetchCategories(forceRefresh = false) {
-    if (state.categories && !forceRefresh) {
+    if (state.categories.length && !forceRefresh) {
       return state.categories
     }
 
