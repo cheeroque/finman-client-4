@@ -1,5 +1,7 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
-import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
+import tailwindPlugin from 'eslint-plugin-better-tailwindcss'
+import { getDefaultSelectors } from 'eslint-plugin-better-tailwindcss/defaults'
+import { MatcherType, SelectorKind } from 'eslint-plugin-better-tailwindcss/types'
 
 export default withNuxt([
   {
@@ -25,16 +27,28 @@ export default withNuxt([
   },
 ]).append({
   plugins: {
-    'better-tailwindcss': eslintPluginBetterTailwindcss,
+    'better-tailwindcss': tailwindPlugin,
   },
 
   rules: {
-    ...eslintPluginBetterTailwindcss.configs['recommended-warn'].rules,
+    ...tailwindPlugin.configs['recommended-warn'].rules,
   },
 
   settings: {
     'better-tailwindcss': {
       entryPoint: 'app/assets/css/main.css',
+      selectors: [
+        ...getDefaultSelectors(),
+        {
+          kind: SelectorKind.Callee,
+          match: [
+            {
+              type: MatcherType.String,
+            },
+          ],
+          name: '^mergeClasses$',
+        },
+      ],
     },
   },
 })
