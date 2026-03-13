@@ -6,18 +6,19 @@ const { hideHome } = defineProps<{
 }>()
 
 const { $localePath, $ts } = useI18n()
-
 const { formatDate, formatNumber } = useLocaleFormatter()
-const { data } = useLatestSnapshot()
+
+const snapshotStore = useSnapshotStore()
+const { latest } = storeToRefs(snapshotStore)
 
 const snapshotLabel = computed(() => {
-  if (!data.value?.balance) {
+  if (!latest.value?.balance) {
     return {
       primary: $ts('mainMenu.snapshots'),
     }
   }
 
-  const { balance, created_at } = data.value
+  const { balance, created_at } = latest.value
 
   return {
     primary: formatNumber(balance),

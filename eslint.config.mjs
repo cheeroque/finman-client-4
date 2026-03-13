@@ -1,4 +1,3 @@
-// import vueEslintParser from 'vue-eslint-parser'
 import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 

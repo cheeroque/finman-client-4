@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { $ts } = useI18n()
 
-const { marked } = useTransactionsParams()
+const { showMarked } = useQueryParams()
 </script>
 
 <template>
   <UiCheckbox
-    v-model="marked"
+    v-model="showMarked"
     icon-checked="mynaui:star-solid"
     icon-class="text-2xl"
     icon-unchecked="mynaui:star"

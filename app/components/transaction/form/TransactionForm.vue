@@ -14,8 +14,13 @@ const emit = defineEmits<{
 
 const { $ts } = useI18n()
 
-const { data: categories, status } = useCategories()
-const categoriesLoading = useAsyncDataLoading(status)
+const categoryStore = useCategoryStore()
+const { categories, loading: categoriesLoading } = storeToRefs(categoryStore)
+
+useLazyAsyncData(
+  () => categoryStore.fetchCategories(),
+  { server: false }
+)
 
 const categoryOptions = computed(() => categories.value?.map(({ id, name }) => ({
   label: name,

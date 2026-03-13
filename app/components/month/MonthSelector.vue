@@ -12,13 +12,13 @@ defineProps<{
 const modelValue = defineModel<{ month: number, year: number } | undefined>()
 
 const { $localePath } = useI18n()
-
 const { formatPeriod } = useLocaleFormatter()
 
-const { data } = useTransactionDates()
+const transactionStore = useTransactionStore()
+const { dates } = storeToRefs(transactionStore)
 
-const start = computed(() => data.value?.start)
-const end = computed(() => data.value?.end)
+const start = computed(() => dates.value?.start)
+const end = computed(() => dates.value?.end)
 
 const activeYear = ref(modelValue.value?.year ?? end.value?.year ?? 0)
 

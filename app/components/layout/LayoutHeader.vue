@@ -1,14 +1,24 @@
 <script setup lang="ts">
 const { $localePath } = useI18n()
-
 const { formatNumber } = useLocaleFormatter()
 
-const { data: balance } = useBalance()
-const title = computed(() => formatNumber(balance.value ?? 0))
+const balanceStore = useBalanceStore()
+const { balance } = storeToRefs(balanceStore)
 
-const { data: total } = useCurrentMonthTotal()
-const totalExpenses = computed(() => total.value?.expenses && formatNumber(total.value.expenses))
-const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.value.incomes))
+const transactionStore = useTransactionStore()
+const { currentMonthTotal: total } = storeToRefs(transactionStore)
+
+useLazyAsyncData(
+  () => Promise.all([
+    balanceStore.fetchBalance(),
+    transactionStore.fetchCurrentMonthTotal(),
+  ]),
+  { server: false }
+)
+
+const title = computed(() => formatNumber(balance.value ?? 0))
+const totalExpenses = computed(() => formatNumber(total.value?.expenses ?? 0))
+const totalIncomes = computed(() => formatNumber(total.value?.incomes ?? 0))
 </script>
 
 <template>

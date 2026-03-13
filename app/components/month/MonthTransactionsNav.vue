@@ -24,11 +24,11 @@ function getPeriodCaptions(datetime: ZonedDateTime) {
   }
 }
 
-const { data, status } = useTransactionDates()
-const isFirstTransactionLoading = useAsyncDataLoading(status)
+const transactionStore = useTransactionStore()
+const { dates } = storeToRefs(transactionStore)
 
-const start = computed(() => data.value?.start)
-const end = computed(() => data.value?.end)
+const start = computed(() => dates.value?.start)
+const end = computed(() => dates.value?.end)
 
 const isPreviousDisabled = computed(() => previousDate.value.year <= Number(start.value?.year)
   && previousDate.value.month < Number(start.value?.month)
@@ -42,7 +42,7 @@ const isNextDisabled = computed(() => nextDate.value.year >= Number(end.value?.y
 <template>
   <div class="flex justify-between gap-5">
     <UiButton
-      :disabled="isPreviousDisabled || isFirstTransactionLoading"
+      :disabled="isPreviousDisabled"
       icon="mynaui:chevron-left"
       :to="$localePath(`/months/${previousPeriod}`)"
       variant="primary-light"
@@ -57,7 +57,7 @@ const isNextDisabled = computed(() => nextDate.value.year >= Number(end.value?.y
     </UiButton>
 
     <UiButton
-      :disabled="isNextDisabled || isFirstTransactionLoading"
+      :disabled="isNextDisabled"
       :to="$localePath(`/months/${nextPeriod}`)"
       trailing-icon="mynaui:chevron-right"
       variant="primary-light"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { inputDebounce } = useAppConfig()
 
-const { filter } = useTransactionsParams()
+const { filter } = useQueryParams()
 
 const modelValue = ref(filter.value)
 

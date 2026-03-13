@@ -4,7 +4,7 @@ import type { Row } from '@tanstack/table-core'
 import type { MonthCategoryWithTransactions, MonthTransactionsData } from '~~/shared/types/month'
 
 const { data } = defineProps<{
-  data?: MonthTransactionsData
+  data?: MonthTransactionsData | null
 }>()
 
 const { $ts } = useI18n()

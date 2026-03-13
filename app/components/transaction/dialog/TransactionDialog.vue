@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { TransactionBase } from '~~/shared/types/transaction'
-
 const { transaction } = defineProps<{
   transaction?: TransactionBase
 }>()
@@ -16,26 +14,33 @@ const isEdit = computed(() => !!transaction)
 const title = computed(() => $ts(`transactionDialog.${isEdit.value ? 'edit' : 'create'}.title`))
 
 const authStore = useAuthStore()
-const { execute: executeUpsert, loading: isUpserting } = useTransactionUpsert()
+const transactionStore = useTransactionStore()
+const isLoading = ref(false)
 
 async function handleSubmitForm(data: Partial<TransactionBase>) {
-  await executeUpsert({
+  isLoading.value = true
+
+  await transactionStore.upsertTransaction({
     ...data,
     id: transaction?.id,
     user_id: authStore.user?.id,
   })
 
+  isLoading.value = false
+
   emit('close')
 }
-
-const { execute: executeDelete, loading: isDeleting } = useTransactionDelete()
 
 async function deleteTransaction() {
   if (!transaction?.id) {
     return
   }
 
-  await executeDelete(transaction.id)
+  isLoading.value = true
+
+  await transactionStore.deleteTransaction(transaction.id)
+
+  isLoading.value = false
 
   emit('close')
 }
@@ -51,13 +56,13 @@ async function deleteTransaction() {
     >
       <TransactionForm
         :id="formId"
-        :loading="isUpserting || isDeleting"
+        :loading="isLoading"
         :transaction
         @submit="handleSubmitForm"
       />
 
       <TransactionDialogFooter
-        :disabled="isUpserting || isDeleting"
+        :disabled="isLoading"
         :form-id
         :is-edit
         @click-delete="deleteTransaction()"
