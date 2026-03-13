@@ -111,7 +111,9 @@ export const useTransactionStore = defineStore('TransactionStore', () => {
 
   const balanceStore = useBalanceStore()
 
-  function handleTransactionsUpdate() {
+  async function handleTransactionsUpdate() {
+    await refreshNuxtData('header-balance')
+
     return Promise.all([
       balanceStore.fetchBalance(true),
       fetchCurrentMonth(true),
