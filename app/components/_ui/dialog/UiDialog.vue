@@ -15,15 +15,15 @@ import {
   DialogRoot,
   DialogTitle,
 } from 'reka-ui'
-import { twMerge, type ClassNameValue } from 'tailwind-merge'
+import type { ClassValue } from 'vue'
 
 const DIALOG_Z_INDEX_BASE = 110
 
 const {
   depth = 0,
 } = defineProps<{
-  bodyClass?: ClassNameValue
-  contentClass?: ClassNameValue
+  bodyClass?: ClassValue
+  contentClass?: ClassValue
   depth?: number
   title?: string
 }>()
@@ -66,7 +66,7 @@ watch(route, () => {
         leave-to-class="-translate-y-[40%] opacity-0"
       >
         <DialogContent
-          :class="twMerge(
+          :class="mergeClasses(
             `
               pointer-events-auto! fixed top-1/2 left-1/2 z-(--z-index-content)
               max-w-[calc(100%-1.5rem)] -translate-1/2 transition-all
@@ -78,7 +78,7 @@ watch(route, () => {
           }"
         >
           <div
-            :class="twMerge(
+            :class="mergeClasses(
               `
                 relative flex min-h-0 w-140 max-w-full flex-col gap-4
                 overflow-y-auto rounded-xl bg-white p-5

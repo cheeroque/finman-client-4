@@ -1,9 +1,9 @@
-import type { ClassNameValue } from 'tailwind-merge'
+import type { ClassValue } from 'vue'
 
 export interface LayoutNavItem {
   disabled?: boolean
   icon: string
-  iconClass?: ClassNameValue
+  iconClass?: ClassValue
   label: string
   labelSecondary?: string
   to?: string

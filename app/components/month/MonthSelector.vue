@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { twMerge, type ClassNameValue } from 'tailwind-merge'
+import type { ClassValue } from 'vue'
 
 import { getEmptyArray } from '~~/shared/utils'
 
 defineProps<{
-  headerClass?: ClassNameValue
-  monthClass?: ClassNameValue
-  yearClass?: ClassNameValue
+  headerClass?: ClassValue
+  monthClass?: ClassValue
+  yearClass?: ClassValue
 }>()
 
 const modelValue = defineModel<{ month: number, year: number } | undefined>()
@@ -90,7 +90,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
 <template>
   <div class="flex flex-col gap-5">
     <div
-      :class="twMerge(
+      :class="mergeClasses(
         'flex items-center gap-3 font-semibold',
         headerClass,
       )"
@@ -141,7 +141,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
           v-for="year in visibleYears"
           :key="year.year"
           :class="
-            twMerge(
+            mergeClasses(
               'grid w-full flex-none grid-cols-4 gap-5',
               yearClass,
             )"
@@ -156,7 +156,7 @@ function isMonthActive({ month, year}: { month: number, year: number }) {
               :disabled="month.disabled"
               :to="$localePath(`/months/${formatPeriod(month)}`)"
               :class="
-                twMerge(
+                mergeClasses(
                   `
                     flex aspect-3/2 w-full items-center justify-center
                     rounded-lg bg-primary-200 text-center text-primary-800
