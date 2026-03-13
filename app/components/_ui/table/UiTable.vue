@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="TData extends object">
-/* TODO: row expanding transitions */
 import {
   FlexRender,
   getCoreRowModel,
@@ -10,7 +9,7 @@ import {
   type Header,
   type Row,
 } from '@tanstack/vue-table'
-import { twMerge, type ClassNameValue } from 'tailwind-merge'
+import type { ClassValue } from 'vue'
 
 const {
   columns = [],
@@ -20,12 +19,12 @@ const {
   columns?: Array<ColumnDef<TData>>
   data?: TData[]
   loading?: boolean
-  tableClass?: ClassNameValue
-  tbodyClass?: ClassNameValue
-  tdClass?: ClassNameValue
-  thClass?: ClassNameValue
-  theadClass?: ClassNameValue
-  trClass?: ClassNameValue | ((row: Row<TData>) => ClassNameValue)
+  tableClass?: ClassValue
+  tbodyClass?: ClassValue
+  tdClass?: ClassValue
+  thClass?: ClassValue
+  theadClass?: ClassValue
+  trClass?: ClassValue | ((row: Row<TData>) => ClassValue)
 }>()
 
 const table = useVueTable({
@@ -60,7 +59,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
   <div class="relative">
     <table
       :data-loading="loading || undefined"
-      :class="twMerge(
+      :class="mergeClasses(
         `
           w-full transition-opacity
           data-loading:opacity-50
@@ -69,7 +68,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
       )"
     >
       <thead
-        :class="twMerge(
+        :class="mergeClasses(
           `
             text-sm text-neutral-500
             dark:text-neutral-400
@@ -86,7 +85,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
             :key="header.id"
             :colspan="header.colSpan"
             :rowspan="header.rowSpan"
-            :class="twMerge(
+            :class="mergeClasses(
               `
                 bg-neutral-100 p-4 text-start font-semibold
                 first:rounded-l-lg
@@ -118,7 +117,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
         >
           <tr
             :data-expanded="row.getIsExpanded() || undefined"
-            :class="twMerge(
+            :class="mergeClasses(
               'group/row',
               getRowClass(row),
             )"
@@ -126,7 +125,7 @@ function getCellClass(cell: Cell<TData, unknown>) {
             <td
               v-for="cell in row.getVisibleCells()"
               :key="cell.id"
-              :class="twMerge(
+              :class="mergeClasses(
                 `
                   px-4 py-3.5 transition-all duration-300
                   group-even/row:bg-neutral-50

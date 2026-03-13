@@ -12,9 +12,10 @@ const currentPeriod = computed(() => formatPeriod({
   year: now.getFullYear(),
 }))
 
-const { data } = useCurrentMonthTransactions()
+const transactionStore = useTransactionStore()
+const { currentMonth } = storeToRefs(transactionStore)
 
-const categories = computed(() => data.value?.expenseCategories ?? [])
+const categories = computed(() => currentMonth.value?.expenseCategories ?? [])
 
 const visibleCategories = computed(() => categories.value.slice(0, limit))
 const otherCategoriesTotal = computed(() => categories.value

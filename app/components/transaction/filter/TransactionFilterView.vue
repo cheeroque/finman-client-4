@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { $ts } = useI18n()
 
-const { view } = useTransactionsParams()
+const { currentView } = useQueryParams()
 
 const viewModel = computed({
-  get: () => view.value ?? 'all',
+  get: () => currentView.value ?? 'all',
   set: (value) => {
-    view.value = value === 'all' ? undefined : value
+    currentView.value = value === 'all' ? undefined : value
   },
 })
 

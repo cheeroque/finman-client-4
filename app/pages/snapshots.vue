@@ -5,13 +5,22 @@ definePageMeta({
   layout: false,
 })
 
-const { data, status } = await useSnapshots()
-const loading = useAsyncDataLoading(status)
+const route = useRoute()
+
+const snapshotStore = useSnapshotStore()
+const { snapshots, loading } = storeToRefs(snapshotStore)
+
+await useAsyncData(
+  () => snapshotStore.fetchSnapshots(),
+  { watch: [() => route.query] }
+)
 
 const { register } = useDialog()
 const { open: openSnapshotModal } = register(LazySnapshotDialog)
 
-const paginationVisible = computed(() => Number(data.value?.total) > Number(data.value?.per_page))
+const paginationVisible = computed(
+  () => Number(snapshots.value?.total) > Number(snapshots.value?.per_page)
+)
 
 useHead({
   titleTemplate: usePageTitle('snapshots.title'),
@@ -35,13 +44,13 @@ useHead({
     >
       <SnapshotTable
         :loading
-        :snapshots="data?.data"
+        :snapshots="snapshots?.data"
       />
 
       <UiPagination
         v-if="paginationVisible"
-        :items-per-page="data?.per_page"
-        :total="data?.total"
+        :items-per-page="snapshots?.per_page"
+        :total="snapshots?.total"
       />
     </main>
   </NuxtLayout>

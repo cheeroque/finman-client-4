@@ -16,21 +16,24 @@ const { $ts } = useI18n()
 const isEdit = computed(() => !!category)
 const title = computed(() => $ts(`categoryDialog.${isEdit.value ? 'edit' : 'create'}.title`))
 
-const { execute: executeUpsert, loading: isUpserting } = useCategoryUpsert()
+const categoryStore = useCategoryStore()
+const loading = ref(false)
 
 async function handleSubmitForm(data: Partial<Category>) {
-  await executeUpsert({
+  loading.value = true
+
+  await categoryStore.upsertCategory({
     ...data,
     id: category?.id,
   })
+
+  loading.value = false
 
   emit('close')
 }
 
 const { register } = useDialog()
 const { open: getConfirmation } = register(LazyConfirmationDialog)
-
-const { execute: executeDelete, loading: isDeleting } = useCategoryDelete()
 
 async function deleteCategory() {
   if (!category?.id) {
@@ -47,7 +50,11 @@ async function deleteCategory() {
     return
   }
 
-  await executeDelete(category.id)
+  loading.value = true
+
+  await categoryStore.deleteCategory(category.id)
+
+  loading.value = false
 
   emit('close')
 }
@@ -64,12 +71,12 @@ async function deleteCategory() {
       <CategoryForm
         :id="formId"
         :category
-        :loading="isUpserting || isDeleting"
+        :loading
         @submit="handleSubmitForm"
       />
 
       <CategoryDialogFooter
-        :disabled="isUpserting || isDeleting"
+        :disabled="loading"
         :form-id
         :is-edit
         @click-delete="deleteCategory()"

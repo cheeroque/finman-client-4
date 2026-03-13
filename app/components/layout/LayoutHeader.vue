@@ -1,14 +1,26 @@
 <script setup lang="ts">
 const { $localePath } = useI18n()
-
 const { formatNumber } = useLocaleFormatter()
 
-const { data: balance } = useBalance()
-const title = computed(() => formatNumber(balance.value ?? 0))
+const balanceStore = useBalanceStore()
+const { balance } = storeToRefs(balanceStore)
 
-const { data: total } = useCurrentMonthTotal()
-const totalExpenses = computed(() => total.value?.expenses && formatNumber(total.value.expenses))
-const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.value.incomes))
+const transactionStore = useTransactionStore()
+const { currentMonthTotal: total } = storeToRefs(transactionStore)
+
+const { status } = useLazyAsyncData(
+  () => Promise.all([
+    balanceStore.fetchBalance(),
+    transactionStore.fetchCurrentMonthTotal(),
+  ]),
+  { server: false }
+)
+
+const loading = useAsyncDataLoading(status)
+
+const title = computed(() => formatNumber(balance.value ?? 0))
+const totalExpenses = computed(() => formatNumber(total.value?.expenses ?? 0))
+const totalIncomes = computed(() => formatNumber(total.value?.incomes ?? 0))
 </script>
 
 <template>
@@ -19,65 +31,81 @@ const totalIncomes = computed(() => total.value?.incomes && formatNumber(total.v
       dark:border-primary-990
     "
   >
-    <div class="flex flex-auto items-baseline gap-5">
-      <NuxtLink
-        :to="$localePath('/')"
+    <div class="flex flex-auto items-end gap-5">
+      <UiSkeleton
+        :loading
         class="
-          inline-flex transition-colors
-          hover:text-primary-600
-          dark:hover:text-primary-500
+          h-9 w-45
+          lg:h-12 lg:w-70
         "
       >
-        <h1
+        <NuxtLink
+          :to="$localePath('/')"
           class="
-            text-3xl font-medium
-            max-lg:text-center
-            lg:text-5xl
+            inline-flex transition-colors
+            hover:text-primary-600
+            dark:hover:text-primary-500
           "
         >
-          {{ title }}
-        </h1>
-      </NuxtLink>
+          <h1
+            class="
+              text-3xl font-medium
+              max-lg:text-center
+              lg:text-5xl
+            "
+          >
+            {{ title }}
+          </h1>
+        </NuxtLink>
+      </UiSkeleton>
 
       <div
         class="
-          flex translate-y-0.5 items-baseline gap-5 text-2xl
+          flex translate-y-px items-end gap-5 text-2xl
           max-2xl:hidden
         "
       >
-        <span
-          v-if="totalIncomes"
-          class="
-            flex items-center gap-1 text-neutral-500
-            dark:text-neutral-400
-          "
+        <UiSkeleton
+          :loading
+          class="h-8 w-35"
         >
-          <Icon
-            name="mynaui:arrow-up-right-solid"
+          <span
             class="
-              text-lime-500
-              dark:text-lime-600
+              flex items-center gap-1 text-neutral-500
+              dark:text-neutral-400
             "
-          />
-          {{ totalIncomes }}
-        </span>
+          >
+            <Icon
+              name="mynaui:arrow-up-right-solid"
+              class="
+                size-6 text-lime-500
+                dark:text-lime-600
+              "
+            />
+            {{ totalIncomes }}
+          </span>
+        </UiSkeleton>
 
-        <span
-          v-if="totalExpenses"
-          class="
-            flex items-center gap-1 text-neutral-500
-            dark:text-neutral-400
-          "
+        <UiSkeleton
+          :loading
+          class="h-8 w-35"
         >
-          <Icon
-            name="mynaui:arrow-down-right-solid"
+          <span
             class="
-              text-rose-500
-              dark:text-rose-600
+              flex items-center gap-1 text-neutral-500
+              dark:text-neutral-400
             "
-          />
-          {{ totalExpenses }}
-        </span>
+          >
+            <Icon
+              name="mynaui:arrow-down-right-solid"
+              class="
+                size-6 text-rose-500
+                dark:text-rose-600
+              "
+            />
+            {{ totalExpenses }}
+          </span>
+        </UiSkeleton>
       </div>
     </div>
 

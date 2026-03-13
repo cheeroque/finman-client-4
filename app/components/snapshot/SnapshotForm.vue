@@ -13,8 +13,13 @@ const emit = defineEmits<{
 
 const { $ts } = useI18n()
 
-const { data: balance, status: balanceStatus } = useBalance()
-const balanceLoading = useAsyncDataLoading(balanceStatus)
+const balanceStore = useBalanceStore()
+const { balance, loading: balanceLoading } = storeToRefs(balanceStore)
+
+useLazyAsyncData(
+  () => balanceStore.fetchBalance(),
+  { server: false }
+)
 
 const form = ref(initForm())
 
@@ -40,9 +45,11 @@ function initForm() {
 }
 
 const previousBalance = ref(0)
-const { data: latestSnapshot } = useLatestSnapshot()
 
-whenever(() => latestSnapshot.value?.balance, (latestBalance) => {
+const snapshotStore = useSnapshotStore()
+const { latest } = storeToRefs(snapshotStore)
+
+whenever(() => latest.value?.balance, (latestBalance) => {
   previousBalance.value = latestBalance
 }, { immediate: true })
 

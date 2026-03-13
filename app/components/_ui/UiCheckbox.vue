@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CheckboxIndicator, CheckboxRoot } from 'reka-ui'
 import type { AcceptableValue } from 'reka-ui'
-import { twMerge, type ClassNameValue } from 'tailwind-merge'
+import type { ClassValue } from 'vue'
 
 const {
   iconChecked = 'mynaui:check-square-solid',
@@ -14,7 +14,7 @@ const {
   checkedColor?: string
   disabled?: boolean
   iconChecked?: string
-  iconClass?: ClassNameValue
+  iconClass?: ClassValue
   iconIndeterminate?: string
   iconUnchecked?: string
   id?: string
@@ -92,7 +92,7 @@ const ariaLabel = computed(() => {
       :disabled
       :required
       :value
-      :class="twMerge(
+      :class="mergeClasses(
         `
           flex aspect-square flex-none appearance-none items-center
           justify-center text-neutral-200 transition-colors outline-none
@@ -107,7 +107,7 @@ const ariaLabel = computed(() => {
       >
         <Icon
           :name="iconName"
-          :class="twMerge(
+          :class="mergeClasses(
             'text-xl',
             iconClass,
           )"

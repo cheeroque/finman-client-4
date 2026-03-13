@@ -2,13 +2,24 @@
 import type { BreadcrumbItem } from '~/components/_ui/types'
 
 const { categoryTransactionsPerPage } = useAppConfig()
+const route = useRoute()
 
-const { data, status } = await useCategoryTransactions()
-const loading = useAsyncDataLoading(status)
+const categoryStore = useCategoryStore()
+const { categoryTransactions, loading } = storeToRefs(categoryStore)
 
-const { page } = useCategoryTransactionsParams()
+const slug = computed(() => String(route.params.slug))
 
-const paginationVisible = computed(() => Number(data.value?.total) > categoryTransactionsPerPage)
+await useAsyncData(
+  `category-${slug.value}`,
+  () => categoryStore.fetchCategoryTransactions(slug.value),
+  { watch: [() => route.query] }
+)
+
+const { currentPage } = useQueryParams()
+
+const paginationVisible = computed(
+  () => Number(categoryTransactions.value?.total) > categoryTransactionsPerPage
+)
 
 const { $localePath, $ts } = useI18n()
 
@@ -24,10 +35,10 @@ const breadcrumbs = computed(() => {
     },
   ]
 
-  if (data.value?.category) {
+  if (categoryTransactions.value?.category) {
     items.push({
       active: true,
-      text: data.value.category.name,
+      text: categoryTransactions.value.category.name,
     })
   }
 
@@ -35,7 +46,10 @@ const breadcrumbs = computed(() => {
 })
 
 useHead({
-  titleTemplate: usePageTitle('category.title', data.value?.category.name),
+  titleTemplate: usePageTitle(
+    'category.title',
+    categoryTransactions.value?.category.name
+  ),
 })
 </script>
 
@@ -54,16 +68,16 @@ useHead({
       </div>
 
       <CategoryTransactionsTable
-        :data="data?.data"
+        :data="categoryTransactions?.data"
         :loading
       />
     </div>
 
     <UiPagination
       v-if="paginationVisible"
-      v-model="page"
+      v-model="currentPage"
       :items-per-page="categoryTransactionsPerPage"
-      :total="data?.total"
+      :total="categoryTransactions?.total"
       class="max-lg:mx-auto"
     />
   </main>

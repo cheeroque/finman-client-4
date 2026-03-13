@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Snapshot } from '~~/shared/types/snapshot'
-
 const emit = defineEmits<{
   close: []
 }>()
@@ -8,10 +6,15 @@ const emit = defineEmits<{
 const formId = useId()
 const { $ts } = useI18n()
 
-const { execute, loading } = useSnapshotCreate()
+const snapshotStore = useSnapshotStore()
+const loading = ref(false)
 
 async function handleSubmitForm(data: Partial<Snapshot>) {
-  await execute(data)
+  loading.value = true
+
+  await snapshotStore.createSnapshot(data)
+
+  loading.value = false
 
   emit('close')
 }

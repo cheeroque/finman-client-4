@@ -1,14 +1,21 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '~/components/_ui/types'
 
-const { data, status } = await useMonthTransactions()
-const loading = useAsyncDataLoading(status)
-const { period } = useMonthTransactionsParams()
+const route = useRoute()
+
+const monthStore = useMonthStore()
+const { loading, monthTransactions } = storeToRefs(monthStore)
+
+const period = computed(() => String(route.params.period))
+
+await useAsyncData(
+  `month-${period.value}`,
+  () => monthStore.fetchMonthTransactions(period.value)
+)
 
 const { formatDate, parsePeriod } = useLocaleFormatter()
 
 const parsedPeriod = computed(() => parsePeriod(period.value))
-
 const displayPeriod = computed(() => formatDate(parsedPeriod.value.toISOString(), {
   month: 'long',
   year: 'numeric',
@@ -51,7 +58,7 @@ useHead({
       </div>
 
       <MonthTransactionsTable
-        :data
+        :data="monthTransactions"
         :loading
       />
     </div>

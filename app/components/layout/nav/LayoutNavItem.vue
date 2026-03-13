@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge'
-
 import type { LayoutNavItem } from '~/components/layout/types'
 
 const {
@@ -31,7 +29,7 @@ const {
     <span class="flex size-6">
       <Icon
         :name="icon"
-        :class="twMerge(
+        :class="mergeClasses(
           'text-2xl opacity-80',
           iconClass,
         )"

@@ -3,12 +3,20 @@ definePageMeta({
   layout: false,
 })
 
-const { data, status } = await useTransactions()
-const loading = useAsyncDataLoading(status)
+const route = useRoute()
 
-const { page } = useTransactionsParams()
+const { currentPage } = useQueryParams()
+const transactionStore = useTransactionStore()
+const { loading, transactions } = storeToRefs(transactionStore)
 
-const paginationVisible = computed(() => Number(data.value?.total) > Number(data.value?.per_page))
+await useAsyncData(
+  () => transactionStore.fetchTransactions(),
+  { watch: [() => route.query] }
+)
+
+const paginationVisible = computed(
+  () => Number(transactions.value?.total) > Number(transactions.value?.per_page)
+)
 
 useHead({
   titleTemplate: usePageTitle('transactions.title'),
@@ -50,14 +58,14 @@ useHead({
 
       <TransactionTable
         :loading
-        :transactions="data?.data"
+        :transactions="transactions?.data"
       />
 
       <UiPagination
         v-if="paginationVisible"
-        v-model="page"
-        :items-per-page="data?.per_page"
-        :total="data?.total"
+        v-model="currentPage"
+        :items-per-page="transactions?.per_page"
+        :total="transactions?.total"
         class="max-lg:mx-auto"
       />
     </main>

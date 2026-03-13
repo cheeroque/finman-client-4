@@ -52,7 +52,7 @@ const columns = computed(() => [
   },
 ])
 
-const { view } = useTransactionsParams()
+const { currentView } = useQueryParams()
 
 function getTrClass(row: Row<Transaction>) {
   const classlist = [
@@ -67,7 +67,7 @@ function getTrClass(row: Row<Transaction>) {
       'max-2xl:bg-amber-50 max-2xl:even:bg-amber-50',
       'dark:max-2xl:bg-amber-950 dark:max-2xl:even:bg-amber-950'
     )
-  } else if (row.original.category.is_income && !view.value) {
+  } else if (row.original.category.is_income && !currentView.value) {
     classlist.push(
       'row-income',
       'max-2xl:bg-lime-100 max-2xl:even:bg-lime-100',
