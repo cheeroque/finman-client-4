@@ -19,6 +19,16 @@
       "delete": "Удалить",
       "submit": "Обновить",
       "title": "Изменить категорию"
+    },
+    "errorToast": {
+      "create": "Не удалось создать категорию",
+      "delete": "Не удалось удалить категорию",
+      "update": "Не удалось обновить категорию"
+    },
+    "successToast": {
+      "create": "Категория \"{category}\" успешно создана",
+      "delete": "Категория \"{category}\" удалена",
+      "update": "Категория \"{category}\" обновлена"
     }
   },
   "categoryForm": {
@@ -64,7 +74,8 @@
   "error": {
     "404": "Страница не найдена.",
     "error": "Ошибка",
-    "goHome": "Вернуться на главную"
+    "goHome": "Вернуться на главную",
+    "unknown": "Неизвестная ошибка"
   },
   "filter": {
     "marked": {
@@ -99,7 +110,13 @@
     "months": "Календарь"
   },
   "snapshotDialog": {
+    "errorToast": {
+      "create": "Не удалось создать снапшот"
+    },
     "submit": "Сохранить",
+    "successToast": {
+      "create": "Снапшот от {datetime} успешно создан"
+    },
     "title": "Создать снапшот"
   },
   "snapshotForm": {
@@ -132,6 +149,16 @@
       "delete": "Удалить",
       "submit": "Обновить",
       "title": "Изменить запись"
+    },
+    "errorToast": {
+      "create": "Не удалось создать запись",
+      "delete": "Не удалось удалить запись",
+      "update": "Не удалось обновить запись"
+    },
+    "successToast": {
+      "create": "Запись \"{transaction}\" успешно создана",
+      "delete": "Запись \"{transaction}\" удалена",
+      "update": "Запись \"{transaction}\" обновлена"
     }
   },
   "transactionForm": {

@@ -7,16 +7,40 @@ const formId = useId()
 const { $ts } = useI18n()
 
 const snapshotStore = useSnapshotStore()
-const loading = ref(false)
+
+const { formatDate } = useLocaleFormatter()
+const { show: showToast } = useToast()
+
+const isLoading = ref(false)
 
 async function handleSubmitForm(data: Partial<Snapshot>) {
-  loading.value = true
+  isLoading.value = true
 
-  await snapshotStore.createSnapshot(data)
+  try {
+    await snapshotStore.createSnapshot(data)
 
-  loading.value = false
+    const description = $ts('snapshotDialog.successToast.create', {
+      datetime: formatDate(data.created_at ?? new Date().toISOString()),
+    })
 
-  emit('close')
+    showToast({
+      description,
+      variant: 'success',
+    })
+
+    emit('close')
+  } catch (error) {
+    const description = getErrorMessage(error, $ts('error.unknown'))
+    const title = $ts('snapshotDialog.errorToast.create')
+
+    showToast({
+      description,
+      title,
+      variant: 'danger',
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -30,13 +54,13 @@ async function handleSubmitForm(data: Partial<Snapshot>) {
     >
       <SnapshotForm
         :id="formId"
-        :loading
+        :loading="isLoading"
         @submit="handleSubmitForm"
       />
 
       <div class="flex w-full gap-4">
         <UiButton
-          :disabled="loading"
+          :disabled="isLoading"
           :form="formId"
           type="submit"
           variant="success"

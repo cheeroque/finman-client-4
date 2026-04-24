@@ -15,20 +15,45 @@ const title = computed(() => $ts(`transactionDialog.${isEdit.value ? 'edit' : 'c
 
 const authStore = useAuthStore()
 const transactionStore = useTransactionStore()
+
+const { show: showToast } = useToast()
+
 const isLoading = ref(false)
 
 async function handleSubmitForm(data: Partial<TransactionBase>) {
   isLoading.value = true
 
-  await transactionStore.upsertTransaction({
-    ...data,
-    id: transaction?.id,
-    user_id: authStore.user?.id,
-  })
+  const mode = transaction?.id ? 'update' : 'create'
 
-  isLoading.value = false
+  try {
+    await transactionStore.upsertTransaction({
+      ...data,
+      id: transaction?.id,
+      user_id: authStore.user?.id,
+    })
 
-  emit('close')
+    const description = $ts(`transactionDialog.successToast.${mode}`, {
+      transaction: data.note ?? '',
+    })
+
+    showToast({
+      description,
+      variant: 'success',
+    })
+
+    emit('close')
+  } catch (error) {
+    const description = getErrorMessage(error, $ts('error.unknown'))
+    const title = $ts(`transactionDialog.errorToast.${mode}`)
+
+    showToast({
+      description,
+      title,
+      variant: 'danger',
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 
 async function deleteTransaction() {
@@ -38,11 +63,31 @@ async function deleteTransaction() {
 
   isLoading.value = true
 
-  await transactionStore.deleteTransaction(transaction.id)
+  try {
+    await transactionStore.deleteTransaction(transaction.id)
 
-  isLoading.value = false
+    const description = $ts('transactionDialog.successToast.delete', {
+      transaction: transaction.note,
+    })
 
-  emit('close')
+    showToast({
+      description,
+      variant: 'warning',
+    })
+
+    emit('close')
+  } catch (error) {
+    const description = getErrorMessage(error, $ts('error.unknown'))
+    const title = $ts('transactionDialog.errorToast.delete')
+
+    showToast({
+      description,
+      title,
+      variant: 'danger',
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 

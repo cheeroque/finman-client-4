@@ -17,19 +17,43 @@ const isEdit = computed(() => !!category)
 const title = computed(() => $ts(`categoryDialog.${isEdit.value ? 'edit' : 'create'}.title`))
 
 const categoryStore = useCategoryStore()
-const loading = ref(false)
+const { show: showToast } = useToast()
+
+const isLoading = ref(false)
 
 async function handleSubmitForm(data: Partial<Category>) {
-  loading.value = true
+  isLoading.value = true
 
-  await categoryStore.upsertCategory({
-    ...data,
-    id: category?.id,
-  })
+  const mode = category?.id ? 'update' : 'create'
 
-  loading.value = false
+  try {
+    await categoryStore.upsertCategory({
+      ...data,
+      id: category?.id,
+    })
 
-  emit('close')
+    const description = $ts(`categoryDialog.successToast.${mode}`, {
+      category: category?.name ?? '',
+    })
+
+    showToast({
+      description,
+      variant: 'success',
+    })
+
+    emit('close')
+  } catch (error) {
+    const description = getErrorMessage(error, $ts('error.unknown'))
+    const title = $ts(`categoryDialog.errorToast.${mode}`)
+
+    showToast({
+      description,
+      title,
+      variant: 'danger',
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 
 const { register } = useDialog()
@@ -50,13 +74,33 @@ async function deleteCategory() {
     return
   }
 
-  loading.value = true
+  isLoading.value = true
 
-  await categoryStore.deleteCategory(category.id)
+  try {
+    await categoryStore.deleteCategory(category.id)
 
-  loading.value = false
+    const description = $ts('categoryDialog.successToast.delete', {
+      category: category.name,
+    })
 
-  emit('close')
+    showToast({
+      description,
+      variant: 'warning',
+    })
+
+    emit('close')
+  } catch (error) {
+    const description = getErrorMessage(error, $ts('error.unknown'))
+    const title = $ts('categoryDialog.errorToast.delete')
+
+    showToast({
+      description,
+      title,
+      variant: 'danger',
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -71,12 +115,12 @@ async function deleteCategory() {
       <CategoryForm
         :id="formId"
         :category
-        :loading
+        :loading="isLoading"
         @submit="handleSubmitForm"
       />
 
       <CategoryDialogFooter
-        :disabled="loading"
+        :disabled="isLoading"
         :form-id
         :is-edit
         @click-delete="deleteCategory()"
