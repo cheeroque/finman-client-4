@@ -29,6 +29,7 @@ const { getLocale } = useI18n()
 
       <ClientOnly>
         <UiDialogProvider />
+        <UiToastProvider />
       </ClientOnly>
     </ConfigProvider>
   </NuxtLayout>

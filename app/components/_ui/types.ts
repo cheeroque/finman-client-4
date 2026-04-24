@@ -24,3 +24,12 @@ export interface SelectOption {
   label?: string
   value: AcceptableValue
 }
+
+export interface ToastProps {
+  description: string
+  duration?: number | false
+  title?: string
+  variant: ToastVariant
+}
+
+export type ToastVariant = 'danger' | 'success' | 'warning'
