@@ -19,6 +19,16 @@
       "delete": "Delete",
       "submit": "Submit",
       "title": "Update Category"
+    },
+    "errorToast": {
+      "create": "Error creating category",
+      "delete": "Error deleting category",
+      "update": "Error updating category"
+    },
+    "successToast": {
+      "create": "Category \"{category}\" created successfully",
+      "delete": "Category \"{category}\" deleted",
+      "update": "Category \"{category}\" updated"
     }
   },
   "categoryForm": {
@@ -64,7 +74,8 @@
   "error": {
     "404": "Page not found.",
     "error": "Error",
-    "goHome": "Return to main page"
+    "goHome": "Return to main page",
+    "unknown": "Unknown error"
   },
   "filter": {
     "marked": {
@@ -99,7 +110,13 @@
     "months": "Months"
   },
   "snapshotDialog": {
+    "errorToast": {
+      "create": "Error creating snapshot"
+    },
     "submit": "Submit",
+    "successToast": {
+      "create": "Snapshot created at {datetime}"
+    },
     "title": "Create Snapshot"
   },
   "snapshotForm": {
@@ -132,6 +149,16 @@
       "delete": "Delete",
       "submit": "Submit",
       "title": "Update Transaction"
+    },
+    "errorToast": {
+      "create": "Error creating transaction",
+      "delete": "Error deleting transaction",
+      "update": "Error updating transaction"
+    },
+    "successToast": {
+      "create": "Transaction \"{transaction}\" created successfully",
+      "delete": "Transaction \"{transaction}\" deleted",
+      "update": "Transaction \"{transaction}\" updated"
     }
   },
   "transactionForm": {
