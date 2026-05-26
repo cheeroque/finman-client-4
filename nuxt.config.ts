@@ -72,7 +72,6 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [
-      // @ts-expect-error vite type mismatch between @nuxt/schema and @tailwindcss/vite
       tailwindcss(),
     ],
   },
