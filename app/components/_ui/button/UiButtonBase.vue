@@ -23,7 +23,7 @@ const isNuxtLink = computed(() => !!to)
       :data-active="active || isActive || undefined"
       :data-disabled="disabled || undefined"
       :data-exact-active="href === $route.fullPath || undefined"
-      :href
+      :href="href ?? undefined"
       class="
         transition-(--transition-button)
         data-disabled:pointer-events-none data-disabled:cursor-default
